@@ -26,40 +26,26 @@ VAR
 
     // Laser monitors
     {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS'}
-    fbAmphos : FB_Laser; // Amphos laser
+    fbAmphos : FB_Laser_Timer; // Amphos laser
     {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:RESET
         io: o
     '}
     bAmphosReset : BOOL; // Amphos laser error unlatch flag
     {attribute 'pytmc' := 'pv: @(BASE):LPS:OPCPA'}
-    fbOpcpa : FB_Laser; // OPCPA laser
+    fbOpcpa : FB_Laser_Timer; // OPCPA laser
     {attribute 'pytmc' := '
         pv: @(BASE):LPS:OPCPA:RESET
         io: o
     '}
     bOpcpaReset : BOOL; // OPCPA laser error unlatch flag
-
-
-    (*
-    // Temperature monitors
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON01'}
-    fbTempMon01 : FB_TemperatureMonitor; // System temperature monitor 01
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON02'}
-    fbTempMon02 : FB_TemperatureMonitor; // System temperature monitor 02
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON03'}
-    fbTempMon03 : FB_TemperatureMonitor; // System temperature monitor 03
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON04'}
-    fbTempMon04 : FB_TemperatureMonitor; // System temperature monitor 04
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON05'}
-    fbTempMon05 : FB_TemperatureMonitor; // System temperature monitor 05
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON06'}
-    fbTempMon06 : FB_TemperatureMonitor; // System temperature monitor 06
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON07'}
-    fbTempMon07 : FB_TemperatureMonitor; // System temperature monitor 07
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMPMON08'}
-    fbTempMon08 : FB_TemperatureMonitor; // System temperature monitor 08
-    *)
+    {attribute 'pytmc' := 'pv: @(BASE):LPS:MPC'}
+    fbMPC : FB_Laser_Timer; // MultiPass Cell
+    {attribute 'pytmc' := '
+        pv: @(BASE):LPS:AMPHOS:RESET
+        io: o
+    '}
+    bMPCReset : BOOL; // MPC laser error unlatch flag
 
     // Chillers
     {attribute 'pytmc' := 'pv: @(BASE):LPS:DUMP_CHILLER'}
@@ -149,7 +135,6 @@ fbChillerLoop04(
     bError => stErrors.bChillerLoop04
 );
 
-(*
 (* Monitors the Amphos laser *)
 fbAmphos(
     nVoltageRaw := GVL_IO.nAmphosVoltageRaw,
@@ -165,74 +150,16 @@ fbOpcpa(
     stSetpoints := GVL_Laser.stOpcpaSP,
     bError => stErrors.bOpcpaBeam
 );
-*)
-(*
-(* Monitors system temperature from sensor 1 *)
-fbTempMon01(
-    nTempMonRaw := GVL_IO.nTempMonRaw01,
+
+(* Monitors the MPC laser *)
+fbMPC(
+    nVoltageRaw := GVL_IO.nMultiPassVoltageRaw,
     bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP01,
-    bError => stErrors.bTempMon01
+    stSetpoints := GVL_Laser.stOpcpaSP,
+    bError => stErrors.bOpcpaBeam
 );
 
-(* Monitors system temperature from sensor 2 *)
-fbTempMon02(
-    nTempMonRaw := GVL_IO.nTempMonRaw02,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP02,
-    bError => stErrors.bTempMon02
-);
-
-(* Monitors system temperature from sensor 3 *)
-fbTempMon03(
-    nTempMonRaw := GVL_IO.nTempMonRaw03,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP03,
-    bError => stErrors.bTempMon03
-);
-
-(* Monitors system temperature from sensor 4 *)
-fbTempMon04(
-    nTempMonRaw := GVL_IO.nTempMonRaw04,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP04,
-    bError => stErrors.bTempMon04
-);
-
-(* Monitors system temperature from sensor 5 *)
-fbTempMon05(
-    nTempMonRaw := GVL_IO.nTempMonRaw05,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP05,
-    bError => stErrors.bTempMon05
-);
-
-(* Monitors system temperature from sensor 6 *)
-fbTempMon06(
-    nTempMonRaw := GVL_IO.nTempMonRaw06,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP06,
-    bError => stErrors.bTempMon06
-);
-
-(* Monitors system temperature from sensor 7 *)
-fbTempMon07(
-    nTempMonRaw := GVL_IO.nTempMonRaw07,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP07,
-    bError => stErrors.bTempMon07
-);
-
-(* Monitors system temperature from sensor 8 *)
-fbTempMon08(
-    nTempMonRaw := GVL_IO.nTempMonRaw08,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_TemperatureMonitor.stTempMonSP08,
-    bError => stErrors.bTempMon08
-);
-*)
-
-(* Flow sensor monitor for the dump chiller *)
+//Flow sensor monitor for the dump chiller
 fbDumpChiller(
     bAmphosOn := GVL_IO.bAmphosOn,
     bDumpChillerFlow := GVL_IO.bDumpChillerFlow,

@@ -16,12 +16,13 @@ STRUCT
     bChillerLoop02 : BOOL; // Temperature too high in loop 02
     bChillerLoop03 : BOOL; // Temperature too high in loop 03
     bChillerLoop04 : BOOL; // Temperature too high in loop 04
+    bChillerLoop05 : BOOL; // Temperature too high in loop 05
 
     // Beam Errors
     bAmphosBeam : BOOL; // Amphos beam error
     bOpcpaBeam : BOOL; // OPCPA beam error
 
-    (*
+
     // Temperature monitors
     bTempMon01 : BOOL; // Temperature too high at location 01
     bTempMon02 : BOOL; // Temperature too high at location 02
@@ -31,7 +32,7 @@ STRUCT
     bTempMon06 : BOOL; // Temperature too high at location 06
     bTempMon07 : BOOL; // Temperature too high at location 07
     bTempMon08 : BOOL; // Temperature too high at location 08
-    *)
+
 
     // Dump chiller
     bDumpChiller : BOOL; // Dump chiller error

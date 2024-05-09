@@ -4,7 +4,7 @@
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ff808080808080808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
 	<Box Id="1" BoxType="9099">
-		<Name>__FILENAME__</Name>
+		<Name>B950-231B-R03-DRL-01 (EK1200)</Name>
 		<ImageId>1000</ImageId>
 		<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Power supply (2A E-Bus)" Desc="EK1200"/>
 		<Box File="EL3174_00_01.xti" Id="2">
@@ -22,17 +22,23 @@
 		<Box File="EL9184_00_05.xti" Id="6">
 			<EtherCAT PortABoxInfo="#x01000005"/>
 		</Box>
-		<Box File="EL2624_00_06.xti" Id="7">
+		<Box File="EL2624_00_07.xti" Id="7">
 			<EtherCAT PortABoxInfo="#x01000005"/>
 		</Box>
-		<Box File="EL6022_00_07.xti" Id="8">
+		<Box File="EL2624_00_08.xti" Id="16">
 			<EtherCAT PortABoxInfo="#x01000007"/>
 		</Box>
-		<Box File="EL9505_00_08.xti" Id="9">
+		<Box File="EL6022_00_09.xti" Id="8">
+			<EtherCAT PortABoxInfo="#x01000010"/>
+		</Box>
+		<Box File="EL9505_00_10.xti" Id="9">
 			<EtherCAT PortABoxInfo="#x01000008"/>
 		</Box>
-		<Box File="EL1124_00_09.xti" Id="10">
+		<Box File="EL1124_00_11.xti" Id="10">
 			<EtherCAT PortABoxInfo="#x01000009"/>
+		</Box>
+		<Box File="EL9011_00_12.xti" Id="20">
+			<EtherCAT PortABoxInfo="#x0100000a"/>
 		</Box>
 	</Box>
 </TcSmItem>
