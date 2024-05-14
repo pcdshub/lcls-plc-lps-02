@@ -104,7 +104,7 @@
 				<Var>
 					<Name>GVL_IO.nMultiPassVoltageRaw</Name>
 					<Comment>
-						<![CDATA[ Ch3 MultiPass Cell ]]>
+						<![CDATA[ Ch3 MultiPass Cell]]>
 					</Comment>
 					<Type>INT</Type>
 				</Var>

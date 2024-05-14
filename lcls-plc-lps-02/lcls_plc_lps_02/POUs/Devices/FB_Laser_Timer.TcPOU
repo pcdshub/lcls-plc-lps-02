@@ -6,8 +6,7 @@ FUNCTION_BLOCK FB_Laser_Timer
 VAR_INPUT
     nVoltageRaw : INT; // The raw signal collected from the ADC
     bAmphosOn : BOOL; // Whether the amphos is turned on
-	Timer : TON ; //Timer for reset
-	TimerON : BOOL := FALSE; // Timer is ON
+    Timer : TON ; //Timer for reset
 END_VAR
 VAR_IN_OUT CONSTANT
     stSetpoints : ST_LaserSetpoints; // Setpoints for the laser
@@ -45,16 +44,13 @@ fVoltage := F_Scale(
 
 (* Set error if amphos is below nominal voltage *)
 IF  (bAmphosOn AND fVoltage < stSetpoints.nMinNominalVoltage) THEN
-	Timer(IN:=TRUE, PT:=T#1S); //1 SEC Timer
-    TimerOn := TRUE;  (* Set timer status *)
-	IF Timer.Q THEN
+    Timer(IN:=TRUE, PT:=T#1S); //1 SEC Timer
+    IF Timer.Q THEN
             bError := TRUE;
             Timer(IN:=FALSE);   // Reset Timer
-            TimerOn := FALSE;  (* Reset timer status *)
     END_IF;
 ELSE
-	Timer(IN:=FALSE);
-    TimerOn := FALSE;
+    Timer(IN:=FALSE);
 END_IF]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{4d0d047c-855b-465e-b61b-8ddd3d445dcf}">
