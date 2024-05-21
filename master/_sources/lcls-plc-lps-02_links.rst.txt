@@ -1,0 +1,79 @@
+
+Links
+-----
+
+.. csv-table::
+    :header: Owner A, Item A, Owner B, Item B
+    :align: center
+
+        OutputSrc, GVL_IO.bAmphosCLOSE, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08, Channel 4^Output
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bAmphosLaserACK, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_12, Channel 1^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bAmphosLaserBusy, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_12, Channel 2^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bAmphosLaserReady, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11, Channel 4^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bAmphosOn, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11, Channel 1^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bAmphosShutterStatus, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11, Channel 2^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bBaseplateChillerFlow, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 8^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bCarbideOn, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11, Channel 3^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bDumpChillerFlow, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 7^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bLoopTempSW01, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 3^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bLoopTempSW02, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 4^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bLoopTempSW03, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 5^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bLoopTempSW04, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 6^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bLoopTempSW05, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 1^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bMirrorStatus, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1004_00_8A, Channel 1^Input
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.bTracetekAlarm, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04, MTI Inputs 10x Channel 2^Status^Input state
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.nAmphosVoltageRaw, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_02, AI Standard Channel 1^Value
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.nMultiPassVoltageRaw, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_01, AI Standard Channel 3^Value
+        lcls_plc_lps_02 Instance, PlcTask Inputs^GVL_IO.nOpcpaVoltageRaw, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_01, AI Standard Channel 1^Value
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 0
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 1
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 10
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 11
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 12
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 13
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 14
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 15
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 16
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 17
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 18
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 19
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 2
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 20
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 21
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 3
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 4
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 5
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 6
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 7
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 8
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Data In 9
+        lcls_plc_lps_02 Instance, PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^Status, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Inputs Channel 2^Status
+        lcls_plc_lps_02 Instance, PlcTask Outputs^GVL_IO.bAmphosEnable, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07, Channel 3^Output
+        lcls_plc_lps_02 Instance, PlcTask Outputs^GVL_IO.bAmphosRelayCLOSE, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08, Channel 4^Output
+        lcls_plc_lps_02 Instance, PlcTask Outputs^GVL_IO.bAmphosRelayOPEN, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08, Channel 1^Output
+        lcls_plc_lps_02 Instance, PlcTask Outputs^GVL_IO.bBaseplateChillerRelay, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07, Channel 2^Output
+        lcls_plc_lps_02 Instance, PlcTask Outputs^GVL_IO.bCarbideShutterEnable, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07, Channel 4^Output
+        lcls_plc_lps_02 Instance, PlcTask Outputs^GVL_IO.bDumpChillerRelay, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07, Channel 1^Output
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^Ctrl, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Ctrl
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 0
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 1
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 10
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 11
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 12
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 13
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 14
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 15
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 16
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 17
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 18
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 19
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 2
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 20
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 21
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 3
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 4
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 5
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 6
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 7
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 8
+        lcls_plc_lps_02 Instance, PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D, TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09, COM Outputs Channel 2^Data Out 9
