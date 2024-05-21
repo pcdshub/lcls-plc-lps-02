@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CNestedPlcProjDef">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{500A6B3D-5280-418B-91E6-C259C9E0A911}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{E8E42931-71C7-4167-B96B-F844189FEE1E}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Ctrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+	</DataTypes>
+	<Project GUID="{F0E27DBE-1025-4958-B61D-F62F8AC18112}" Name="lcls_plc_lps_02" PrjFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.plcproj" TmcFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc">
+			<Name>lcls_plc_lps_02 Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Vars VarGrpType="1">
+				<Name>PlcTask Inputs</Name>
+				<Var>
+					<Name>MAIN.fbTraceTekModbus.fbModbusMaster.InData</Name>
+					<Type GUID="{500A6B3D-5280-418B-91E6-C259C9E0A911}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bTracetekAlarm</Name>
+					<Comment>
+						<![CDATA[ Ch2]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.nOpcpaVoltageRaw</Name>
+					<Comment>
+						<![CDATA[ Ch1 OPCPA Laser]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.nAmphosVoltageRaw</Name>
+					<Comment>
+						<![CDATA[ Ch2 Amphos Laser]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.nMultiPassVoltageRaw</Name>
+					<Comment>
+						<![CDATA[ Ch3 MultiPass Cell]]>
+					</Comment>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bLoopTempSW01</Name>
+					<Comment>
+						<![CDATA[ Ch3 Loop 01 NC Temp switch]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bLoopTempSW02</Name>
+					<Comment>
+						<![CDATA[ Ch4 Loop 02 NC Temp switch]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bLoopTempSW03</Name>
+					<Comment>
+						<![CDATA[ Ch5 Loop 03 NC Temp switch]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bLoopTempSW04</Name>
+					<Comment>
+						<![CDATA[ Ch6 Loop 04 NC Temp switch]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bLoopTempSW05</Name>
+					<Comment>
+						<![CDATA[ Ch1 Loop 05 NC Temp switch]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bBaseplateChillerFlow</Name>
+					<Comment>
+						<![CDATA[ Ch7 Dump chiller NC flow sensor]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bDumpChillerFlow</Name>
+					<Comment>
+						<![CDATA[ Ch2 Baseplate Chiller flow sensor]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosOn</Name>
+					<Comment>
+						<![CDATA[  Laser ON - LabJACK IO]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosLaserReady</Name>
+					<Comment>
+						<![CDATA[  Laser Ready - LabJACK IO]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bLeakDetected</Name>
+					<Comment>
+						<![CDATA[ Ch2]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bCarbideOn</Name>
+					<Comment>
+						<![CDATA[ Ch1]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_PLC.AMSNetId</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2">
+				<Name>PlcTask Outputs</Name>
+				<Var>
+					<Name>MAIN.fbTraceTekModbus.fbModbusMaster.OutData</Name>
+					<Type GUID="{E8E42931-71C7-4167-B96B-F844189FEE1E}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosShutterEnable</Name>
+					<Comment>
+						<![CDATA[ Ch1]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosShutterEnableManualOperation</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosRelay</Name>
+					<Comment>
+						<![CDATA[ Ch3 Amphos Interlock relay]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bCarbideShutterEnable</Name>
+					<Comment>
+						<![CDATA[ Ch2 HASS]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bCarbideShutterEnableManualOperation</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bDumpChillerRelay</Name>
+					<Comment>
+						<![CDATA[ Ch1 Dump chiller NC relay]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bBaseplateChillerRelay</Name>
+					<Comment>
+						<![CDATA[ Ch2 Baseplate chiller NC relay]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+			</Vars>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x08502001"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+	<Mappings>
+		<OwnerA Name="lcls_plc_lps_02 Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11">
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserReady" VarB="Channel 3^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosOn" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bCarbideOn" VarB="Channel 1^Input" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04">
+				<Link VarA="PlcTask Inputs^GVL_IO.bBaseplateChillerFlow" VarB="MTI Inputs 10x Channel 7^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bDumpChillerFlow" VarB="MTI Inputs 10x Channel 8^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW01" VarB="MTI Inputs 10x Channel 3^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW02" VarB="MTI Inputs 10x Channel 4^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW03" VarB="MTI Inputs 10x Channel 5^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW04" VarB="MTI Inputs 10x Channel 6^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bTracetekAlarm" VarB="MTI Inputs 10x Channel 2^Status^Input state" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07">
+				<Link VarA="PlcTask Outputs^GVL_IO.bCarbideShutterEnable" VarB="Channel 4^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08">
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosRelay" VarB="Channel 3^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_01">
+				<Link VarA="PlcTask Inputs^GVL_IO.nAmphosVoltageRaw" VarB="AI Standard Channel 2^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.nMultiPassVoltageRaw" VarB="AI Standard Channel 3^Value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.nOpcpaVoltageRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>
