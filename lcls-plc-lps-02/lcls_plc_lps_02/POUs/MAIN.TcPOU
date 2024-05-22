@@ -42,7 +42,7 @@ VAR
     {attribute 'pytmc' := 'pv: @(BASE):LPS:MPC'}
     fbMPC : FB_Laser_Timer; // MultiPass Cell
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:RESET
+        pv: @(BASE):LPS:MPC:RESET
         io: o
     '}
     bMPCReset : BOOL; // MPC laser error unlatch flag
