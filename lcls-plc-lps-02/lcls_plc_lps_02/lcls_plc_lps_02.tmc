@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{0B7B1E16-8602-D8B2-492B-0F7937AB3A9A}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{E40C6267-CBA9-66D6-DA7A-8E19E93D41AB}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name GUID="{6F5942ED-BFA1-497D-8225-23C6DAAD0A09}" TcBaseType="true">ST_LibVersion</Name>
@@ -3170,7 +3170,7 @@
       <SubItem>
         <Name>Timer</Name>
         <Type Namespace="Tc2_Standard">TON</Type>
-        <Comment>Timer for reset	</Comment>
+        <Comment>Timer for reset</Comment>
         <BitSize>256</BitSize>
         <BitOffs>128</BitOffs>
         <Properties>
@@ -5788,7 +5788,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>Input</Value>
               </Property>
             </Properties>
-            <BitOffs>4124016</BitOffs>
+            <BitOffs>4123312</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bTracetekAlarm</Name>
@@ -5808,7 +5808,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4134888</BitOffs>
+            <BitOffs>4134184</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.nOpcpaVoltageRaw</Name>
@@ -5828,7 +5828,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4134896</BitOffs>
+            <BitOffs>4134192</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.nAmphosVoltageRaw</Name>
@@ -5848,7 +5848,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135008</BitOffs>
+            <BitOffs>4134304</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.nMultiPassVoltageRaw</Name>
@@ -5868,7 +5868,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135024</BitOffs>
+            <BitOffs>4134320</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW01</Name>
@@ -5888,7 +5888,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135136</BitOffs>
+            <BitOffs>4134432</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW02</Name>
@@ -5908,7 +5908,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135144</BitOffs>
+            <BitOffs>4134440</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW03</Name>
@@ -5928,7 +5928,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135152</BitOffs>
+            <BitOffs>4134448</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW04</Name>
@@ -5948,7 +5948,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135160</BitOffs>
+            <BitOffs>4134456</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW05</Name>
@@ -5968,7 +5968,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135264</BitOffs>
+            <BitOffs>4134560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bBaseplateChillerFlow</Name>
@@ -5988,7 +5988,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135272</BitOffs>
+            <BitOffs>4134568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bDumpChillerFlow</Name>
@@ -6008,7 +6008,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135280</BitOffs>
+            <BitOffs>4134576</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosOn</Name>
@@ -6037,7 +6037,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4135288</BitOffs>
+            <BitOffs>4134584</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosLaserReady</Name>
@@ -6057,7 +6057,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137120</BitOffs>
+            <BitOffs>4136416</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLeakDetected</Name>
@@ -6077,7 +6077,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137128</BitOffs>
+            <BitOffs>4136424</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bCarbideOn</Name>
@@ -6106,7 +6106,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137272</BitOffs>
+            <BitOffs>4136568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_PLC.AMSNetId</Name>
@@ -6121,7 +6121,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161680</BitOffs>
+            <BitOffs>4160976</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
@@ -6139,7 +6139,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>Output</Value>
               </Property>
             </Properties>
-            <BitOffs>4124208</BitOffs>
+            <BitOffs>4123504</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosShutterEnable</Name>
@@ -6170,7 +6170,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137136</BitOffs>
+            <BitOffs>4136432</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosShutterEnableManualOperation</Name>
@@ -6188,7 +6188,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137144</BitOffs>
+            <BitOffs>4136440</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosRelay</Name>
@@ -6219,7 +6219,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137248</BitOffs>
+            <BitOffs>4136544</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bCarbideShutterEnable</Name>
@@ -6250,7 +6250,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137256</BitOffs>
+            <BitOffs>4136552</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bCarbideShutterEnableManualOperation</Name>
@@ -6268,7 +6268,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4137264</BitOffs>
+            <BitOffs>4136560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bDumpChillerRelay</Name>
@@ -6299,7 +6299,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161664</BitOffs>
+            <BitOffs>4160960</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bBaseplateChillerRelay</Name>
@@ -6330,7 +6330,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161672</BitOffs>
+            <BitOffs>4160968</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
@@ -6338,46 +6338,6 @@ linked to EPICS records. Remove unecessary diagnostics.
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
           <ByteSize>720896</ByteSize>
-          <Symbol>
-            <Name>Global_Version.stLibVersion_Tc2_Standard</Name>
-            <BitSize>288</BitSize>
-            <BaseType GUID="{6F5942ED-BFA1-497D-8225-23C6DAAD0A09}">ST_LibVersion</BaseType>
-            <Default>
-              <SubItem>
-                <Name>.iMajor</Name>
-                <Value>3</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.iMinor</Name>
-                <Value>3</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.iBuild</Name>
-                <Value>3</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.iRevision</Name>
-                <Value>0</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.nFlags</Name>
-                <Value>0</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.sVersion</Name>
-                <String>3.3.3.0</String>
-              </SubItem>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>const_non_replaced</Name>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4096000</BitOffs>
-          </Symbol>
           <Symbol>
             <Name>Global_Version.stLibVersion_Tc2_System</Name>
             <BitSize>288</BitSize>
@@ -6416,7 +6376,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096288</BitOffs>
+            <BitOffs>4096000</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_LOGGER</Name>
@@ -6431,7 +6391,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096576</BitOffs>
+            <BitOffs>4096288</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_EVENTLOG</Name>
@@ -6446,7 +6406,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096592</BitOffs>
+            <BitOffs>4096304</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_RTIME</Name>
@@ -6461,7 +6421,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096608</BitOffs>
+            <BitOffs>4096320</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_IO</Name>
@@ -6476,7 +6436,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096624</BitOffs>
+            <BitOffs>4096336</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_NC</Name>
@@ -6490,7 +6450,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096640</BitOffs>
+            <BitOffs>4096352</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_NCSAF</Name>
@@ -6504,7 +6464,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096656</BitOffs>
+            <BitOffs>4096368</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_NCSVB</Name>
@@ -6518,7 +6478,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096672</BitOffs>
+            <BitOffs>4096384</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_ISG</Name>
@@ -6532,7 +6492,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096688</BitOffs>
+            <BitOffs>4096400</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_CNC</Name>
@@ -6546,7 +6506,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096704</BitOffs>
+            <BitOffs>4096416</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_LINE</Name>
@@ -6560,7 +6520,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096720</BitOffs>
+            <BitOffs>4096432</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_PLC</Name>
@@ -6574,7 +6534,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096736</BitOffs>
+            <BitOffs>4096448</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_PLC_RTS1</Name>
@@ -6589,7 +6549,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096752</BitOffs>
+            <BitOffs>4096464</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_PLC_RTS2</Name>
@@ -6604,7 +6564,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096768</BitOffs>
+            <BitOffs>4096480</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_PLC_RTS3</Name>
@@ -6619,7 +6579,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096784</BitOffs>
+            <BitOffs>4096496</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_PLC_RTS4</Name>
@@ -6634,7 +6594,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096800</BitOffs>
+            <BitOffs>4096512</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_CAM</Name>
@@ -6648,7 +6608,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096816</BitOffs>
+            <BitOffs>4096528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R0_CAMTOOL</Name>
@@ -6663,7 +6623,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096832</BitOffs>
+            <BitOffs>4096544</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R3_SYSSERV</Name>
@@ -6678,7 +6638,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096848</BitOffs>
+            <BitOffs>4096560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.AMSPORT_R3_SCOPESERVER</Name>
@@ -6693,7 +6653,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096864</BitOffs>
+            <BitOffs>4096576</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_INVALID</Name>
@@ -6708,7 +6668,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096880</BitOffs>
+            <BitOffs>4096592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_IDLE</Name>
@@ -6722,7 +6682,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096896</BitOffs>
+            <BitOffs>4096608</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_RESET</Name>
@@ -6736,7 +6696,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096912</BitOffs>
+            <BitOffs>4096624</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_INIT</Name>
@@ -6750,7 +6710,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096928</BitOffs>
+            <BitOffs>4096640</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_START</Name>
@@ -6764,7 +6724,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096944</BitOffs>
+            <BitOffs>4096656</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_RUN</Name>
@@ -6778,7 +6738,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096960</BitOffs>
+            <BitOffs>4096672</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_STOP</Name>
@@ -6792,7 +6752,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096976</BitOffs>
+            <BitOffs>4096688</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_SAVECFG</Name>
@@ -6806,7 +6766,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4096992</BitOffs>
+            <BitOffs>4096704</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_LOADCFG</Name>
@@ -6820,7 +6780,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097008</BitOffs>
+            <BitOffs>4096720</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_POWERFAILURE</Name>
@@ -6834,7 +6794,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097024</BitOffs>
+            <BitOffs>4096736</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_POWERGOOD</Name>
@@ -6848,7 +6808,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097040</BitOffs>
+            <BitOffs>4096752</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_ERROR</Name>
@@ -6862,7 +6822,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097056</BitOffs>
+            <BitOffs>4096768</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_SHUTDOWN</Name>
@@ -6876,7 +6836,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097072</BitOffs>
+            <BitOffs>4096784</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_SUSPEND</Name>
@@ -6890,7 +6850,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097088</BitOffs>
+            <BitOffs>4096800</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_RESUME</Name>
@@ -6904,7 +6864,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097104</BitOffs>
+            <BitOffs>4096816</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_CONFIG</Name>
@@ -6919,7 +6879,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097120</BitOffs>
+            <BitOffs>4096832</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_RECONFIG</Name>
@@ -6934,7 +6894,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097136</BitOffs>
+            <BitOffs>4096848</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_STOPPING</Name>
@@ -6948,7 +6908,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097152</BitOffs>
+            <BitOffs>4096864</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_INCOMPATIBLE</Name>
@@ -6962,7 +6922,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097168</BitOffs>
+            <BitOffs>4096880</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_EXCEPTION</Name>
@@ -6976,7 +6936,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097184</BitOffs>
+            <BitOffs>4096896</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSSTATE_MAXSTATES</Name>
@@ -6991,7 +6951,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097200</BitOffs>
+            <BitOffs>4096912</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYMTAB</Name>
@@ -7006,7 +6966,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097216</BitOffs>
+            <BitOffs>4096928</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYMNAME</Name>
@@ -7021,7 +6981,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097248</BitOffs>
+            <BitOffs>4096960</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYMVAL</Name>
@@ -7036,7 +6996,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097280</BitOffs>
+            <BitOffs>4096992</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_HNDBYNAME</Name>
@@ -7050,7 +7010,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097312</BitOffs>
+            <BitOffs>4097024</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_VALBYNAME</Name>
@@ -7064,7 +7024,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097344</BitOffs>
+            <BitOffs>4097056</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_VALBYHND</Name>
@@ -7078,7 +7038,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097376</BitOffs>
+            <BitOffs>4097088</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_RELEASEHND</Name>
@@ -7092,7 +7052,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097408</BitOffs>
+            <BitOffs>4097120</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_INFOBYNAME</Name>
@@ -7106,7 +7066,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097440</BitOffs>
+            <BitOffs>4097152</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_VERSION</Name>
@@ -7120,7 +7080,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097472</BitOffs>
+            <BitOffs>4097184</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_INFOBYNAMEEX</Name>
@@ -7134,7 +7094,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097504</BitOffs>
+            <BitOffs>4097216</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_DOWNLOAD</Name>
@@ -7148,7 +7108,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097536</BitOffs>
+            <BitOffs>4097248</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_UPLOAD</Name>
@@ -7162,7 +7122,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097568</BitOffs>
+            <BitOffs>4097280</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYM_UPLOADINFO</Name>
@@ -7176,7 +7136,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097600</BitOffs>
+            <BitOffs>4097312</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_SYMNOTE</Name>
@@ -7191,7 +7151,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097632</BitOffs>
+            <BitOffs>4097344</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_RWIB</Name>
@@ -7206,7 +7166,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097664</BitOffs>
+            <BitOffs>4097376</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_RWIX</Name>
@@ -7221,7 +7181,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097696</BitOffs>
+            <BitOffs>4097408</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_RISIZE</Name>
@@ -7236,7 +7196,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097728</BitOffs>
+            <BitOffs>4097440</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_RWOB</Name>
@@ -7251,7 +7211,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097760</BitOffs>
+            <BitOffs>4097472</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_RWOX</Name>
@@ -7266,7 +7226,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097792</BitOffs>
+            <BitOffs>4097504</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_ROSIZE</Name>
@@ -7281,7 +7241,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097824</BitOffs>
+            <BitOffs>4097536</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_CLEARI</Name>
@@ -7296,7 +7256,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097856</BitOffs>
+            <BitOffs>4097568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_CLEARO</Name>
@@ -7311,7 +7271,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097888</BitOffs>
+            <BitOffs>4097600</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_IOIMAGE_RWIOB</Name>
@@ -7326,7 +7286,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097920</BitOffs>
+            <BitOffs>4097632</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIGRP_DEVICE_DATA</Name>
@@ -7341,7 +7301,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097952</BitOffs>
+            <BitOffs>4097664</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIOFFS_DEVDATA_ADSSTATE</Name>
@@ -7356,7 +7316,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4097984</BitOffs>
+            <BitOffs>4097696</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSIOFFS_DEVDATA_DEVSTATE</Name>
@@ -7371,7 +7331,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098016</BitOffs>
+            <BitOffs>4097728</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_OPENCREATE</Name>
@@ -7386,7 +7346,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098048</BitOffs>
+            <BitOffs>4097760</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_OPENREAD</Name>
@@ -7401,7 +7361,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098080</BitOffs>
+            <BitOffs>4097792</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_OPENWRITE</Name>
@@ -7416,7 +7376,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098112</BitOffs>
+            <BitOffs>4097824</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_CREATEFILE</Name>
@@ -7431,7 +7391,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098144</BitOffs>
+            <BitOffs>4097856</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_CLOSEHANDLE</Name>
@@ -7446,7 +7406,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098176</BitOffs>
+            <BitOffs>4097888</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FOPEN</Name>
@@ -7460,7 +7420,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098208</BitOffs>
+            <BitOffs>4097920</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FCLOSE</Name>
@@ -7474,7 +7434,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098240</BitOffs>
+            <BitOffs>4097952</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FREAD</Name>
@@ -7488,7 +7448,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098272</BitOffs>
+            <BitOffs>4097984</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FWRITE</Name>
@@ -7502,7 +7462,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098304</BitOffs>
+            <BitOffs>4098016</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FSEEK</Name>
@@ -7516,7 +7476,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098336</BitOffs>
+            <BitOffs>4098048</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FTELL</Name>
@@ -7530,7 +7490,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098368</BitOffs>
+            <BitOffs>4098080</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FGETS</Name>
@@ -7544,7 +7504,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098400</BitOffs>
+            <BitOffs>4098112</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FPUTS</Name>
@@ -7558,7 +7518,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098432</BitOffs>
+            <BitOffs>4098144</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FSCANF</Name>
@@ -7572,7 +7532,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098464</BitOffs>
+            <BitOffs>4098176</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FPRINTF</Name>
@@ -7586,7 +7546,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098496</BitOffs>
+            <BitOffs>4098208</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FEOF</Name>
@@ -7600,7 +7560,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098528</BitOffs>
+            <BitOffs>4098240</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FDELETE</Name>
@@ -7614,7 +7574,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098560</BitOffs>
+            <BitOffs>4098272</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_FRENAME</Name>
@@ -7628,7 +7588,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098592</BitOffs>
+            <BitOffs>4098304</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_MKDIR</Name>
@@ -7642,7 +7602,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098624</BitOffs>
+            <BitOffs>4098336</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_RMDIR</Name>
@@ -7656,7 +7616,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098656</BitOffs>
+            <BitOffs>4098368</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_REG_HKEYLOCALMACHINE</Name>
@@ -7670,7 +7630,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098688</BitOffs>
+            <BitOffs>4098400</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_SENDEMAIL</Name>
@@ -7684,7 +7644,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098720</BitOffs>
+            <BitOffs>4098432</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_TIMESERVICES</Name>
@@ -7698,7 +7658,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098752</BitOffs>
+            <BitOffs>4098464</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_STARTPROCESS</Name>
@@ -7712,7 +7672,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098784</BitOffs>
+            <BitOffs>4098496</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSERVICE_CHANGENETID</Name>
@@ -7726,7 +7686,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098816</BitOffs>
+            <BitOffs>4098528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TIMESERVICE_DATEANDTIME</Name>
@@ -7741,7 +7701,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098848</BitOffs>
+            <BitOffs>4098560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TIMESERVICE_SYSTEMTIMES</Name>
@@ -7755,7 +7715,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098880</BitOffs>
+            <BitOffs>4098592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TIMESERVICE_RTCTIMEDIFF</Name>
@@ -7769,7 +7729,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098912</BitOffs>
+            <BitOffs>4098624</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TIMESERVICE_ADJUSTTIMETORTC</Name>
@@ -7783,7 +7743,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098944</BitOffs>
+            <BitOffs>4098656</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TIMESERVICE_TIMEZONINFORMATION</Name>
@@ -7797,7 +7757,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4098976</BitOffs>
+            <BitOffs>4098688</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_HINT</Name>
@@ -7812,7 +7772,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099008</BitOffs>
+            <BitOffs>4098720</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_WARN</Name>
@@ -7827,7 +7787,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099040</BitOffs>
+            <BitOffs>4098752</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_ERROR</Name>
@@ -7842,7 +7802,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099072</BitOffs>
+            <BitOffs>4098784</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_LOG</Name>
@@ -7857,7 +7817,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099104</BitOffs>
+            <BitOffs>4098816</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_MSGBOX</Name>
@@ -7872,7 +7832,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099136</BitOffs>
+            <BitOffs>4098848</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_RESOURCE</Name>
@@ -7886,7 +7846,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099168</BitOffs>
+            <BitOffs>4098880</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.ADSLOG_MSGTYPE_STRING</Name>
@@ -7900,7 +7860,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099200</BitOffs>
+            <BitOffs>4098912</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.BOOTDATAFLAGS_RETAIN_LOADED</Name>
@@ -7915,7 +7875,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099232</BitOffs>
+            <BitOffs>4098944</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.BOOTDATAFLAGS_RETAIN_INVALID</Name>
@@ -7930,7 +7890,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099240</BitOffs>
+            <BitOffs>4098952</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.BOOTDATAFLAGS_RETAIN_REQUESTED</Name>
@@ -7944,7 +7904,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099248</BitOffs>
+            <BitOffs>4098960</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.BOOTDATAFLAGS_PERSISTENT_LOADED</Name>
@@ -7959,7 +7919,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099256</BitOffs>
+            <BitOffs>4098968</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.BOOTDATAFLAGS_PERSISTENT_INVALID</Name>
@@ -7974,7 +7934,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099264</BitOffs>
+            <BitOffs>4098976</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSTATEFLAGS_BSOD</Name>
@@ -7989,7 +7949,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099272</BitOffs>
+            <BitOffs>4098984</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.SYSTEMSTATEFLAGS_RTVIOLATION</Name>
@@ -8004,7 +7964,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099280</BitOffs>
+            <BitOffs>4098992</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.nWatchdogTime</Name>
@@ -8016,7 +7976,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099288</BitOffs>
+            <BitOffs>4099000</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.FOPEN_MODEREAD</Name>
@@ -8031,7 +7991,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099296</BitOffs>
+            <BitOffs>4099008</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.FOPEN_MODEWRITE</Name>
@@ -8046,7 +8006,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099328</BitOffs>
+            <BitOffs>4099040</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.FOPEN_MODEAPPEND</Name>
@@ -8061,7 +8021,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099360</BitOffs>
+            <BitOffs>4099072</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.FOPEN_MODEPLUS</Name>
@@ -8076,7 +8036,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099392</BitOffs>
+            <BitOffs>4099104</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.FOPEN_MODEBINARY</Name>
@@ -8091,7 +8051,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099424</BitOffs>
+            <BitOffs>4099136</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.FOPEN_MODETEXT</Name>
@@ -8106,7 +8066,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099456</BitOffs>
+            <BitOffs>4099168</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTFLAG_PRIOCLASS</Name>
@@ -8121,7 +8081,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099712</BitOffs>
+            <BitOffs>4099424</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTFLAG_FMTSELF</Name>
@@ -8136,7 +8096,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099728</BitOffs>
+            <BitOffs>4099440</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTFLAG_LOG</Name>
@@ -8151,7 +8111,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099744</BitOffs>
+            <BitOffs>4099456</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTFLAG_MSGBOX</Name>
@@ -8166,7 +8126,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099760</BitOffs>
+            <BitOffs>4099472</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTFLAG_SRCID</Name>
@@ -8181,7 +8141,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099776</BitOffs>
+            <BitOffs>4099488</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTFLAG_AUTOFMTALL</Name>
@@ -8195,7 +8155,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099792</BitOffs>
+            <BitOffs>4099504</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTSTATE_INVALID</Name>
@@ -8210,7 +8170,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099808</BitOffs>
+            <BitOffs>4099520</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTSTATE_SIGNALED</Name>
@@ -8225,7 +8185,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099824</BitOffs>
+            <BitOffs>4099536</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTSTATE_RESET</Name>
@@ -8240,7 +8200,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099840</BitOffs>
+            <BitOffs>4099552</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTSTATE_CONFIRMED</Name>
@@ -8255,7 +8215,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099856</BitOffs>
+            <BitOffs>4099568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENTSTATE_RESETCON</Name>
@@ -8270,7 +8230,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099872</BitOffs>
+            <BitOffs>4099584</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENT_SRCNAMESIZE</Name>
@@ -8284,7 +8244,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099888</BitOffs>
+            <BitOffs>4099600</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.TCEVENT_FMTPRGSIZE</Name>
@@ -8298,7 +8258,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099904</BitOffs>
+            <BitOffs>4099616</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.eWatchdogConfig</Name>
@@ -8312,7 +8272,21 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099920</BitOffs>
+            <BitOffs>4099632</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.PI</Name>
+            <BitSize>64</BitSize>
+            <BaseType>LREAL</BaseType>
+            <Default>
+              <Value>3.14159265358979</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4099648</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.DEFAULT_ADS_TIMEOUT</Name>
@@ -8327,21 +8301,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4099936</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.PI</Name>
-            <BitSize>64</BitSize>
-            <BaseType>LREAL</BaseType>
-            <Default>
-              <Value>3.14159265358979</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4099968</BitOffs>
+            <BitOffs>4099712</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.MAX_STRING_LENGTH</Name>
@@ -8356,71 +8316,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4100032</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Version.stLibVersion_Tc3_Module</Name>
-            <BitSize>288</BitSize>
-            <BaseType GUID="{6F5942ED-BFA1-497D-8225-23C6DAAD0A09}">ST_LibVersion</BaseType>
-            <Default>
-              <SubItem>
-                <Name>.iMajor</Name>
-                <Value>3</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.iMinor</Name>
-                <Value>3</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.iBuild</Name>
-                <Value>21</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.iRevision</Name>
-                <Value>0</Value>
-              </SubItem>
-              <SubItem>
-                <Name>.sVersion</Name>
-                <String>3.3.21.0</String>
-              </SubItem>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>const_non_replaced</Name>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4100576</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.EC_AMSPORT_MASTER</Name>
-            <BitSize>16</BitSize>
-            <BaseType>UINT</BaseType>
-            <Default>
-              <Value>65535</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4101152</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.EC_MAX_SLAVES</Name>
-            <BitSize>16</BitSize>
-            <BaseType>UINT</BaseType>
-            <Default>
-              <Value>65535</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4101168</BitOffs>
+            <BitOffs>4099744</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Version.stLibVersion_Tc2_Utilities</Name>
@@ -8460,7 +8356,35 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101248</BitOffs>
+            <BitOffs>4100288</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.EC_AMSPORT_MASTER</Name>
+            <BitSize>16</BitSize>
+            <BaseType>UINT</BaseType>
+            <Default>
+              <Value>65535</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4100576</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.EC_MAX_SLAVES</Name>
+            <BitSize>16</BitSize>
+            <BaseType>UINT</BaseType>
+            <Default>
+              <Value>65535</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4100592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_APRD</Name>
@@ -8475,7 +8399,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101536</BitOffs>
+            <BitOffs>4100608</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_APWR</Name>
@@ -8489,7 +8413,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101544</BitOffs>
+            <BitOffs>4100616</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_APRW</Name>
@@ -8503,7 +8427,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101552</BitOffs>
+            <BitOffs>4100624</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_FPRD</Name>
@@ -8517,7 +8441,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101560</BitOffs>
+            <BitOffs>4100632</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_FPWR</Name>
@@ -8531,7 +8455,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101568</BitOffs>
+            <BitOffs>4100640</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_FPRW</Name>
@@ -8545,7 +8469,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101576</BitOffs>
+            <BitOffs>4100648</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_BRD</Name>
@@ -8559,7 +8483,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101584</BitOffs>
+            <BitOffs>4100656</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_BWR</Name>
@@ -8573,7 +8497,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101592</BitOffs>
+            <BitOffs>4100664</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_BRW</Name>
@@ -8587,7 +8511,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101600</BitOffs>
+            <BitOffs>4100672</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_LRD</Name>
@@ -8601,7 +8525,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101608</BitOffs>
+            <BitOffs>4100680</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_LWR</Name>
@@ -8615,7 +8539,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101616</BitOffs>
+            <BitOffs>4100688</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_CMD_TYPE_LRW</Name>
@@ -8629,7 +8553,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101624</BitOffs>
+            <BitOffs>4100696</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_MASK</Name>
@@ -8644,7 +8568,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101632</BitOffs>
+            <BitOffs>4100704</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_INIT</Name>
@@ -8658,7 +8582,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101640</BitOffs>
+            <BitOffs>4100712</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_PREOP</Name>
@@ -8672,7 +8596,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101648</BitOffs>
+            <BitOffs>4100720</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_BOOTSTRAP</Name>
@@ -8686,7 +8610,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101656</BitOffs>
+            <BitOffs>4100728</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_SAFEOP</Name>
@@ -8700,7 +8624,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101664</BitOffs>
+            <BitOffs>4100736</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_OP</Name>
@@ -8714,7 +8638,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101672</BitOffs>
+            <BitOffs>4100744</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_ERROR</Name>
@@ -8728,7 +8652,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101680</BitOffs>
+            <BitOffs>4100752</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_INVALID_VPRS</Name>
@@ -8742,7 +8666,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101688</BitOffs>
+            <BitOffs>4100760</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_INITCMD_ERROR</Name>
@@ -8756,7 +8680,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101696</BitOffs>
+            <BitOffs>4100768</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DEVICE_STATE_DISABLED</Name>
@@ -8770,7 +8694,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101704</BitOffs>
+            <BitOffs>4100776</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_OK</Name>
@@ -8785,7 +8709,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101712</BitOffs>
+            <BitOffs>4100784</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_NOT_PRESENT</Name>
@@ -8799,7 +8723,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101720</BitOffs>
+            <BitOffs>4100792</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_LINK_WITHOUT_COMM</Name>
@@ -8813,7 +8737,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101728</BitOffs>
+            <BitOffs>4100800</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_MISSING_LINK</Name>
@@ -8827,7 +8751,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101736</BitOffs>
+            <BitOffs>4100808</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_ADDITIONAL_LINK</Name>
@@ -8841,7 +8765,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101744</BitOffs>
+            <BitOffs>4100816</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_PORT_A</Name>
@@ -8855,7 +8779,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101752</BitOffs>
+            <BitOffs>4100824</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_PORT_B</Name>
@@ -8869,7 +8793,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101760</BitOffs>
+            <BitOffs>4100832</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_PORT_C</Name>
@@ -8883,7 +8807,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101768</BitOffs>
+            <BitOffs>4100840</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_LINK_STATE_PORT_D</Name>
@@ -8897,7 +8821,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101776</BitOffs>
+            <BitOffs>4100848</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_DATASTATE</Name>
@@ -8911,7 +8835,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101784</BitOffs>
+            <BitOffs>4100856</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_STATEMACHINE</Name>
@@ -8925,7 +8849,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101792</BitOffs>
+            <BitOffs>4100864</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IOFFS_MASTER_CURSTATE</Name>
@@ -8939,7 +8863,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101824</BitOffs>
+            <BitOffs>4100896</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IOFFS_MASTER_REQSTATE</Name>
@@ -8953,7 +8877,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101856</BitOffs>
+            <BitOffs>4100928</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IOFFS_MASTER_INTERNALSTATE</Name>
@@ -8967,7 +8891,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101888</BitOffs>
+            <BitOffs>4100960</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_COUNT_SLAVE</Name>
@@ -8981,7 +8905,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101920</BitOffs>
+            <BitOffs>4100992</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IOFFS_MASTER_COUNT_SLAVE</Name>
@@ -8995,7 +8919,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101952</BitOffs>
+            <BitOffs>4101024</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IOFFS_MASTER_COUNT_PORT</Name>
@@ -9009,7 +8933,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4101984</BitOffs>
+            <BitOffs>4101056</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IOFFS_MASTER_COUNT_ROUTER</Name>
@@ -9023,7 +8947,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102016</BitOffs>
+            <BitOffs>4101088</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_SLAVE_ADDRESSES</Name>
@@ -9037,7 +8961,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102048</BitOffs>
+            <BitOffs>4101120</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_SENDCMD</Name>
@@ -9051,7 +8975,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102080</BitOffs>
+            <BitOffs>4101152</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_SLAVE_STATEMACHINE</Name>
@@ -9065,7 +8989,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102112</BitOffs>
+            <BitOffs>4101184</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_SLAVE_IDENTITY</Name>
@@ -9079,7 +9003,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102144</BitOffs>
+            <BitOffs>4101216</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_SLAVE_CRC</Name>
@@ -9093,7 +9017,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102176</BitOffs>
+            <BitOffs>4101248</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_SLAVE_ABNORMAL_STATE_CHANGES</Name>
@@ -9107,7 +9031,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102208</BitOffs>
+            <BitOffs>4101280</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_SLAVE_SETPRESENT_CHANGES</Name>
@@ -9121,7 +9045,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102240</BitOffs>
+            <BitOffs>4101312</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_DEVICESTATE</Name>
@@ -9135,7 +9059,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102272</BitOffs>
+            <BitOffs>4101344</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_MASTER_COUNT_FRAME</Name>
@@ -9149,7 +9073,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102304</BitOffs>
+            <BitOffs>4101376</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_ECAT_SOE</Name>
@@ -9164,7 +9088,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102336</BitOffs>
+            <BitOffs>4101408</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_ECAT_SOE_LASTERROR</Name>
@@ -9178,7 +9102,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102368</BitOffs>
+            <BitOffs>4101440</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_NAME</Name>
@@ -9192,7 +9116,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102400</BitOffs>
+            <BitOffs>4101472</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_ATTRIBUTE</Name>
@@ -9206,7 +9130,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102408</BitOffs>
+            <BitOffs>4101480</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_UNIT</Name>
@@ -9220,7 +9144,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102416</BitOffs>
+            <BitOffs>4101488</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_MIN</Name>
@@ -9234,7 +9158,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102424</BitOffs>
+            <BitOffs>4101496</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_MAX</Name>
@@ -9248,7 +9172,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102432</BitOffs>
+            <BitOffs>4101504</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_VALUE</Name>
@@ -9262,7 +9186,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102440</BitOffs>
+            <BitOffs>4101512</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_SOE_ELEMENT_DEFAULT</Name>
@@ -9276,7 +9200,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102448</BitOffs>
+            <BitOffs>4101520</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.bSeqReadDrvAttrAndValue</Name>
@@ -9290,7 +9214,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102456</BitOffs>
+            <BitOffs>4101528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_FOPENREAD</Name>
@@ -9305,7 +9229,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102464</BitOffs>
+            <BitOffs>4101536</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_FOPENWRITE</Name>
@@ -9319,7 +9243,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102496</BitOffs>
+            <BitOffs>4101568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_FCLOSE</Name>
@@ -9333,7 +9257,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102528</BitOffs>
+            <BitOffs>4101600</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_FREAD</Name>
@@ -9347,7 +9271,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102560</BitOffs>
+            <BitOffs>4101632</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_FWRITE</Name>
@@ -9361,7 +9285,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102592</BitOffs>
+            <BitOffs>4101664</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_PROGRESSINFO</Name>
@@ -9375,7 +9299,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102624</BitOffs>
+            <BitOffs>4101696</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_FOE_LASTERROR</Name>
@@ -9389,7 +9313,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102656</BitOffs>
+            <BitOffs>4101728</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_CANOPEN_SDO</Name>
@@ -9404,7 +9328,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102688</BitOffs>
+            <BitOffs>4101760</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_ADS_IGRP_CANOPEN_SDO_LASTERROR</Name>
@@ -9418,7 +9342,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102720</BitOffs>
+            <BitOffs>4101792</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_NOTDEFINED</Name>
@@ -9433,7 +9357,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102752</BitOffs>
+            <BitOffs>4101824</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_NOTFOUND</Name>
@@ -9447,7 +9371,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102784</BitOffs>
+            <BitOffs>4101856</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_ACCESS</Name>
@@ -9461,7 +9385,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102816</BitOffs>
+            <BitOffs>4101888</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_DISKFULL</Name>
@@ -9475,7 +9399,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102848</BitOffs>
+            <BitOffs>4101920</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_ILLEAGAL</Name>
@@ -9489,7 +9413,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102880</BitOffs>
+            <BitOffs>4101952</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_PACKENO</Name>
@@ -9503,7 +9427,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102912</BitOffs>
+            <BitOffs>4101984</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_EXISTS</Name>
@@ -9517,7 +9441,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102944</BitOffs>
+            <BitOffs>4102016</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_NOUSER</Name>
@@ -9531,7 +9455,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4102976</BitOffs>
+            <BitOffs>4102048</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_BOOTSTRAPONLY</Name>
@@ -9545,7 +9469,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103008</BitOffs>
+            <BitOffs>4102080</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_NOTINBOOTSTRAP</Name>
@@ -9559,7 +9483,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103040</BitOffs>
+            <BitOffs>4102112</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_FOE_PROTERR_INVALIDPASSWORD</Name>
@@ -9573,7 +9497,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103072</BitOffs>
+            <BitOffs>4102144</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_TOGGLE</Name>
@@ -9588,7 +9512,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103104</BitOffs>
+            <BitOffs>4102176</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_TIMEOUT</Name>
@@ -9603,7 +9527,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103136</BitOffs>
+            <BitOffs>4102208</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_CCS_SCS</Name>
@@ -9618,7 +9542,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103168</BitOffs>
+            <BitOffs>4102240</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_BLK_SIZE</Name>
@@ -9633,7 +9557,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103200</BitOffs>
+            <BitOffs>4102272</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_SEQNO</Name>
@@ -9648,7 +9572,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103232</BitOffs>
+            <BitOffs>4102304</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_CRC</Name>
@@ -9663,7 +9587,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103264</BitOffs>
+            <BitOffs>4102336</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_MEMORY</Name>
@@ -9678,7 +9602,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103296</BitOffs>
+            <BitOffs>4102368</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_ACCESS</Name>
@@ -9693,7 +9617,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103328</BitOffs>
+            <BitOffs>4102400</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_WRITEONLY</Name>
@@ -9708,7 +9632,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103360</BitOffs>
+            <BitOffs>4102432</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_READONLY</Name>
@@ -9723,7 +9647,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103392</BitOffs>
+            <BitOffs>4102464</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_INDEX</Name>
@@ -9738,7 +9662,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103424</BitOffs>
+            <BitOffs>4102496</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_PDO_MAP</Name>
@@ -9753,7 +9677,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103456</BitOffs>
+            <BitOffs>4102528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_PDO_LEN</Name>
@@ -9768,7 +9692,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103488</BitOffs>
+            <BitOffs>4102560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_P_INCOMP</Name>
@@ -9783,7 +9707,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103520</BitOffs>
+            <BitOffs>4102592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_I_INCOMP</Name>
@@ -9798,7 +9722,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103552</BitOffs>
+            <BitOffs>4102624</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_HARDWARE</Name>
@@ -9813,7 +9737,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103584</BitOffs>
+            <BitOffs>4102656</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DATA_SIZE</Name>
@@ -9828,7 +9752,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103616</BitOffs>
+            <BitOffs>4102688</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DATA_SIZE1</Name>
@@ -9843,7 +9767,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103648</BitOffs>
+            <BitOffs>4102720</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DATA_SIZE2</Name>
@@ -9858,7 +9782,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103680</BitOffs>
+            <BitOffs>4102752</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_OFFSET</Name>
@@ -9873,7 +9797,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103712</BitOffs>
+            <BitOffs>4102784</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DATA_RANGE</Name>
@@ -9888,7 +9812,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103744</BitOffs>
+            <BitOffs>4102816</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DATA_RANGE1</Name>
@@ -9903,7 +9827,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103776</BitOffs>
+            <BitOffs>4102848</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DATA_RANGE2</Name>
@@ -9918,7 +9842,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103808</BitOffs>
+            <BitOffs>4102880</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_MINMAX</Name>
@@ -9933,7 +9857,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103840</BitOffs>
+            <BitOffs>4102912</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_GENERAL</Name>
@@ -9948,7 +9872,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103872</BitOffs>
+            <BitOffs>4102944</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_TRANSFER</Name>
@@ -9963,7 +9887,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103904</BitOffs>
+            <BitOffs>4102976</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_TRANSFER1</Name>
@@ -9978,7 +9902,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103936</BitOffs>
+            <BitOffs>4103008</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_TRANSFER2</Name>
@@ -9993,7 +9917,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4103968</BitOffs>
+            <BitOffs>4103040</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_COE_PROTERR_DICTIONARY</Name>
@@ -10008,7 +9932,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104000</BitOffs>
+            <BitOffs>4103072</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DCTIME_DATEDELTA_OFFSET</Name>
@@ -10023,7 +9947,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104032</BitOffs>
+            <BitOffs>4103104</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DCTIME_DELTA_OFFSET</Name>
@@ -10045,7 +9969,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104064</BitOffs>
+            <BitOffs>4103136</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DCTIME_TICKSPERMSEC</Name>
@@ -10067,7 +9991,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104128</BitOffs>
+            <BitOffs>4103200</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DCTIME_TICKSPERSEC</Name>
@@ -10089,7 +10013,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104192</BitOffs>
+            <BitOffs>4103264</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.EC_DCTIME_TICKSPERDAY</Name>
@@ -10111,67 +10035,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104256</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.EC_DCTIME_DELTA_OFFSET64</Name>
-            <Comment> Number of 100ns ticks between 1.1.1601 and 1.1.2000 </Comment>
-            <BitSize>64</BitSize>
-            <BaseType>ULINT</BaseType>
-            <Default>
-              <Value>125911584000000000</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4104320</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.EC_DCTIME_TICKSPERMSEC64</Name>
-            <Comment> Number of nanosecond ticks per millisecond </Comment>
-            <BitSize>64</BitSize>
-            <BaseType>ULINT</BaseType>
-            <Default>
-              <Value>1000000</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4104384</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.EC_DCTIME_TICKSPERSEC64</Name>
-            <Comment> Number of nanosecond ticks per second </Comment>
-            <BitSize>64</BitSize>
-            <BaseType>ULINT</BaseType>
-            <Default>
-              <Value>1000000000</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4104448</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Global_Variables.EC_DCTIME_TICKSPERDAY64</Name>
-            <Comment> Number of nanosecond ticks per day  </Comment>
-            <BitSize>64</BitSize>
-            <BaseType>ULINT</BaseType>
-            <Default>
-              <Value>86400000000000</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>4104512</BitOffs>
+            <BitOffs>4103328</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.bEcFoeOpenFileNameWithFileExt</Name>
@@ -10186,7 +10050,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104576</BitOffs>
+            <BitOffs>4103392</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bLeakMonitorReset</Name>
@@ -10199,7 +10063,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:LEAK:RESET</Value>
               </Property>
             </Properties>
-            <BitOffs>4104584</BitOffs>
+            <BitOffs>4103400</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.MAX_TELEGRAM_IDX</Name>
@@ -10214,7 +10078,67 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104592</BitOffs>
+            <BitOffs>4103408</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.EC_DCTIME_DELTA_OFFSET64</Name>
+            <Comment> Number of 100ns ticks between 1.1.1601 and 1.1.2000 </Comment>
+            <BitSize>64</BitSize>
+            <BaseType>ULINT</BaseType>
+            <Default>
+              <Value>125911584000000000</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4103424</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.EC_DCTIME_TICKSPERMSEC64</Name>
+            <Comment> Number of nanosecond ticks per millisecond </Comment>
+            <BitSize>64</BitSize>
+            <BaseType>ULINT</BaseType>
+            <Default>
+              <Value>1000000</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4103488</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.EC_DCTIME_TICKSPERSEC64</Name>
+            <Comment> Number of nanosecond ticks per second </Comment>
+            <BitSize>64</BitSize>
+            <BaseType>ULINT</BaseType>
+            <Default>
+              <Value>1000000000</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4103552</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Global_Variables.EC_DCTIME_TICKSPERDAY64</Name>
+            <Comment> Number of nanosecond ticks per day  </Comment>
+            <BitSize>64</BitSize>
+            <BaseType>ULINT</BaseType>
+            <Default>
+              <Value>86400000000000</Value>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>4103616</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.COM_BUFFER_MAXIDX</Name>
@@ -10229,7 +10153,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104608</BitOffs>
+            <BitOffs>4103680</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.MODBUSBUFFERSIZE_DEBUGBUFFER</Name>
@@ -10243,7 +10167,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104624</BitOffs>
+            <BitOffs>4103696</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.MODBUSRTU_OUTPUTACCESS_OFFSET</Name>
@@ -10257,7 +10181,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104640</BitOffs>
+            <BitOffs>4103712</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.MODBUSRTU_MEMORYACCESS_OFFSET</Name>
@@ -10271,7 +10195,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104656</BitOffs>
+            <BitOffs>4103728</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Global_Variables.MODBUSRTU_CHARACTERRECEIVETIMEOUT</Name>
@@ -10285,7 +10209,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4104672</BitOffs>
+            <BitOffs>4103744</BitOffs>
           </Symbol>
           <Symbol>
             <Name>FB_TraceTekModbus.tPollRate</Name>
@@ -10299,7 +10223,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarStatic</Name>
               </Property>
             </Properties>
-            <BitOffs>4116544</BitOffs>
+            <BitOffs>4115840</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bAmphosReset</Name>
@@ -10315,7 +10239,7 @@ linked to EPICS records. Remove unecessary diagnostics.
     </Value>
               </Property>
             </Properties>
-            <BitOffs>4116576</BitOffs>
+            <BitOffs>4115872</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bOpcpaReset</Name>
@@ -10331,7 +10255,7 @@ linked to EPICS records. Remove unecessary diagnostics.
     </Value>
               </Property>
             </Properties>
-            <BitOffs>4116584</BitOffs>
+            <BitOffs>4115880</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bMPCReset</Name>
@@ -10342,12 +10266,12 @@ linked to EPICS records. Remove unecessary diagnostics.
               <Property>
                 <Name>pytmc</Name>
                 <Value>
-        pv: @(BASE):LPS:AMPHOS:RESET
+        pv: @(BASE):LPS:MPC:RESET
         io: o
     </Value>
               </Property>
             </Properties>
-            <BitOffs>4116592</BitOffs>
+            <BitOffs>4115888</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bDumpChillerReset</Name>
@@ -10363,14 +10287,14 @@ linked to EPICS records. Remove unecessary diagnostics.
     </Value>
               </Property>
             </Properties>
-            <BitOffs>4116600</BitOffs>
+            <BitOffs>4115896</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.stErrors</Name>
             <Comment> Triggered error states</Comment>
             <BitSize>184</BitSize>
             <BaseType>ST_ErrorStates</BaseType>
-            <BitOffs>4121664</BitOffs>
+            <BitOffs>4120960</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bBaseplateChillerReset</Name>
@@ -10386,14 +10310,14 @@ linked to EPICS records. Remove unecessary diagnostics.
     </Value>
               </Property>
             </Properties>
-            <BitOffs>4121848</BitOffs>
+            <BitOffs>4121144</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbErrorTriggers</Name>
             <Comment> Brand new errors this cycle</Comment>
             <BitSize>1664</BitSize>
             <BaseType>FB_ErrorTriggers</BaseType>
-            <BitOffs>4121856</BitOffs>
+            <BitOffs>4121152</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbTraceTekModbus</Name>
@@ -10406,7 +10330,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):TTSIM:DEV01</Value>
               </Property>
             </Properties>
-            <BitOffs>4123520</BitOffs>
+            <BitOffs>4122816</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbLeakMonitor</Name>
@@ -10419,7 +10343,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:LEAK</Value>
               </Property>
             </Properties>
-            <BitOffs>4134528</BitOffs>
+            <BitOffs>4133824</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbChillerLoop01</Name>
@@ -10432,7 +10356,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:TEMP01</Value>
               </Property>
             </Properties>
-            <BitOffs>4134784</BitOffs>
+            <BitOffs>4134080</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bMasterOverride</Name>
@@ -10448,7 +10372,7 @@ linked to EPICS records. Remove unecessary diagnostics.
     </Value>
               </Property>
             </Properties>
-            <BitOffs>4134880</BitOffs>
+            <BitOffs>4134176</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbChillerLoop02</Name>
@@ -10461,7 +10385,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:TEMP02</Value>
               </Property>
             </Properties>
-            <BitOffs>4134912</BitOffs>
+            <BitOffs>4134208</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbChillerLoop03</Name>
@@ -10474,7 +10398,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:TEMP03</Value>
               </Property>
             </Properties>
-            <BitOffs>4135040</BitOffs>
+            <BitOffs>4134336</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbChillerLoop04</Name>
@@ -10487,7 +10411,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:TEMP04</Value>
               </Property>
             </Properties>
-            <BitOffs>4135168</BitOffs>
+            <BitOffs>4134464</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbAmphos</Name>
@@ -10500,7 +10424,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:AMPHOS</Value>
               </Property>
             </Properties>
-            <BitOffs>4135296</BitOffs>
+            <BitOffs>4134592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbOpcpa</Name>
@@ -10513,7 +10437,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:OPCPA</Value>
               </Property>
             </Properties>
-            <BitOffs>4135872</BitOffs>
+            <BitOffs>4135168</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbMPC</Name>
@@ -10526,7 +10450,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:MPC</Value>
               </Property>
             </Properties>
-            <BitOffs>4136448</BitOffs>
+            <BitOffs>4135744</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbDumpChiller</Name>
@@ -10539,7 +10463,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:DUMP_CHILLER</Value>
               </Property>
             </Properties>
-            <BitOffs>4137024</BitOffs>
+            <BitOffs>4136320</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbBaseplateChiller</Name>
@@ -10552,7 +10476,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:BASEPLATE_CHILLER</Value>
               </Property>
             </Properties>
-            <BitOffs>4137152</BitOffs>
+            <BitOffs>4136448</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbDiag</Name>
@@ -10565,7 +10489,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(BASE):LPS:PLC</Value>
               </Property>
             </Properties>
-            <BitOffs>4137280</BitOffs>
+            <BitOffs>4136576</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fRawUpperLimit</Name>
@@ -10580,7 +10504,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161408</BitOffs>
+            <BitOffs>4160704</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fRawLowerLimit</Name>
@@ -10595,7 +10519,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161472</BitOffs>
+            <BitOffs>4160768</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fScaleUpperLimit</Name>
@@ -10610,7 +10534,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161536</BitOffs>
+            <BitOffs>4160832</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fScaleLowerLimit</Name>
@@ -10625,7 +10549,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161600</BitOffs>
+            <BitOffs>4160896</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Laser.stAmphosSP</Name>
@@ -10644,7 +10568,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161728</BitOffs>
+            <BitOffs>4161024</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Laser.stOpcpaSP</Name>
@@ -10663,7 +10587,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161856</BitOffs>
+            <BitOffs>4161152</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP01</Name>
@@ -10681,7 +10605,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4161984</BitOffs>
+            <BitOffs>4161280</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP02</Name>
@@ -10699,7 +10623,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162048</BitOffs>
+            <BitOffs>4161344</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP03</Name>
@@ -10717,7 +10641,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162112</BitOffs>
+            <BitOffs>4161408</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP04</Name>
@@ -10735,7 +10659,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162176</BitOffs>
+            <BitOffs>4161472</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP05</Name>
@@ -10753,7 +10677,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162240</BitOffs>
+            <BitOffs>4161536</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP06</Name>
@@ -10771,7 +10695,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162304</BitOffs>
+            <BitOffs>4161600</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP07</Name>
@@ -10789,7 +10713,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162368</BitOffs>
+            <BitOffs>4161664</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP08</Name>
@@ -10807,7 +10731,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162432</BitOffs>
+            <BitOffs>4161728</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TraceTek.nModbusSlaveAddress</Name>
@@ -10822,7 +10746,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162496</BitOffs>
+            <BitOffs>4161792</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TraceTek.stLeakMonitorBoundaries</Name>
@@ -10841,7 +10765,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162512</BitOffs>
+            <BitOffs>4161808</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bLittleEndian</Name>
@@ -10856,7 +10780,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162704</BitOffs>
+            <BitOffs>4162000</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bSimulationMode</Name>
@@ -10871,7 +10795,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162712</BitOffs>
+            <BitOffs>4162008</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.RuntimeVersion</Name>
@@ -10901,7 +10825,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162720</BitOffs>
+            <BitOffs>4162016</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.CompilerVersion</Name>
@@ -10931,7 +10855,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162784</BitOffs>
+            <BitOffs>4162080</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.nRegisterSize</Name>
@@ -10946,7 +10870,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162848</BitOffs>
+            <BitOffs>4162144</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.nPackMode</Name>
@@ -10961,7 +10885,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162864</BitOffs>
+            <BitOffs>4162160</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bFPUSupport</Name>
@@ -10975,7 +10899,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162880</BitOffs>
+            <BitOffs>4162176</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.RuntimeVersionNumeric</Name>
@@ -10989,7 +10913,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162912</BitOffs>
+            <BitOffs>4162208</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.CompilerVersionNumeric</Name>
@@ -11003,7 +10927,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162944</BitOffs>
+            <BitOffs>4162240</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_LicenseInfoVarList._LicenseInfo</Name>
@@ -11124,7 +11048,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4162976</BitOffs>
+            <BitOffs>4162272</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask</Name>
@@ -11138,7 +11062,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4165024</BitOffs>
+            <BitOffs>4164320</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._AppInfo</Name>
@@ -11152,7 +11076,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4165056</BitOffs>
+            <BitOffs>4164352</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskInfo</Name>
@@ -11170,7 +11094,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4167104</BitOffs>
+            <BitOffs>4166400</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskOid_PlcTask</Name>
@@ -11184,7 +11108,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4168128</BitOffs>
+            <BitOffs>4167424</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList.__PlcTask</Name>
@@ -11205,7 +11129,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>4168192</BitOffs>
+            <BitOffs>4167488</BitOffs>
           </Symbol>
         </DataArea>
       </DataAreas>
@@ -11218,7 +11142,7 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-05-14T13:10:03</Value>
+          <Value>2024-05-21T20:57:09</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
