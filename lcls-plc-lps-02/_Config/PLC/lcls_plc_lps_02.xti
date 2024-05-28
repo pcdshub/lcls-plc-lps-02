@@ -272,6 +272,54 @@
 				<Link VarA="PlcTask Inputs^GVL_IO.nMultiPassVoltageRaw" VarB="AI Standard Channel 3^Value" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.nOpcpaVoltageRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09">
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[0]" VarB="COM Inputs Channel 1^Data In 0"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[10]" VarB="COM Inputs Channel 1^Data In 10"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[11]" VarB="COM Inputs Channel 1^Data In 11"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[12]" VarB="COM Inputs Channel 1^Data In 12"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[13]" VarB="COM Inputs Channel 1^Data In 13"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[14]" VarB="COM Inputs Channel 1^Data In 14"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[15]" VarB="COM Inputs Channel 1^Data In 15"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[16]" VarB="COM Inputs Channel 1^Data In 16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[17]" VarB="COM Inputs Channel 1^Data In 17"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[18]" VarB="COM Inputs Channel 1^Data In 18"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[19]" VarB="COM Inputs Channel 1^Data In 19"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[1]" VarB="COM Inputs Channel 1^Data In 1"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[20]" VarB="COM Inputs Channel 1^Data In 20"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[21]" VarB="COM Inputs Channel 1^Data In 21"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[2]" VarB="COM Inputs Channel 1^Data In 2"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[3]" VarB="COM Inputs Channel 1^Data In 3"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[4]" VarB="COM Inputs Channel 1^Data In 4"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[5]" VarB="COM Inputs Channel 1^Data In 5"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[6]" VarB="COM Inputs Channel 1^Data In 6"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[7]" VarB="COM Inputs Channel 1^Data In 7"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[8]" VarB="COM Inputs Channel 1^Data In 8"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[9]" VarB="COM Inputs Channel 1^Data In 9"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^Status" VarB="COM Inputs Channel 1^Status"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^Ctrl" VarB="COM Outputs Channel 1^Ctrl"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[0]" VarB="COM Outputs Channel 1^Data Out 0"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[10]" VarB="COM Outputs Channel 1^Data Out 10"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[11]" VarB="COM Outputs Channel 1^Data Out 11"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[12]" VarB="COM Outputs Channel 1^Data Out 12"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[13]" VarB="COM Outputs Channel 1^Data Out 13"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[14]" VarB="COM Outputs Channel 1^Data Out 14"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[15]" VarB="COM Outputs Channel 1^Data Out 15"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[16]" VarB="COM Outputs Channel 1^Data Out 16"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[17]" VarB="COM Outputs Channel 1^Data Out 17"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[18]" VarB="COM Outputs Channel 1^Data Out 18"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[19]" VarB="COM Outputs Channel 1^Data Out 19"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[1]" VarB="COM Outputs Channel 1^Data Out 1"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[20]" VarB="COM Outputs Channel 1^Data Out 20"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[21]" VarB="COM Outputs Channel 1^Data Out 21"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[2]" VarB="COM Outputs Channel 1^Data Out 2"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[3]" VarB="COM Outputs Channel 1^Data Out 3"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[4]" VarB="COM Outputs Channel 1^Data Out 4"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[5]" VarB="COM Outputs Channel 1^Data Out 5"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[6]" VarB="COM Outputs Channel 1^Data Out 6"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[7]" VarB="COM Outputs Channel 1^Data Out 7"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[8]" VarB="COM Outputs Channel 1^Data Out 8"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[9]" VarB="COM Outputs Channel 1^Data Out 9"/>
+			</OwnerB>
 		</OwnerA>
 	</Mappings>
 </TcSmItem>
