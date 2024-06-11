@@ -11,7 +11,7 @@ STRUCT
     bLeakUnderTable : BOOL; // Leak under the table
     bLeakInsideRacks : BOOL; // Leak inside the racks
 
-    // Temperature loop alarms
+   // Temperature loop alarms
     bChillerLoop01 : BOOL; // Temperature too high in loop 01
     bChillerLoop02 : BOOL; // Temperature too high in loop 02
     bChillerLoop03 : BOOL; // Temperature too high in loop 03
@@ -21,7 +21,7 @@ STRUCT
     // Beam Errors
     bAmphosBeam : BOOL; // Amphos beam error
     bOpcpaBeam : BOOL; // OPCPA beam error
-
+    bMPCBeam :BOOL;    // MPC beam error
 
     // Temperature monitors
     bTempMon01 : BOOL; // Temperature too high at location 01
@@ -37,13 +37,6 @@ STRUCT
     // Dump chiller
     bDumpChiller : BOOL; // Dump chiller error
     bBaseplateChiller : BOOL; // Baseplate chiller error
-
-    (*
-    // Amphos MRC
-    bAmphosMRC01 : BOOL; // Amphos MRC 01 Error
-    bAmphosMRC02 : BOOL; // Amphos MRC 01 Error
-    bAmphosMRC03 : BOOL; // Amphos MRC 01 Error
-    *)
 
     // Hardware Failure
     bHardwareFailure : BOOL; // A component of the EPS has failed

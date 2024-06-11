@@ -8,6 +8,8 @@ VAR_GLOBAL PERSISTENT
     stAmphosSP : ST_LaserSetpoints; // Amphos setpoints
     {attribute 'pytmc' := 'pv: @(BASE):LPS:OPCPA'}
     stOpcpaSP : ST_LaserSetpoints; // OPCPA setpoints
+	{attribute 'pytmc' := 'pv: @(BASE):LPS:MPC'}
+    stMPCSP : ST_LaserSetpoints; // OPCPA setpoints
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

@@ -4,10 +4,17 @@
     <Declaration><![CDATA[// Interlock logic for the Carbide Shutter
 FUNCTION F_CarbideShutterEnable : BOOL
 VAR_INPUT
-    bMasterOverride : BOOL; //Master manual override control input
+    fOpcpaVoltage : LREAL; // The voltage of the OPCPA
+	fAmphosVoltage : LREAL; // The Amphos voltage
+	fMPCVoltage : LREAL; // The Amphos voltage
+	AmphosShutter :BOOL; //Amphos Shutter Status
+	Mode :INT; // Mode of operation
 END_VAR
 VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors
+	stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
+	stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+	stMPCSetpoints : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
 VAR
 END_VAR
@@ -15,11 +22,17 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF (stErrors.bHardwareFailure // Close carbide shutter if there is a hardware failure
     OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable) // Close carbide shutter if leak in OPCPA with carbide on or if there is a leak under the table
-    AND NOT bMasterOverride //if master override is TRUE, ignore all errors
 THEN
     F_CarbideShutterEnable := FALSE;
 ELSE
-    F_CarbideShutterEnable := TRUE;
+	IF ( MODE = 1 AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND AmphosShutter)  //Per LPS Interlock Logic thruth table
+	OR
+	(MODE = 3 AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
+    THEN 
+	F_CarbideShutterEnable := FALSE;
+	ELSE
+	F_CarbideShutterEnable := TRUE;
+	END_IF   
 END_IF]]></ST>
     </Implementation>
   </POU>

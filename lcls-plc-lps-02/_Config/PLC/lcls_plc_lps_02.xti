@@ -81,13 +81,6 @@
 					<Type GUID="{500A6B3D-5280-418B-91E6-C259C9E0A911}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
 				</Var>
 				<Var>
-					<Name>GVL_IO.bTracetekAlarm</Name>
-					<Comment>
-						<![CDATA[ Ch2]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>GVL_IO.nOpcpaVoltageRaw</Name>
 					<Comment>
 						<![CDATA[ Ch1 OPCPA Laser]]>
@@ -107,6 +100,13 @@
 						<![CDATA[ Ch3 MultiPass Cell]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bTracetekAlarm</Name>
+					<Comment>
+						<![CDATA[ Ch2]]>
+					</Comment>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW01</Name>
@@ -172,9 +172,9 @@
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_IO.bLeakDetected</Name>
+					<Name>GVL_IO.bAmphosShutterStatus</Name>
 					<Comment>
-						<![CDATA[ Ch2]]>
+						<![CDATA[ Ch1]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -197,9 +197,9 @@
 					<Type GUID="{E8E42931-71C7-4167-B96B-F844189FEE1E}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
 				</Var>
 				<Var>
-					<Name>GVL_IO.bAmphosShutterEnable</Name>
+					<Name>GVL_IO.bAmphosEnable</Name>
 					<Comment>
-						<![CDATA[ Ch1]]>
+						<![CDATA[ Ch1 Dump chiller NC relay]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -208,7 +208,14 @@
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_IO.bAmphosRelay</Name>
+					<Name>GVL_IO.bAmphosRelayOPEN</Name>
+					<Comment>
+						<![CDATA[ Ch3 Amphos Interlock relay]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosCLOSE</Name>
 					<Comment>
 						<![CDATA[ Ch3 Amphos Interlock relay]]>
 					</Comment>
@@ -248,77 +255,85 @@
 	<Mappings>
 		<OwnerA Name="lcls_plc_lps_02 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11">
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserReady" VarB="Channel 3^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosOn" VarB="Channel 1^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bCarbideOn" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserReady" VarB="Channel 4^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosOn" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosShutterStatus" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bCarbideOn" VarB="Channel 3^Input"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04">
-				<Link VarA="PlcTask Inputs^GVL_IO.bBaseplateChillerFlow" VarB="MTI Inputs 10x Channel 7^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bDumpChillerFlow" VarB="MTI Inputs 10x Channel 8^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bBaseplateChillerFlow" VarB="MTI Inputs 10x Channel 8^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bDumpChillerFlow" VarB="MTI Inputs 10x Channel 7^Status^Input state" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW01" VarB="MTI Inputs 10x Channel 3^Status^Input state" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW02" VarB="MTI Inputs 10x Channel 4^Status^Input state" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW03" VarB="MTI Inputs 10x Channel 5^Status^Input state" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW04" VarB="MTI Inputs 10x Channel 6^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW05" VarB="MTI Inputs 10x Channel 1^Status^Input state" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bTracetekAlarm" VarB="MTI Inputs 10x Channel 2^Status^Input state" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07">
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosEnable" VarB="Channel 3^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bBaseplateChillerRelay" VarB="Channel 2^Output"/>
 				<Link VarA="PlcTask Outputs^GVL_IO.bCarbideShutterEnable" VarB="Channel 4^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bDumpChillerRelay" VarB="Channel 1^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08">
-				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosRelay" VarB="Channel 3^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosCLOSE" VarB="Channel 4^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosRelayOPEN" VarB="Channel 1^Output" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_01">
-				<Link VarA="PlcTask Inputs^GVL_IO.nAmphosVoltageRaw" VarB="AI Standard Channel 2^Value" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.nMultiPassVoltageRaw" VarB="AI Standard Channel 3^Value" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.nOpcpaVoltageRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_02">
+				<Link VarA="PlcTask Inputs^GVL_IO.nAmphosVoltageRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09">
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[0]" VarB="COM Inputs Channel 1^Data In 0"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[10]" VarB="COM Inputs Channel 1^Data In 10"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[11]" VarB="COM Inputs Channel 1^Data In 11"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[12]" VarB="COM Inputs Channel 1^Data In 12"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[13]" VarB="COM Inputs Channel 1^Data In 13"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[14]" VarB="COM Inputs Channel 1^Data In 14"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[15]" VarB="COM Inputs Channel 1^Data In 15"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[16]" VarB="COM Inputs Channel 1^Data In 16"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[17]" VarB="COM Inputs Channel 1^Data In 17"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[18]" VarB="COM Inputs Channel 1^Data In 18"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[19]" VarB="COM Inputs Channel 1^Data In 19"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[1]" VarB="COM Inputs Channel 1^Data In 1"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[20]" VarB="COM Inputs Channel 1^Data In 20"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[21]" VarB="COM Inputs Channel 1^Data In 21"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[2]" VarB="COM Inputs Channel 1^Data In 2"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[3]" VarB="COM Inputs Channel 1^Data In 3"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[4]" VarB="COM Inputs Channel 1^Data In 4"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[5]" VarB="COM Inputs Channel 1^Data In 5"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[6]" VarB="COM Inputs Channel 1^Data In 6"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[7]" VarB="COM Inputs Channel 1^Data In 7"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[8]" VarB="COM Inputs Channel 1^Data In 8"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D[9]" VarB="COM Inputs Channel 1^Data In 9"/>
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^Status" VarB="COM Inputs Channel 1^Status"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^Ctrl" VarB="COM Outputs Channel 1^Ctrl"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[0]" VarB="COM Outputs Channel 1^Data Out 0"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[10]" VarB="COM Outputs Channel 1^Data Out 10"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[11]" VarB="COM Outputs Channel 1^Data Out 11"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[12]" VarB="COM Outputs Channel 1^Data Out 12"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[13]" VarB="COM Outputs Channel 1^Data Out 13"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[14]" VarB="COM Outputs Channel 1^Data Out 14"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[15]" VarB="COM Outputs Channel 1^Data Out 15"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[16]" VarB="COM Outputs Channel 1^Data Out 16"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[17]" VarB="COM Outputs Channel 1^Data Out 17"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[18]" VarB="COM Outputs Channel 1^Data Out 18"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[19]" VarB="COM Outputs Channel 1^Data Out 19"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[1]" VarB="COM Outputs Channel 1^Data Out 1"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[20]" VarB="COM Outputs Channel 1^Data Out 20"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[21]" VarB="COM Outputs Channel 1^Data Out 21"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[2]" VarB="COM Outputs Channel 1^Data Out 2"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[3]" VarB="COM Outputs Channel 1^Data Out 3"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[4]" VarB="COM Outputs Channel 1^Data Out 4"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[5]" VarB="COM Outputs Channel 1^Data Out 5"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[6]" VarB="COM Outputs Channel 1^Data Out 6"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[7]" VarB="COM Outputs Channel 1^Data Out 7"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[8]" VarB="COM Outputs Channel 1^Data Out 8"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D[9]" VarB="COM Outputs Channel 1^Data Out 9"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 0"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 1" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 10" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 11" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 12" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 13" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 14" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 15" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 16" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 17" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 18" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 19" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 2" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 20" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 21" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 3" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 4" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 5" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 6" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 7" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 8" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 9" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^Status" VarB="COM Inputs Channel 2^Status"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^Ctrl" VarB="COM Outputs Channel 2^Ctrl"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 0"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 1" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 10" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 11" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 12" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 13" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 14" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 15" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 16" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 17" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 18" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 19" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 2" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 20" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 21" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 3" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 4" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 5" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 6" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 7" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 8" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 9" Size="8" OffsA="72"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

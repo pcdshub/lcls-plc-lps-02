@@ -6,19 +6,23 @@ FUNCTION F_AmphosShutterEnable : BOOL
 VAR_INPUT
     bAmphosOn : BOOL; // Whether the amphos is on
     fOpcpaVoltage : LREAL; // The voltage of the OPCPA
+	fAmphosVoltage : LREAL; // The Amphos voltage
+	AmphosStatus :BOOL; //Amphos Laser Shutter Status
     bLoopTempOverride01 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride02 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
-    bMasterOverride : BOOL; //Master manual override control input
+	bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
+    Mode :INT; // Mode of operation
 END_VAR
+
 VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors
     stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
+	stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
 VAR
-END_VAR
-]]></Declaration>
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
     OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
@@ -26,19 +30,27 @@ END_VAR
         (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
         (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
         (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
-        (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)) // Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
+        (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)OR
+		(NOT bLoopTempOverride05 AND stErrors.bChillerLoop05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
     OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
-    (*OR stErrors.bTempMon01 OR stErrors.bTempMon02 OR stErrors.bTempMon03 OR stErrors.bTempMon04 OR stErrors.bTempMon05 OR
-        stErrors.bTempMon06 OR stErrors.bTempMon07 OR stErrors.bTempMon08 // Close shutter if temperature too high at any monitor location *)
     OR stErrors.bDumpChiller) // Close shutter if there is a Dump Chiller error
-    (* OR stErrors.bAmphosMRC02 OR stErrors.bAmphosMRC03 // Close shutter if there are errors on the additional MRCs *)
-    AND NOT bMasterOverride //if master override is TRUE, ignore all errors
 THEN
     F_AmphosShutterEnable := FALSE;
 ELSE
-    F_AmphosShutterEnable := TRUE;
+	IF ( MODE = 1 AND fAmphosVoltage >= stAmphosSetpoints.nMinVoltage AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
+	OR
+	(MODE = 3 AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    OR
+	(MODE = 4 AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+	THEN 
+	F_AmphosShutterEnable := FALSE;
+	ELSE
+	F_AmphosShutterEnable := TRUE;
+	END_IF    
 END_IF
-]]></ST>
+
+
+ ]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

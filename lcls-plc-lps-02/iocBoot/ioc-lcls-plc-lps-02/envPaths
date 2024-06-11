@@ -1,0 +1,2 @@
+epicsEnvSet("IOC_TOP", "/c/Users/divyak/Documents/Github_Files/lcls-plc-lps-02/lcls-plc-lps-02/iocBoot/ioc-lcls-plc-lps-02")
+epicsEnvSet("IOC_DATA", "/cds/data/iocData")

@@ -23,7 +23,9 @@ VAR
     fbChillerLoop03 : FB_ChillerLoop; // Chiller loop 03
     {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP04'}
     fbChillerLoop04 : FB_ChillerLoop; // Chiller loop 04
-
+	{attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP05'}
+    fbChillerLoop05 : FB_ChillerLoop; // Chiller loop 05
+	
     // Laser monitors
     {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS'}
     fbAmphos : FB_Laser_Timer; // Amphos laser
@@ -80,8 +82,26 @@ VAR
     '}
     bMasterOverride : BOOL; // Master override control for safety system.
 
+	(*
+	This is the map of the Mode Int to the defintion
+	MODE = 1 ==> OPCPA Protection
+	MODE = 2 ==> OPCPA Override
+	MODE = 3 ==> MPC Protection
+	MODE = 4 ==> MPC Override
+	MODE = 5 ==> Master Override
+	Any other mode is invalid.
+	We can later convert this MODE into an ENUM
+	*)
+	{attribute 'pytmc' := '
+        pv: @(BASE):LPS:MODE
+        io: o
+    '}
+	Mode_LPS : E_Mode; // Mode Definition 
+	
     {attribute 'pytmc' := 'pv: @(BASE):LPS:PLC'}
     fbDiag : FB_EcatDiag; // Ethercat diagnostics
+	
+	Mode: E_Mode;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -102,7 +122,7 @@ fbLeakMonitor(
     nLocationResistance := fbTraceTekModbus.nLocationResistance,
     bAmphosOn := GVL_IO.bAmphosOn,
     bCarbideOn := GVL_IO.bCarbideOn,
-    bLeakDetected := GVL_IO.bLeakDetected,
+    bLeakDetected := GVL_IO.bTracetekAlarm,
     stBound := GVL_TraceTek.stLeakMonitorBoundaries,
     bLeakOpticalTableAmphosOn => stErrors.bLeakOpticalTableAmphosOn,
     bLeakOpticaltableNoLaser => stErrors.bLeakOpticalTableNoLaser,
@@ -111,6 +131,7 @@ fbLeakMonitor(
     bLeakInsideRacks => stErrors.bLeakInsideRacks
 );
 
+(*
 (* Monitors for error events on chiller loop 1 *)
 fbChillerLoop01(
     bLoopTempSW := GVL_IO.bLoopTempSW01,
@@ -133,7 +154,8 @@ fbChillerLoop03(
 fbChillerLoop04(
     bLoopTempSW := GVL_IO.bLoopTempSW04,
     bError => stErrors.bChillerLoop04
-);
+);*)
+
 
 (* Monitors the Amphos laser *)
 fbAmphos(
@@ -172,59 +194,49 @@ fbBaseplateChiller(
     bError => stErrors.bBaseplateChiller
 );
 
-(*
-(* Detects problems with MRC 1 *)
-fbAmphosMRC01(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    bMRC := GVL_IO.bAmphosMRC01,
-    bError => stErrors.bAmphosMRC01
-);
-
-(* Detects problems with MRC 2 *)
-fbAmphosMRC02(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    bMRC := GVL_IO.bAmphosMRC02,
-    bError => stErrors.bAmphosMRC02
-);
-
-(* Detects problems with MRC 3 *)
-fbAmphosMRC03(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    bMRC := GVL_IO.bAmphosMRC03,
-    bError => stErrors.bAmphosMRC03
-);
-*)
-
 (*******************************************************************
 Now that each of the input signals have been checked and errors stored,
 run the interlock logic.
 *******************************************************************)
-(* Enable Amphos attenuator if interlock logic passes *)
-(*
-GVL_IO.bAmphosAttenuatorEnable := F_AmphosAttenuatorEnable(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stErrors := stErrors
-);
-Deprecated Logic -- Not Currently Used*)
+//Enable Amphos if the interlock passes
+GVL_IO.bAmphosEnable := F_AmphosEnable(
+	fAmphosVoltage := fbAmphos.fVoltage,
+	bEnabled := GVL_IO.bAmphosCLOSE,
+	AmphosStatus := GVL_IO.bAmphosOn,
+	Mode := Mode_LPS,
+    stAmphosSetpoints := GVL_Laser.stAmphosSP,
+    stErrors := stErrors);
 
-(* Enable Amphos shutter if interlock logic passes *)
-GVL_IO.bAmphosShutterEnable := F_AmphosShutterEnable(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    fOpcpaVoltage := fbOpcpa.fVoltage,
-    bLoopTempOverride01 := fbChillerLoop01.bOperatorOverride,
-    bLoopTempOverride02 := fbChillerLoop02.bOperatorOverride,
-    bLoopTempOverride03 := fbChillerLoop03.bOperatorOverride,
-    bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride,
-    stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
+//Enable Amphos shutter if interlock logic passes 
+GVL_IO.bAmphosCLOSE := F_AmphosShutterEnable(
+	bAmphosOn := GVL_IO.bAmphosOn, 
+    fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
+	fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
+	AmphosStatus := GVL_IO.bAmphosShutterStatus, //Amphos Laser Shutter Status
+    bLoopTempOverride01 := fbChillerLoop01.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride02 := fbChillerLoop02.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride03 := fbChillerLoop03.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
+	bLoopTempOverride05 := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
+    Mode := Mode_LPS,     
+	stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
-    bMasterOverride := bMasterOverride
+    stAmphosSetpoints := GVL_Laser.stAmphosSP
 );
 
-(* Enable Carbide shutter if interlock logic passes *)
+// Enable Carbide shutter if interlock logic passes *)
 GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
+	fOpcpaVoltage := fbOPCPA.fVoltage,
+	fAmphosVoltage := fbAmphos.fVoltage,
+	fMPCVoltage := fbMPC.fVoltage,
+	AmphosShutter := GVL_IO.bAmphosShutterStatus,
+	Mode := Mode_LPS,
+	stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
-    bMasterOverride := bMasterOverride
+    stAmphosSetpoints := GVL_Laser.stAmphosSP,
+	stMPCSetpoints := GVL_Laser.stMPCSP    
 );
+
 
 (* Enable Dump chiller if interlock logic passes *)
 GVL_IO.bDumpChillerRelay := F_DumpChillerEnable(
@@ -238,15 +250,6 @@ GVL_IO.bBaseplateChillerRelay := F_BaseplateChillerEnable(
     bMasterOverride := bMasterOverride
 );
 
-(* Enable Amphos if interlock logic passes *)
-GVL_IO.bAmphosRelay := F_AmphosEnable(
-    fAmphosVoltage := fbAmphos.fVoltage,
-    bEnabled := GVL_IO.bAmphosRelay,
-    stAmphosSetpoints := GVL_Laser.stAmphosSP,
-    stErrors := stErrors,
-    bMasterOverride := bMasterOverride
-);
-
 (*******************************************************************
 Safety related tasks have now been finished. Now try slower tasks such as
 communicating with external hardware.
@@ -255,7 +258,7 @@ communicating with external hardware.
 handled later when diagnostics are run *)
 fbTraceTekModbus(
     nModbusSlaveAddress := GVL_TraceTek.nModbusSlaveAddress,
-    bLeakDetected := GVL_IO.bLeakDetected
+    bLeakDetected := GVL_IO.bTracetekAlarm
 );
 
 (*******************************************************************
