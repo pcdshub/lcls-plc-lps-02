@@ -17,7 +17,7 @@ VAR_GLOBAL
 
  (* Slot4 EL1259 Inputs *)
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 2^Status^Input state'}
-    bTracetekAlarm AT %I* : BOOL; // Ch2
+    bTracetekAlarm AT %I* : BOOL; // Tracetek Alarm
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 3^Status^Input state'}
     bLoopTempSW01 AT %I* : BOOL; // Ch3 Loop 01 NC Temp switch
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 4^Status^Input state'}
@@ -29,9 +29,9 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 1^Status^Input state'}
     bLoopTempSW05 AT %I* : BOOL; // Ch1 Loop 05 NC Temp switch
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 8^Status^Input state'}
-    bBaseplateChillerFlow AT %I* : BOOL; // Ch7 Dump chiller NC flow sensor
+    bBaseplateChillerFlow AT %I* : BOOL; // Dump chiller NC flow sensor
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 7^Status^Input state'}
-    bDumpChillerFlow AT %I* : BOOL; // Ch2 Baseplate Chiller flow sensor
+    bDumpChillerFlow AT %I* : BOOL; //Baseplate Chiller flow sensor
 
 //LabJack IO connection Amphos controller TBD
 
@@ -42,11 +42,19 @@ VAR_GLOBAL
         field: ONAM "ON"
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 1^Input'}
-     bAmphosOn AT %I* : BOOL; //  Laser ON - LabJACK IO
+    bAmphosOn AT %I* : BOOL; //  Laser ON - LabJACK IO
 
     {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 4^Input'}
     bAmphosLaserReady AT %I* : BOOL; //  Laser Ready - LabJACK IO
-
+	
+	{attribute 'TcLinkTo' := 'TIIB[EL1124_00_12]^Channel 1^Input'}
+    bAmphosLaserACK AT %I* : BOOL; //  Laser Acknowledge - LabJACK IO
+	
+	{attribute 'TcLinkTo' := 'TIIB[EL1124_00_12]^Channel 2^Input'}
+    bAmphosLaserBusy AT %I* : BOOL; //  Laser Busy - LabJACK IO
+	
+	bAmphosShutterCMD : BOOL ; // CMD to Amphos for Shutter Operation
+	
 // Amphos Enable
  	{attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:ENABLE
@@ -57,7 +65,7 @@ VAR_GLOBAL
         field: ONAM ENABLED
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL2624_00_07]^Channel 3^Output'}
-    bAmphosEnable AT %Q* : BOOL; // Ch1 Dump chiller NC relay
+    bAmphosEnable AT %Q* : BOOL; // Amphos Override Relay 
 
 //LabJack IO Controls
     {attribute 'pytmc' := '
@@ -69,7 +77,7 @@ VAR_GLOBAL
         field: ONAM ENABLED
     '}
     {attribute 'TcLinkTo' := 'TIIB[[EL1124_00_11]^Channel 2^Input'}
-    bAmphosShutterStatus AT %I* : BOOL; // Ch1
+    bAmphosShutterStatus AT %I* : BOOL; // EL1124_02 - Ch2 Labjack IO Amphos Shutter Status
     bAmphosShutterEnableManualOperation AT %Q* : BOOL := TRUE;
 
     {attribute 'pytmc' := '
@@ -81,10 +89,10 @@ VAR_GLOBAL
         field: ONAM ENABLED
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL2624_00_08]^Channel 1^Output'}
-    bAmphosRelayOPEN AT %Q* : BOOL; // Ch3 Amphos Interlock relay
+    bAmphosRelayOPEN AT %Q* : BOOL; // Labjack IO - Amphos CMD Shutter Open
 	
 	{attribute 'TcLinkTo' := 'TIIB[EL2624_00_08]^Channel 4^Output'}
-    bAmphosCLOSE AT %Q* : BOOL; // Ch3 Amphos Interlock relay
+    bAmphosCLOSE AT %Q* : BOOL; // Labjack IO - Amphos CMD Shutter Close
 
 //Carbide control
     {attribute 'pytmc' := '
@@ -96,7 +104,7 @@ VAR_GLOBAL
         field: ONAM ENABLED
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL2624_00_07]^Channel 4^Output'}
-    bCarbideShutterEnable AT %Q* : BOOL; // Ch2 HASS
+    bCarbideShutterEnable AT %Q* : BOOL; // Carbide Shutter Enable Relay
     bCarbideShutterEnableManualOperation AT %Q* : BOOL := TRUE;
 
     (* Slot11 EL1124 *)
@@ -107,7 +115,7 @@ VAR_GLOBAL
         field: ONAM "ON"
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 3^Input'}
-    bCarbideOn AT %I* : BOOL; // Ch1
+    bCarbideOn AT %I* : BOOL; // Carbide RA Ready Signal 
 
 //Dump Chiller control
    {attribute 'pytmc' := '

@@ -104,7 +104,7 @@
 				<Var>
 					<Name>GVL_IO.bTracetekAlarm</Name>
 					<Comment>
-						<![CDATA[ Ch2]]>
+						<![CDATA[ Tracetek Alarm]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -146,14 +146,14 @@
 				<Var>
 					<Name>GVL_IO.bBaseplateChillerFlow</Name>
 					<Comment>
-						<![CDATA[ Ch7 Dump chiller NC flow sensor]]>
+						<![CDATA[ Dump chiller NC flow sensor]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bDumpChillerFlow</Name>
 					<Comment>
-						<![CDATA[ Ch2 Baseplate Chiller flow sensor]]>
+						<![CDATA[Baseplate Chiller flow sensor]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -172,16 +172,30 @@
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>GVL_IO.bAmphosLaserACK</Name>
+					<Comment>
+						<![CDATA[  Laser Acknowledge - LabJACK IO]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bAmphosLaserBusy</Name>
+					<Comment>
+						<![CDATA[  Laser Busy - LabJACK IO]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>GVL_IO.bAmphosShutterStatus</Name>
 					<Comment>
-						<![CDATA[ Ch1]]>
+						<![CDATA[ EL1124_02 - Ch2 Labjack IO Amphos Shutter Status]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bCarbideOn</Name>
 					<Comment>
-						<![CDATA[ Ch1]]>
+						<![CDATA[ Carbide RA Ready Signal ]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -199,7 +213,7 @@
 				<Var>
 					<Name>GVL_IO.bAmphosEnable</Name>
 					<Comment>
-						<![CDATA[ Ch1 Dump chiller NC relay]]>
+						<![CDATA[ Amphos Override Relay ]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -210,21 +224,21 @@
 				<Var>
 					<Name>GVL_IO.bAmphosRelayOPEN</Name>
 					<Comment>
-						<![CDATA[ Ch3 Amphos Interlock relay]]>
+						<![CDATA[ Labjack IO - Amphos CMD Shutter Open]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosCLOSE</Name>
 					<Comment>
-						<![CDATA[ Ch3 Amphos Interlock relay]]>
+						<![CDATA[ Labjack IO - Amphos CMD Shutter Close]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bCarbideShutterEnable</Name>
 					<Comment>
-						<![CDATA[ Ch2 HASS]]>
+						<![CDATA[ Carbide Shutter Enable Relay]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -259,6 +273,10 @@
 				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosOn" VarB="Channel 1^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosShutterStatus" VarB="Channel 2^Input"/>
 				<Link VarA="PlcTask Inputs^GVL_IO.bCarbideOn" VarB="Channel 3^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_12">
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserACK" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserBusy" VarB="Channel 2^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04">
 				<Link VarA="PlcTask Inputs^GVL_IO.bBaseplateChillerFlow" VarB="MTI Inputs 10x Channel 8^Status^Input state" AutoLink="true"/>

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_ShutterControl" Id="{613b3e11-f29b-429d-a5f5-594fa349ee9b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ShutterControl
+VAR_INPUT
+	CMDShutterOPEN : BOOL; 			// CMD Shutter OPEN Relay state current state from EL2624 Relay
+	CMDShutterCLOSE : BOOL; 		// CMD Shutter CLOSE Relay state current state from EL2624 Relay
+	LaserBusy : BOOL;				// Laser Busy bit from Labjack IO
+	LaserAck : BOOL;				// Laser Acknowledge bit from Labjack IO
+	ShutterState : BOOL;		  	// Shutter state from Labjack IO
+END_VAR
+VAR_OUTPUT
+	State : E_ShutterState := 0; 	// ENUM States 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[/// Function to assess CMD shutter state to Amphos 
+/// Logic will follow the following 
+// GVL_IO.bAmphosShutterCMD := TRUE ( Request to OPEN Shutter) 
+// GVL_IO.bAmphosShutterCMD := FALSE( Request to CLOSE Shutter)
+
+CASE State OF
+	
+E_ShutterState.INIT :
+	IF GVL_IO.bAmphosShutterCMD = TRUE AND (NOT ShutterState) AND (NOT LaserBusy) AND (NOT CMDShutterCLOSE)
+		THEN
+		GVL_IO.bAmphosRelayOPEN := TRUE;
+		GVL_IO.bAmphosCLOSE := FALSE;
+		ELSE
+		GVL_IO.bAmphosRelayOPEN := FALSE;
+		GVL_IO.bAmphosCLOSE  := TRUE;
+	END_IF	
+
+E_ShutterState.OPENREQ : 
+	IF GVL_IO.bAmphosShutterCMD = TRUE AND ShutterState AND (NOT LaserBusy) AND (NOT CMDShutterCLOSE)
+		THEN
+		State := E_ShutterState.OPENACK;
+	END_IF
+
+E_ShutterState.OPENACK :
+	IF GVL_IO.bAmphosShutterCMD = TRUE AND LaserAck 
+	THEN
+		State := E_ShutterState.OPENREADY;
+	END_IF
+
+E_ShutterState.OPENREADY :
+	IF GVL_IO.bAmphosShutterCMD = TRUE AND (NOT LaserBusy)
+		THEN
+		State := E_ShutterState.OPENED;
+	END_IF
+
+E_ShutterState.OPENED : 
+	IF GVL_IO.bAmphosShutterCMD = TRUE THEN
+		GVL_IO.bAmphosRelayOPEN := TRUE;
+		GVL_IO.bAmphosCLOSE := FALSE;		
+	END_IF
+
+E_ShutterState.CLOSEREQ : 
+	IF GVL_IO.bAmphosShutterCMD = FALSE AND (NOT ShutterState) AND (NOT LaserBusy) 
+		THEN
+		State := E_ShutterState.CLOSEACK;
+	END_IF
+	
+E_ShutterState.CLOSEACK :
+	IF GVL_IO.bAmphosShutterCMD = FALSE AND (NOT LaserAck)
+		THEN 
+		State := E_ShutterState.CLOSEREADY;
+	END_IF
+
+E_ShutterState.CLOSEREADY :
+	IF GVL_IO.bAmphosShutterCMD = FALSE AND LaserBusy
+		THEN
+		State := E_ShutterState.CLOSED;
+	END_IF
+
+E_ShutterState.CLOSED : 
+	IF GVL_IO.bAmphosShutterCMD = FALSE THEN
+		GVL_IO.bAmphosRelayOPEN := FALSE;
+		GVL_IO.bAmphosCLOSE := TRUE;
+	END_IF
+	
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

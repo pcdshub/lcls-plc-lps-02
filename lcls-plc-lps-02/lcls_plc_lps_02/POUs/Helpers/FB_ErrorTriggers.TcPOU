@@ -22,8 +22,10 @@ VAR
     fbLeakInsideRacksTrig : R_TRIG;
     fbAmphosBeamTrig : R_TRIG;
     fbOpcpaBeamTrig : R_TRIG;
+	fbMPCBeamTrig : R_TRIG;
     fbDumpChillerTrig : R_TRIG;
     fbBaseplateChillerTrig : R_TRIG;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -58,6 +60,11 @@ fbAmphosBeamTrig(
 fbOpcpaBeamTrig(
     CLK := stErrors.bOpcpaBeam,
     Q => stNewErrors.bOpcpaBeam
+);
+
+fbMPCBeamTrig(
+    CLK := stErrors.bMPCBeam,
+    Q => stNewErrors.bMPCBeam
 );
 
 fbDumpChillerTrig(
@@ -145,6 +152,18 @@ fbLeakInsideRacksTrig(
     Q => stNewErrors.bLeakInsideRacks
 );
 ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ResetMPCTrigger" Id="{59b71cb5-2c00-4cd1-b0a7-f67ad33204d4}">
+      <Declaration><![CDATA[METHOD ResetMPCTrigger
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbMPCBeamTrig(
+    CLK := FALSE,
+    Q => stNewErrors.bOpcpaBeam
+);]]></ST>
       </Implementation>
     </Method>
     <Method Name="ResetOpcpaTrigger" Id="{ac38f646-b9bb-4388-ba78-0da8d95694e7}">

@@ -66,16 +66,6 @@ VAR
     '}
     bBaseplateChillerReset : BOOL; // Baseplate chiller error unlatch flag
 
-    (*
-    // Amphos MRCs
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS_MRC01'}
-    fbAmphosMRC01 : FB_AmphosMRC; // MRC monitor 01
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS_MRC02'}
-    fbAmphosMRC02 : FB_AmphosMRC; // MRC monitor 02
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS_MRC03'}
-    fbAmphosMRC03 : FB_AmphosMRC; // MRC monitor 03
-    *)
-
     {attribute 'pytmc' := '
         pv: @(BASE):LPS:MASTER_OVERRIDE
         io: o
@@ -101,7 +91,9 @@ VAR
     {attribute 'pytmc' := 'pv: @(BASE):LPS:PLC'}
     fbDiag : FB_EcatDiag; // Ethercat diagnostics
 	
-	Mode: E_Mode;
+	Shutter_State_ENUM : E_ShutterState; // Shutter State ENUM	
+	fb_ShutterControl : FB_ShutterControl; // Shutter control function block 
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -110,7 +102,7 @@ END_VAR
 *******************************************************************)
 (* Check PLC hardware for failures *)
 fbDiag(AMSNetId := GVL_PLC.AMSNetId);
-stErrors.bHardwareFailure := (fbDiag.bError OR fbTraceTekModbus.bError) AND NOT bMasterOverride;
+stErrors.bHardwareFailure := (fbDiag.bError OR fbTraceTekModbus.bError);
 
 (*******************************************************************
 Feed each device function block inputs from the PLC IO. Collect error states detected
@@ -131,7 +123,7 @@ fbLeakMonitor(
     bLeakInsideRacks => stErrors.bLeakInsideRacks
 );
 
-(*
+
 (* Monitors for error events on chiller loop 1 *)
 fbChillerLoop01(
     bLoopTempSW := GVL_IO.bLoopTempSW01,
@@ -154,7 +146,7 @@ fbChillerLoop03(
 fbChillerLoop04(
     bLoopTempSW := GVL_IO.bLoopTempSW04,
     bError => stErrors.bChillerLoop04
-);*)
+);
 
 
 (* Monitors the Amphos laser *)
@@ -208,7 +200,7 @@ GVL_IO.bAmphosEnable := F_AmphosEnable(
     stErrors := stErrors);
 
 //Enable Amphos shutter if interlock logic passes 
-GVL_IO.bAmphosCLOSE := F_AmphosShutterEnable(
+GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
 	bAmphosOn := GVL_IO.bAmphosOn, 
     fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
 	fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
@@ -223,6 +215,14 @@ GVL_IO.bAmphosCLOSE := F_AmphosShutterEnable(
     stErrors := stErrors,
     stAmphosSetpoints := GVL_Laser.stAmphosSP
 );
+
+// Function block for Shutter Control to Amphos Software 
+fb_ShutterControl(
+	CMDShutterOPEN 	:= GVL_IO.bAmphosRelayOPEN,
+	CMDShutterCLOSE := GVL_IO.bAmphosCLOSE,
+	LaserBusy		:= GVL_IO.bAmphosLaserBusy,
+	LaserAck 		:= GVL_IO.bAmphosLaserACK,
+	ShutterState	:= GVL_IO.bAmphosShutterStatus,); 
 
 // Enable Carbide shutter if interlock logic passes *)
 GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
@@ -266,8 +266,8 @@ As per the specification, the reset PV is not checked until after the EPS has ta
 Check the reset flags to see if they have been set and the errors can be unlatched.
 *******************************************************************)
 (* Check for rising-edge errors *)
-fbErrorTriggers(stErrors := stErrors, nLeakLocations := fbLeakMonitor.nLeakLocations);
-
+fbErrorTriggers(stErrors := stErrors);
+(*
 (* Check for new leak errors *)
 IF fbErrorTriggers.NewLeakError() THEN
     bLeakMonitorReset := FALSE; // If there is a new error turn off reset
@@ -276,7 +276,7 @@ ELSIF bLeakMonitorReset THEN
     fbLeakMonitor.Reset();
     fbErrorTriggers.ResetLeakTriggers();
 END_IF
-
+*)
 (* Check for new Amphos beam errors *)
 IF fbErrorTriggers.stNewErrors.bAmphosBeam THEN
     bAmphosReset := FALSE; // If there is a new error turn off reset
@@ -293,6 +293,15 @@ ELSIF bOpcpaReset THEN
     // If there are no new errors and reset is on, reset the errors
     fbOpcpa.Reset();
     fbErrorTriggers.ResetOpcpaTrigger();
+END_IF
+
+(* Check for new MPC errors *)
+IF fbErrorTriggers.stNewErrors.bMPCBeam THEN
+     bMPCReset := FALSE; // If there is a new error turn off reset
+ELSIF bMPCReset THEN
+    // If there are no new errors and reset is on, reset the errors
+    fbMPC.Reset();
+    fbErrorTriggers.ResetMPCTrigger();
 END_IF
 
 (* Check for new Beam Dump chiller errors *)
