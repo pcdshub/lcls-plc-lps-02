@@ -36,7 +36,7 @@ VAR_GLOBAL
 //LabJack IO connection Amphos controller TBD
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:POWER_STATE
+        pv: @(PREFIX):LPS:AMPHOS:POWER_STATE
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
@@ -45,7 +45,7 @@ VAR_GLOBAL
     bAmphosOn AT %I* : BOOL; //  Laser ON - LabJACK IO
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:LASER_READY
+        pv: @(PREFIX):LPS:AMPHOS:LASER_READY
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
@@ -54,7 +54,7 @@ VAR_GLOBAL
     bAmphosLaserReady AT %I* : BOOL; //  Laser Ready - LabJACK IO
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:LASER_ACK
+        pv: @(PREFIX):LPS:AMPHOS:LASER_ACK
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
@@ -63,7 +63,7 @@ VAR_GLOBAL
     bAmphosLaserACK AT %I* : BOOL; //  Laser Acknowledge - LabJACK IO
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:LASER_BUSY
+        pv: @(PREFIX):LPS:AMPHOS:LASER_BUSY
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
@@ -72,7 +72,7 @@ VAR_GLOBAL
     bAmphosLaserBusy AT %I* : BOOL; //  Laser Busy - LabJACK IO
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:SHUTTER_CMD
+        pv: @(PREFIX):LPS:AMPHOS:SHUTTER_CMD
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
@@ -81,7 +81,7 @@ VAR_GLOBAL
 
 // Amphos Enable
      {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:ENABLE
+        pv: @(PREFIX):LPS:AMPHOS:ENABLE
         io: i
         field: OSV NO_ALARM
         field: ZSV MAJOR
@@ -93,7 +93,7 @@ VAR_GLOBAL
 
 //LabJack IO Controls
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS_SHUTTER:ENABLE
+        pv: @(PREFIX):LPS:AMPHOS_SHUTTER:ENABLE
         io: i
         field: OSV NO_ALARM
         field: ZSV MAJOR
@@ -105,7 +105,7 @@ VAR_GLOBAL
     bAmphosShutterEnableManualOperation AT %Q* : BOOL := TRUE;
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS_RELAY:ENABLE
+        pv: @(PREFIX):LPS:AMPHOS_RELAY:ENABLE
         io: i
         field: OSV NO_ALARM
         field: ZSV MAJOR
@@ -120,7 +120,7 @@ VAR_GLOBAL
 
 //Carbide control
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:CARBIDE_SHUTTER:ENABLE
+        pv: @(PREFIX):LPS:CARBIDE_SHUTTER:ENABLE
         io: i
         field: OSV NO_ALARM
         field: ZSV MAJOR
@@ -133,7 +133,7 @@ VAR_GLOBAL
 
     (* Slot11 EL1124 *)
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:OPCPA:POWER_STATE
+        pv: @(PREFIX):LPS:OPCPA:POWER_STATE
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
@@ -143,7 +143,7 @@ VAR_GLOBAL
 
 //Dump Chiller control
    {attribute 'pytmc' := '
-        pv: @(BASE):LPS:DUMP_CHILLER_RELAY:ENABLE
+        pv: @(PREFIX):LPS:DUMP_CHILLER_RELAY:ENABLE
         io: i
         field: OSV NO_ALARM
         field: ZSV MAJOR
@@ -154,7 +154,7 @@ VAR_GLOBAL
     bDumpChillerRelay AT %Q* : BOOL; // Ch1 Dump chiller NC relay
 // Baseplate Chiller control
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:BASEPLATE_CHILLER_RELAY:ENABLE
+        pv: @(PREFIX):LPS:BASEPLATE_CHILLER_RELAY:ENABLE
         io: i
         field: OSV NO_ALARM
         field: ZSV MAJOR

@@ -7,67 +7,67 @@ VAR
     fbErrorTriggers : FB_ErrorTriggers; // Brand new errors this cycle
 
     // Leak Monitor
-    {attribute 'pytmc' := 'pv: @(BASE):TTSIM:DEV01'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):TTSIM:DEV01'}
     fbTraceTekModbus : FB_TraceTekModbus; // Modbus connection to TraceTek
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:LEAK:RESET'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:LEAK:RESET'}
     bLeakMonitorReset : BOOL; // Leak monitor reset flag
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:LEAK'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:LEAK'}
     fbLeakMonitor : FB_LeakMonitor; // Leak detection
 
     // Chiller Loop temperature monitors
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP01'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP01'}
     fbChillerLoop01 : FB_ChillerLoop; // Chiller loop 01
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP02'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP02'}
     fbChillerLoop02 : FB_ChillerLoop; // Chiller loop 02
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP03'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP03'}
     fbChillerLoop03 : FB_ChillerLoop; // Chiller loop 03
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP04'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP04'}
     fbChillerLoop04 : FB_ChillerLoop; // Chiller loop 04
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP05'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP05'}
     fbChillerLoop05 : FB_ChillerLoop; // Chiller loop 05
 
     // Laser monitors
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:AMPHOS'}
     fbAmphos : FB_Laser_Timer; // Amphos laser
     {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:RESET
         io: o
     '}
     bAmphosReset : BOOL; // Amphos laser error unlatch flag
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:OPCPA'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:OPCPA'}
     fbOpcpa : FB_Laser_Timer; // OPCPA laser
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:OPCPA:RESET
+        pv: @(PREFIX):LPS:OPCPA:RESET
         io: o
     '}
     bOpcpaReset : BOOL; // OPCPA laser error unlatch flag
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:MPC'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:MPC'}
     fbMPC : FB_Laser_Timer; // MultiPass Cell
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:MPC:RESET
+        pv: @(PREFIX):LPS:MPC:RESET
         io: o
     '}
     bMPCReset : BOOL; // MPC laser error unlatch flag
 
     // Chillers
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:DUMP_CHILLER'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
     fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:DUMP_CHILLER:RESET
+        pv: @(PREFIX):LPS:DUMP_CHILLER:RESET
         io: o
     '}
     bDumpChillerReset : BOOL; // Dump chiller error unlatch flag
 
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:BASEPLATE_CHILLER'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:BASEPLATE_CHILLER'}
     fbBaseplateChiller : FB_BaseplateChiller; // Flow sensor monitor for the baseplate chiller
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:BASEPLATE_CHILLER:RESET
+        pv: @(PREFIX):LPS:BASEPLATE_CHILLER:RESET
         io: o
     '}
     bBaseplateChillerReset : BOOL; // Baseplate chiller error unlatch flag
 
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:MASTER_OVERRIDE
+        pv: @(PREFIX):LPS:MASTER_OVERRIDE
         io: o
     '}
     bMasterOverride : BOOL; // Master override control for safety system.
@@ -83,12 +83,12 @@ VAR
     We can later convert this MODE into an ENUM
     *)
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:MODE
-        io: o
+        pv: @(PREFIX):LPS:MODE
+        io: io
     '}
     Mode_LPS : E_Mode; // Mode Definition
 
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:PLC'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:PLC'}
     fbDiag : FB_EcatDiag; // Ethercat diagnostics
 
     Shutter_State_ENUM : E_ShutterState; // Shutter State ENUM
