@@ -14,7 +14,7 @@ TYPE E_ShutterState :
 	CLOSEACK := 6, 
 	CLOSEREADY := 7,
 	CLOSED := 8
-)BYTE;
+);
 END_TYPE
 ]]></Declaration>
   </DUT>

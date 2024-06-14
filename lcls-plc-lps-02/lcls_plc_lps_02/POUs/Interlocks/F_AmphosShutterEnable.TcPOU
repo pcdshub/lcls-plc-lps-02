@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="F_AmphosShutterEnable" Id="{a7fc5b7f-48ee-48e8-a6f9-0fc0af7200c2}" SpecialFunc="None">
     <Declaration><![CDATA[// Interlock logic for the Amphos shutter
 FUNCTION F_AmphosShutterEnable : BOOL
 VAR_INPUT
-    bAmphosOn : BOOL; // Whether the amphos is on
+    //bAmphosOn : BOOL; // Whether the amphos is on
     fOpcpaVoltage : LREAL; // The voltage of the OPCPA
 	fAmphosVoltage : LREAL; // The Amphos voltage
 	AmphosStatus :BOOL; //Amphos Laser Shutter Status
@@ -13,7 +13,7 @@ VAR_INPUT
     bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
 	bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
-    Mode :INT; // Mode of operation
+    Mode : E_Mode; // Mode of operation
 END_VAR
 
 VAR_IN_OUT CONSTANT
@@ -26,7 +26,7 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
    // OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
-    OR bAmphosOn AND (
+     AND (
         (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
         (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
         (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
@@ -37,11 +37,11 @@ END_VAR]]></Declaration>
 THEN
     F_AmphosShutterEnable := FALSE;
 ELSE
-	IF ( MODE = 1 AND fAmphosVoltage >= stAmphosSetpoints.nMinVoltage AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
+	IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage >= stAmphosSetpoints.nMinVoltage AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
 	OR
-	(MODE = 3 AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+	(MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
     OR
-	(MODE = 4 AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+	(MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
 	THEN 
 	F_AmphosShutterEnable := FALSE;
 	ELSE

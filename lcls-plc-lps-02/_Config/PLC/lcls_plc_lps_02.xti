@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CNestedPlcProjDef">
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35" ClassName="CNestedPlcProjDef">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{500A6B3D-5280-418B-91E6-C259C9E0A911}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
@@ -71,7 +71,7 @@
 		</DataType>
 	</DataTypes>
 	<Project GUID="{F0E27DBE-1025-4958-B61D-F62F8AC18112}" Name="lcls_plc_lps_02" PrjFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.plcproj" TmcFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{B88EFDF5-1EF5-469C-028F-69B27ABEB288}">
 			<Name>lcls_plc_lps_02 Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -82,121 +82,87 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.nOpcpaVoltageRaw</Name>
-					<Comment>
-						<![CDATA[ Ch1 OPCPA Laser]]>
-					</Comment>
+					<Comment><![CDATA[ Ch1 OPCPA Laser]]></Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.nAmphosVoltageRaw</Name>
-					<Comment>
-						<![CDATA[ Ch2 Amphos Laser]]>
-					</Comment>
+					<Comment><![CDATA[ Ch2 Amphos Laser]]></Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.nMultiPassVoltageRaw</Name>
-					<Comment>
-						<![CDATA[ Ch3 MultiPass Cell]]>
-					</Comment>
+					<Comment><![CDATA[ Ch3 MultiPass Cell]]></Comment>
 					<Type>INT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bTracetekAlarm</Name>
-					<Comment>
-						<![CDATA[ Tracetek Alarm]]>
-					</Comment>
+					<Comment><![CDATA[ Tracetek Alarm]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW01</Name>
-					<Comment>
-						<![CDATA[ Ch3 Loop 01 NC Temp switch]]>
-					</Comment>
+					<Comment><![CDATA[ Ch3 Loop 01 NC Temp switch]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW02</Name>
-					<Comment>
-						<![CDATA[ Ch4 Loop 02 NC Temp switch]]>
-					</Comment>
+					<Comment><![CDATA[ Ch4 Loop 02 NC Temp switch]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW03</Name>
-					<Comment>
-						<![CDATA[ Ch5 Loop 03 NC Temp switch]]>
-					</Comment>
+					<Comment><![CDATA[ Ch5 Loop 03 NC Temp switch]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW04</Name>
-					<Comment>
-						<![CDATA[ Ch6 Loop 04 NC Temp switch]]>
-					</Comment>
+					<Comment><![CDATA[ Ch6 Loop 04 NC Temp switch]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW05</Name>
-					<Comment>
-						<![CDATA[ Ch1 Loop 05 NC Temp switch]]>
-					</Comment>
+					<Comment><![CDATA[ Ch1 Loop 05 NC Temp switch]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bBaseplateChillerFlow</Name>
-					<Comment>
-						<![CDATA[ Dump chiller NC flow sensor]]>
-					</Comment>
+					<Comment><![CDATA[ Dump chiller NC flow sensor]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bDumpChillerFlow</Name>
-					<Comment>
-						<![CDATA[Baseplate Chiller flow sensor]]>
-					</Comment>
+					<Comment><![CDATA[Baseplate Chiller flow sensor]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosOn</Name>
-					<Comment>
-						<![CDATA[  Laser ON - LabJACK IO]]>
-					</Comment>
+					<Comment><![CDATA[  Laser ON - LabJACK IO]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosLaserReady</Name>
-					<Comment>
-						<![CDATA[  Laser Ready - LabJACK IO]]>
-					</Comment>
+					<Comment><![CDATA[  Laser Ready - LabJACK IO]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosLaserACK</Name>
-					<Comment>
-						<![CDATA[  Laser Acknowledge - LabJACK IO]]>
-					</Comment>
+					<Comment><![CDATA[  Laser Acknowledge - LabJACK IO]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosLaserBusy</Name>
-					<Comment>
-						<![CDATA[  Laser Busy - LabJACK IO]]>
-					</Comment>
+					<Comment><![CDATA[  Laser Busy - LabJACK IO]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosShutterStatus</Name>
-					<Comment>
-						<![CDATA[ EL1124_02 - Ch2 Labjack IO Amphos Shutter Status]]>
-					</Comment>
+					<Comment><![CDATA[ EL1124_02 - Ch2 Labjack IO Amphos Shutter Status]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bCarbideOn</Name>
-					<Comment>
-						<![CDATA[ Carbide RA Ready Signal ]]>
-					</Comment>
+					<Comment><![CDATA[ Carbide RA Ready Signal ]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -204,7 +170,7 @@
 					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
 				</Var>
 			</Vars>
-			<Vars VarGrpType="2">
+			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
 				<Var>
 					<Name>MAIN.fbTraceTekModbus.fbModbusMaster.OutData</Name>
@@ -212,9 +178,7 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosEnable</Name>
-					<Comment>
-						<![CDATA[ Amphos Override Relay ]]>
-					</Comment>
+					<Comment><![CDATA[ Amphos Override Relay ]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -223,23 +187,17 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosRelayOPEN</Name>
-					<Comment>
-						<![CDATA[ Labjack IO - Amphos CMD Shutter Open]]>
-					</Comment>
+					<Comment><![CDATA[ Labjack IO - Amphos CMD Shutter Open]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_IO.bAmphosCLOSE</Name>
-					<Comment>
-						<![CDATA[ Labjack IO - Amphos CMD Shutter Close]]>
-					</Comment>
+					<Name>GVL_IO.bAmphosRelayCLOSE</Name>
+					<Comment><![CDATA[ Labjack IO - Amphos CMD Shutter Close]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bCarbideShutterEnable</Name>
-					<Comment>
-						<![CDATA[ Carbide Shutter Enable Relay]]>
-					</Comment>
+					<Comment><![CDATA[ Carbide Shutter Enable Relay]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -248,19 +206,33 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.bDumpChillerRelay</Name>
-					<Comment>
-						<![CDATA[ Ch1 Dump chiller NC relay]]>
-					</Comment>
+					<Comment><![CDATA[ Ch1 Dump chiller NC relay]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bBaseplateChillerRelay</Name>
-					<Comment>
-						<![CDATA[ Ch2 Baseplate chiller NC relay]]>
-					</Comment>
+					<Comment><![CDATA[ Ch2 Baseplate chiller NC relay]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 			</Vars>
+			<UnrestoredVarLinks ImportTime="2024-06-13T09:28:04">
+				<OwnerA Name="OutputSrc" Prefix="TIPC^lcls_plc_lps_02^lcls_plc_lps_02 Instance" Type="2">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08">
+						<Link VarA="GVL_IO.bAmphosCLOSE" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 4^Output" AutoLink="true" Size="1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
+			<Contexts>
+				<Context>
+					<Id NeedCalleeCall="true">0</Id>
+					<Name>PlcTask</Name>
+					<ManualConfig>
+						<OTCID>#x02010030</OTCID>
+					</ManualConfig>
+					<Priority>20</Priority>
+					<CycleTime>10000000</CycleTime>
+				</Context>
+			</Contexts>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502001"/>
 			</TaskPouOids>
@@ -269,34 +241,34 @@
 	<Mappings>
 		<OwnerA Name="lcls_plc_lps_02 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_11">
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserReady" VarB="Channel 4^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosOn" VarB="Channel 1^Input"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosShutterStatus" VarB="Channel 2^Input"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bCarbideOn" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserReady" VarB="Channel 4^Input" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosOn" VarB="Channel 1^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosShutterStatus" VarB="Channel 2^Input" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bCarbideOn" VarB="Channel 3^Input" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1124_00_12">
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserACK" VarB="Channel 1^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserBusy" VarB="Channel 2^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserACK" VarB="Channel 1^Input" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bAmphosLaserBusy" VarB="Channel 2^Input" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL1259_00_04">
-				<Link VarA="PlcTask Inputs^GVL_IO.bBaseplateChillerFlow" VarB="MTI Inputs 10x Channel 8^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bDumpChillerFlow" VarB="MTI Inputs 10x Channel 7^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW01" VarB="MTI Inputs 10x Channel 3^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW02" VarB="MTI Inputs 10x Channel 4^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW03" VarB="MTI Inputs 10x Channel 5^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW04" VarB="MTI Inputs 10x Channel 6^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW05" VarB="MTI Inputs 10x Channel 1^Status^Input state" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.bTracetekAlarm" VarB="MTI Inputs 10x Channel 2^Status^Input state" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bBaseplateChillerFlow" VarB="MTI Inputs 10x Channel 8^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bDumpChillerFlow" VarB="MTI Inputs 10x Channel 7^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW01" VarB="MTI Inputs 10x Channel 3^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW02" VarB="MTI Inputs 10x Channel 4^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW03" VarB="MTI Inputs 10x Channel 5^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW04" VarB="MTI Inputs 10x Channel 6^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLoopTempSW05" VarB="MTI Inputs 10x Channel 1^Status^Input state" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bTracetekAlarm" VarB="MTI Inputs 10x Channel 2^Status^Input state" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_07">
-				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosEnable" VarB="Channel 3^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.bBaseplateChillerRelay" VarB="Channel 2^Output"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.bCarbideShutterEnable" VarB="Channel 4^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.bDumpChillerRelay" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosEnable" VarB="Channel 3^Output" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bBaseplateChillerRelay" VarB="Channel 2^Output" Size="1"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bCarbideShutterEnable" VarB="Channel 4^Output" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bDumpChillerRelay" VarB="Channel 1^Output" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL2624_00_08">
-				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosCLOSE" VarB="Channel 4^Output" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosRelayOPEN" VarB="Channel 1^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosRelayCLOSE" VarB="Channel 4^Output" AutoLink="true" Size="1"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bAmphosRelayOPEN" VarB="Channel 1^Output" AutoLink="true" Size="1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL3174_00_01">
 				<Link VarA="PlcTask Inputs^GVL_IO.nMultiPassVoltageRaw" VarB="AI Standard Channel 3^Value" AutoLink="true"/>
@@ -306,7 +278,7 @@
 				<Link VarA="PlcTask Inputs^GVL_IO.nAmphosVoltageRaw" VarB="AI Standard Channel 1^Value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-231B-R03-DRL-01 (EK1200)^EL6022_00_09">
-				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 0"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 0" Size="8"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 1" Size="8" OffsA="8"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 10" Size="8" OffsA="80"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 11" Size="8" OffsA="88"/>
@@ -330,7 +302,7 @@
 				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^D" VarB="COM Inputs Channel 2^Data In 9" Size="8" OffsA="72"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbTraceTekModbus.fbModbusMaster.InData^Status" VarB="COM Inputs Channel 2^Status"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^Ctrl" VarB="COM Outputs Channel 2^Ctrl"/>
-				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 0"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 0" Size="8"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 1" Size="8" OffsA="8"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 10" Size="8" OffsA="80"/>
 				<Link VarA="PlcTask Outputs^MAIN.fbTraceTekModbus.fbModbusMaster.OutData^D" VarB="COM Outputs Channel 2^Data Out 11" Size="8" OffsA="88"/>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="F_CarbideShutterEnable" Id="{6b2b070e-0295-4d27-a821-90f06b1926e9}" SpecialFunc="None">
     <Declaration><![CDATA[// Interlock logic for the Carbide Shutter
 FUNCTION F_CarbideShutterEnable : BOOL
@@ -7,8 +7,8 @@ VAR_INPUT
     fOpcpaVoltage : LREAL; // The voltage of the OPCPA
 	fAmphosVoltage : LREAL; // The Amphos voltage
 	fMPCVoltage : LREAL; // The Amphos voltage
-	AmphosShutter :BOOL; //Amphos Shutter Status
-	Mode :INT; // Mode of operation
+	AmphosLaserStatus :BOOL; //Amphos Shutter Status
+	Mode :E_Mode; // Mode of operation
 END_VAR
 VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors
@@ -25,9 +25,9 @@ END_VAR
 THEN
     F_CarbideShutterEnable := FALSE;
 ELSE
-	IF ( MODE = 1 AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND AmphosShutter)  //Per LPS Interlock Logic thruth table
+	IF ( MODE = E_Mode.OPCPA_Protection AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
 	OR
-	(MODE = 3 AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
+	(MODE = E_Mode.MPC_Protection AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
     THEN 
 	F_CarbideShutterEnable := FALSE;
 	ELSE

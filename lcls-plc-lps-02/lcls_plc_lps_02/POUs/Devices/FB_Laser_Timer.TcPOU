@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_Laser_Timer" Id="{10d24cd3-064e-4d38-98b9-17c672be707b}" SpecialFunc="None">
     <Declaration><![CDATA[// Monitors the lasers for under voltage events
 FUNCTION_BLOCK FB_Laser_Timer
