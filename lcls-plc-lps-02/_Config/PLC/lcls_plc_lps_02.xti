@@ -71,7 +71,7 @@
 		</DataType>
 	</DataTypes>
 	<Project GUID="{F0E27DBE-1025-4958-B61D-F62F8AC18112}" Name="lcls_plc_lps_02" PrjFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.plcproj" TmcFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{B88EFDF5-1EF5-469C-028F-69B27ABEB288}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{6FCFC3BC-B4B6-AE63-4D75-7721F9386914}">
 			<Name>lcls_plc_lps_02 Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -162,7 +162,7 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.bCarbideOn</Name>
-					<Comment><![CDATA[ Carbide RA Ready Signal ]]></Comment>
+					<Comment><![CDATA[ Carbide RA Ready Signal]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -178,7 +178,7 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.bAmphosEnable</Name>
-					<Comment><![CDATA[ Amphos Override Relay ]]></Comment>
+					<Comment><![CDATA[ Amphos Override Relay]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
