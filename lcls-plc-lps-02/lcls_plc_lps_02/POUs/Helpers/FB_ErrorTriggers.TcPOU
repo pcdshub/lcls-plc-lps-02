@@ -22,10 +22,10 @@ VAR
     fbLeakInsideRacksTrig : R_TRIG;
     fbAmphosBeamTrig : R_TRIG;
     fbOpcpaBeamTrig : R_TRIG;
-	fbMPCBeamTrig : R_TRIG;
+    fbMPCBeamTrig : R_TRIG;
     fbDumpChillerTrig : R_TRIG;
     fbBaseplateChillerTrig : R_TRIG;
-	
+
 END_VAR
 ]]></Declaration>
     <Implementation>

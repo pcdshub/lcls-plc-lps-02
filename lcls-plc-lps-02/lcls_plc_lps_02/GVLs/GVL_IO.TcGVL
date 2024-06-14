@@ -44,7 +44,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 1^Input'}
     bAmphosOn AT %I* : BOOL; //  Laser ON - LabJACK IO
 
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:LASER_READY
         io: i
         field: ZNAM "OFF"
@@ -52,35 +52,35 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 4^Input'}
     bAmphosLaserReady AT %I* : BOOL; //  Laser Ready - LabJACK IO
-	
-	{attribute 'pytmc' := '
+
+    {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:LASER_ACK
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
     '}
-	{attribute 'TcLinkTo' := 'TIIB[EL1124_00_12]^Channel 1^Input'}
+    {attribute 'TcLinkTo' := 'TIIB[EL1124_00_12]^Channel 1^Input'}
     bAmphosLaserACK AT %I* : BOOL; //  Laser Acknowledge - LabJACK IO
-	
-	{attribute 'pytmc' := '
+
+    {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:LASER_BUSY
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
     '}
-	{attribute 'TcLinkTo' := 'TIIB[EL1124_00_12]^Channel 2^Input'}
+    {attribute 'TcLinkTo' := 'TIIB[EL1124_00_12]^Channel 2^Input'}
     bAmphosLaserBusy AT %I* : BOOL; //  Laser Busy - LabJACK IO
-	
-	{attribute 'pytmc' := '
+
+    {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:SHUTTER_CMD
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"
     '}
-	bAmphosShutterCMD : BOOL ; // CMD to Amphos for Shutter Operation
-	
+    bAmphosShutterCMD : BOOL ; // CMD to Amphos for Shutter Operation
+
 // Amphos Enable
- 	{attribute 'pytmc' := '
+     {attribute 'pytmc' := '
         pv: @(BASE):LPS:AMPHOS:ENABLE
         io: i
         field: OSV NO_ALARM
@@ -89,7 +89,7 @@ VAR_GLOBAL
         field: ONAM ENABLED
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL2624_00_07]^Channel 3^Output'}
-    bAmphosEnable AT %Q* : BOOL; // Amphos Override Relay 
+    bAmphosEnable AT %Q* : BOOL; // Amphos Override Relay
 
 //LabJack IO Controls
     {attribute 'pytmc' := '
@@ -114,8 +114,8 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL2624_00_08]^Channel 1^Output'}
     bAmphosRelayOPEN AT %Q* : BOOL; // Labjack IO - Amphos CMD Shutter Open
-	
-	{attribute 'TcLinkTo' := 'TIIB[EL2624_00_08]^Channel 4^Output'}
+
+    {attribute 'TcLinkTo' := 'TIIB[EL2624_00_08]^Channel 4^Output'}
     bAmphosRelayCLOSE AT %Q* : BOOL; // Labjack IO - Amphos CMD Shutter Close
 
 //Carbide control
@@ -139,7 +139,7 @@ VAR_GLOBAL
         field: ONAM "ON"
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 3^Input'}
-    bCarbideOn AT %I* : BOOL; // Carbide RA Ready Signal 
+    bCarbideOn AT %I* : BOOL; // Carbide RA Ready Signal
 
 //Dump Chiller control
    {attribute 'pytmc' := '

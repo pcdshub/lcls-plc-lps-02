@@ -5,7 +5,7 @@
 FUNCTION F_DumpChillerEnable : BOOL
 VAR_INPUT
     //bMasterOverride : BOOL; //Master manual override control input
-	//Mode : E_mode;
+    //Mode : E_mode;
 END_VAR
 VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors

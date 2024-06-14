@@ -5,14 +5,14 @@
 FUNCTION F_AmphosEnable : BOOL
 VAR_INPUT
     fAmphosVoltage : LREAL; // The Amphos voltage
-	fOPCPAVoltage : LREAL; //OPCPA Voltage
+    fOPCPAVoltage : LREAL; //OPCPA Voltage
     AmphosStatus : BOOL; //Amphos Laser Status
-	Mode : E_Mode;
+    Mode : E_Mode;
 END_VAR
 VAR_IN_OUT CONSTANT
     stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
     stErrors : ST_ErrorStates; // Currently detected errors
-	stOPCPASetpoints : ST_LaserSetpoints; //OPCPA Setpoints
+    stOPCPASetpoints : ST_LaserSetpoints; //OPCPA Setpoints
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -20,18 +20,18 @@ END_VAR
 THEN
     F_AmphosEnable := FALSE;
 ELSE
-	IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)  //Per LPS Interlock Logic thruth table
-	OR
-	( MODE = E_Mode.OPCPA_Protection AND fOPCPAVoltage < stOPCPASetpoints.nMinVoltage)
-	OR
-	(MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)  //Per LPS Interlock Logic thruth table
     OR
-	(MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
-	THEN 
-	F_AmphosEnable := FALSE;
-	ELSE
-	F_AmphosEnable := TRUE;
-	END_IF
+    ( MODE = E_Mode.OPCPA_Protection AND fOPCPAVoltage < stOPCPASetpoints.nMinVoltage)
+    OR
+    (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    OR
+    (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    THEN
+    F_AmphosEnable := FALSE;
+    ELSE
+    F_AmphosEnable := TRUE;
+    END_IF
 END_IF
 
 ]]></ST>

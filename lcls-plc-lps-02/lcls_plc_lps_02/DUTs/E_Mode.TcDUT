@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE E_Mode :
 (
-	MASTER_Override :=1,
+    MASTER_Override :=1,
     OPCPA_Protection := 2,
     OPCPA_Override := 3,
     MPC_Protection := 4,

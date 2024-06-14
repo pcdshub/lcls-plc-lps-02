@@ -5,16 +5,16 @@
 FUNCTION F_CarbideShutterEnable : BOOL
 VAR_INPUT
     fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-	fAmphosVoltage : LREAL; // The Amphos voltage
-	fMPCVoltage : LREAL; // The Amphos voltage
-	AmphosLaserStatus :BOOL; //Amphos Shutter Status
-	Mode :E_Mode; // Mode of operation
+    fAmphosVoltage : LREAL; // The Amphos voltage
+    fMPCVoltage : LREAL; // The Amphos voltage
+    AmphosLaserStatus :BOOL; //Amphos Shutter Status
+    Mode :E_Mode; // Mode of operation
 END_VAR
 VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors
-	stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-	stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-	stMPCSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+    stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
+    stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+    stMPCSetpoints : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
 VAR
 END_VAR
@@ -25,14 +25,14 @@ END_VAR
 THEN
     F_CarbideShutterEnable := FALSE;
 ELSE
-	IF ( MODE = E_Mode.OPCPA_Protection AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-	OR
-	(MODE = E_Mode.MPC_Protection AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
-    THEN 
-	F_CarbideShutterEnable := FALSE;
-	ELSE
-	F_CarbideShutterEnable := TRUE;
-	END_IF   
+    IF ( MODE = E_Mode.OPCPA_Protection AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
+    OR
+    (MODE = E_Mode.MPC_Protection AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
+    THEN
+    F_CarbideShutterEnable := FALSE;
+    ELSE
+    F_CarbideShutterEnable := TRUE;
+    END_IF
 END_IF]]></ST>
     </Implementation>
   </POU>

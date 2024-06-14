@@ -23,9 +23,9 @@ VAR
     fbChillerLoop03 : FB_ChillerLoop; // Chiller loop 03
     {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP04'}
     fbChillerLoop04 : FB_ChillerLoop; // Chiller loop 04
-	{attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP05'}
+    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP05'}
     fbChillerLoop05 : FB_ChillerLoop; // Chiller loop 05
-	
+
     // Laser monitors
     {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS'}
     fbAmphos : FB_Laser_Timer; // Amphos laser
@@ -72,28 +72,28 @@ VAR
     '}
     bMasterOverride : BOOL; // Master override control for safety system.
 
-	(*
-	This is the map of the Mode Int to the defintion
-	MODE = 1 ==> OPCPA Protection
-	MODE = 2 ==> OPCPA Override
-	MODE = 3 ==> MPC Protection
-	MODE = 4 ==> MPC Override
-	MODE = 5 ==> Master Override
-	Any other mode is invalid.
-	We can later convert this MODE into an ENUM
-	*)
-	{attribute 'pytmc' := '
+    (*
+    This is the map of the Mode Int to the defintion
+    MODE = 1 ==> OPCPA Protection
+    MODE = 2 ==> OPCPA Override
+    MODE = 3 ==> MPC Protection
+    MODE = 4 ==> MPC Override
+    MODE = 5 ==> Master Override
+    Any other mode is invalid.
+    We can later convert this MODE into an ENUM
+    *)
+    {attribute 'pytmc' := '
         pv: @(BASE):LPS:MODE
         io: o
     '}
-	Mode_LPS : E_Mode; // Mode Definition 
-	
+    Mode_LPS : E_Mode; // Mode Definition
+
     {attribute 'pytmc' := 'pv: @(BASE):LPS:PLC'}
     fbDiag : FB_EcatDiag; // Ethercat diagnostics
-	
-	Shutter_State_ENUM : E_ShutterState; // Shutter State ENUM	
-	fb_ShutterControl : FB_ShutterControl; // Shutter control function block 
-	
+
+    Shutter_State_ENUM : E_ShutterState; // Shutter State ENUM
+    fb_ShutterControl : FB_ShutterControl; // Shutter control function block
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -192,49 +192,49 @@ run the interlock logic.
 *******************************************************************)
 //Enable Amphos if the interlock passes
 GVL_IO.bAmphosEnable := F_AmphosEnable(
-	fAmphosVoltage := fbAmphos.fVoltage,
-	fOPCPAVoltage := fbOPCPA.fVoltage,
-	AmphosStatus := GVL_IO.bAmphosOn,
-	Mode := Mode_LPS,
+    fAmphosVoltage := fbAmphos.fVoltage,
+    fOPCPAVoltage := fbOPCPA.fVoltage,
+    AmphosStatus := GVL_IO.bAmphosOn,
+    Mode := Mode_LPS,
     stAmphosSetpoints := GVL_Laser.stAmphosSP,
-	stOPCPASetpoints := GVL_Laser.stOpcpaSP,
+    stOPCPASetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors);
 
-//Enable Amphos shutter if interlock logic passes 
+//Enable Amphos shutter if interlock logic passes
 GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
-	fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
-	fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
-	AmphosStatus := GVL_IO.bAmphosShutterStatus, //Amphos Laser Shutter Status
+    fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
+    fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
+    AmphosStatus := GVL_IO.bAmphosShutterStatus, //Amphos Laser Shutter Status
     bLoopTempOverride01 := fbChillerLoop01.bOperatorOverride, // Whether the chiller loop error is overriden
     bLoopTempOverride02 := fbChillerLoop02.bOperatorOverride, // Whether the chiller loop error is overriden
     bLoopTempOverride03 := fbChillerLoop03.bOperatorOverride, // Whether the chiller loop error is overriden
     bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
-	bLoopTempOverride05 := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
-    Mode := Mode_LPS,     
-	stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
+    bLoopTempOverride05 := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
+    Mode := Mode_LPS,
+    stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
     stAmphosSetpoints := GVL_Laser.stAmphosSP
 );
 
-// Function block for Shutter Control to Amphos Software 
+// Function block for Shutter Control to Amphos Software
 fb_ShutterControl(
-	CMDShutterOPEN 	:= GVL_IO.bAmphosRelayOPEN,
-	CMDShutterCLOSE := GVL_IO.bAmphosRelayCLOSE,
-	LaserBusy		:= GVL_IO.bAmphosLaserBusy,
-	LaserAck 		:= GVL_IO.bAmphosLaserACK,
-	ShutterState	:= GVL_IO.bAmphosShutterStatus,); 
+    CMDShutterOPEN 	:= GVL_IO.bAmphosRelayOPEN,
+    CMDShutterCLOSE := GVL_IO.bAmphosRelayCLOSE,
+    LaserBusy		:= GVL_IO.bAmphosLaserBusy,
+    LaserAck 		:= GVL_IO.bAmphosLaserACK,
+    ShutterState	:= GVL_IO.bAmphosShutterStatus,);
 
 // Enable Carbide shutter if interlock logic passes *)
 GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
-	fOpcpaVoltage := fbOPCPA.fVoltage,
-	fAmphosVoltage := fbAmphos.fVoltage,
-	fMPCVoltage := fbMPC.fVoltage,
-	AmphosLaserStatus := GVL_IO.bAmphosOn,
-	Mode := Mode_LPS,
-	stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
+    fOpcpaVoltage := fbOPCPA.fVoltage,
+    fAmphosVoltage := fbAmphos.fVoltage,
+    fMPCVoltage := fbMPC.fVoltage,
+    AmphosLaserStatus := GVL_IO.bAmphosOn,
+    Mode := Mode_LPS,
+    stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
     stAmphosSetpoints := GVL_Laser.stAmphosSP,
-	stMPCSetpoints := GVL_Laser.stMPCSP    
+    stMPCSetpoints := GVL_Laser.stMPCSP
 );
 
 

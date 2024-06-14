@@ -6,20 +6,20 @@ FUNCTION F_AmphosShutterEnable : BOOL
 VAR_INPUT
     //bAmphosOn : BOOL; // Whether the amphos is on
     fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-	fAmphosVoltage : LREAL; // The Amphos voltage
-	AmphosStatus :BOOL; //Amphos Laser Shutter Status
+    fAmphosVoltage : LREAL; // The Amphos voltage
+    AmphosStatus :BOOL; //Amphos Laser Shutter Status
     bLoopTempOverride01 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride02 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
-	bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
+    bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
     Mode : E_Mode; // Mode of operation
 END_VAR
 
 VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors
     stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-	stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+    stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
 VAR
 END_VAR]]></Declaration>
@@ -31,22 +31,22 @@ END_VAR]]></Declaration>
         (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
         (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
         (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)OR
-		(NOT bLoopTempOverride05 AND stErrors.bChillerLoop05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
+        (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
     OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
     OR stErrors.bDumpChiller) // Close shutter if there is a Dump Chiller error
 THEN
     F_AmphosShutterEnable := FALSE;
 ELSE
-	IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage >= stAmphosSetpoints.nMinVoltage AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-	OR
-	(MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage >= stAmphosSetpoints.nMinVoltage AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
     OR
-	(MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
-	THEN 
-	F_AmphosShutterEnable := FALSE;
-	ELSE
-	F_AmphosShutterEnable := TRUE;
-	END_IF    
+    (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    OR
+    (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    THEN
+    F_AmphosShutterEnable := FALSE;
+    ELSE
+    F_AmphosShutterEnable := TRUE;
+    END_IF
 END_IF
 
 
