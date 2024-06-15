@@ -29,9 +29,9 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 1^Status^Input state'}
     bLoopTempSW05 AT %I* : BOOL; // Ch1 Loop 05 NC Temp switch
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 8^Status^Input state'}
-    bBaseplateChillerFlow AT %I* : BOOL; // Dump chiller NC flow sensor
+    bBaseplateChillerFlow AT %I* : BOOL; // Baseplate chiller NC flow sensor
     {attribute 'TcLinkTo' := 'TIIB[EL1259_00_04]^MTI Inputs 10x Channel 7^Status^Input state'}
-    bDumpChillerFlow AT %I* : BOOL; //Baseplate Chiller flow sensor
+    bDumpChillerFlow AT %I* : BOOL; //Dump Chiller flow sensor
 
 //LabJack IO connection Amphos controller TBD
 

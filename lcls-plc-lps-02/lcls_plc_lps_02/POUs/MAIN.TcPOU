@@ -52,7 +52,8 @@ VAR
     // Chillers
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
     fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
-    {attribute 'pytmc' := '
+    
+	{attribute 'pytmc' := '
         pv: @(PREFIX):LPS:DUMP_CHILLER:RESET
         io: o
     '}
@@ -185,13 +186,13 @@ fbMPC(
     nVoltageRaw := GVL_IO.nMultiPassVoltageRaw,
     bAmphosOn := GVL_IO.bAmphosOn,
     stSetpoints := GVL_Laser.stOpcpaSP,
-    bError => stErrors.bOpcpaBeam,
+    bError => stErrors.bMPCBeam,
 	bMasterLatchReset := bMasterLatchReset
 );
 
 //Flow sensor monitor for the dump chiller
 fbDumpChiller(
-    bAmphosOn := GVL_IO.bAmphosOn,
+    //bAmphosOn := GVL_IO.bAmphosOn,
     bDumpChillerFlow := GVL_IO.bDumpChillerFlow,
     bError => stErrors.bDumpChiller,
 	bMasterLatchReset := bMasterLatchReset
@@ -340,7 +341,12 @@ ELSIF bBaseplateChillerReset THEN
     fbBaseplateChiller.Reset();
     fbErrorTriggers.ResetBaseplateChillerTrigger();
 END_IF
-]]></ST>
+
+(* Remove Master Latch Reset after one scan *)
+IF bMasterLatchReset AND bLatchStart THEN
+    bMasterLatchReset := FALSE;
+    bLatchStart := FALSE;
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

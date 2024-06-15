@@ -71,7 +71,7 @@
 		</DataType>
 	</DataTypes>
 	<Project GUID="{F0E27DBE-1025-4958-B61D-F62F8AC18112}" Name="lcls_plc_lps_02" PrjFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.plcproj" TmcFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{A94BBAF9-9D90-8BCE-F30E-AD6E97BCD2CD}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{6D623666-F766-5A66-625F-016BEC56E26A}">
 			<Name>lcls_plc_lps_02 Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -127,12 +127,12 @@
 				</Var>
 				<Var>
 					<Name>GVL_IO.bBaseplateChillerFlow</Name>
-					<Comment><![CDATA[ Dump chiller NC flow sensor]]></Comment>
+					<Comment><![CDATA[ Baseplate chiller NC flow sensor]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bDumpChillerFlow</Name>
-					<Comment><![CDATA[Baseplate Chiller flow sensor]]></Comment>
+					<Comment><![CDATA[Dump Chiller flow sensor]]></Comment>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
