@@ -71,7 +71,7 @@
 		</DataType>
 	</DataTypes>
 	<Project GUID="{F0E27DBE-1025-4958-B61D-F62F8AC18112}" Name="lcls_plc_lps_02" PrjFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.plcproj" TmcFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{6FCFC3BC-B4B6-AE63-4D75-7721F9386914}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{A94BBAF9-9D90-8BCE-F30E-AD6E97BCD2CD}">
 			<Name>lcls_plc_lps_02 Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">

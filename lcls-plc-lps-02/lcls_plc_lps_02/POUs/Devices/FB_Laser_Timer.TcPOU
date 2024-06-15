@@ -7,6 +7,7 @@ VAR_INPUT
     nVoltageRaw : INT; // The raw signal collected from the ADC
     bAmphosOn : BOOL; // Whether the amphos is turned on
     Timer : TON ; //Timer for reset
+	bMasterLatchReset : BOOL; //Master latched error reset
 END_VAR
 VAR_IN_OUT CONSTANT
     stSetpoints : ST_LaserSetpoints; // Setpoints for the laser
@@ -22,7 +23,15 @@ VAR_OUTPUT
         field: EGU Volts
     '}
     fVoltage : LREAL; // Voltage calculated from the raw ADC input
-    {attribute 'pytmc' := '
+    
+	{attribute 'pytmc' := '
+        pv: SCALED_PWR
+        io: i
+        field: EGU Watts
+    '}
+    fPower : LREAL; 
+	
+	{attribute 'pytmc' := '
         pv: ERROR
         io: i
         field: OSV MAJOR
@@ -31,6 +40,7 @@ VAR_OUTPUT
         field: ONAM ERROR
     '}
     bError : BOOL; // Whether an error was detected. Latches until reset
+	bBelowNominal : BOOL; //fVoltage is below the nominal setpoint
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -42,6 +52,8 @@ fVoltage := F_Scale(
     fScaleDataLowerOffLimit := GVL_EL3174.fScaleLowerLimit,
     fScaleDataUpperOffLimit := GVL_EL3174.fScaleUpperLimit);
 
+fPower := fVoltage; //Value is scaled by user set ASLO and AOFF fields (for display only)	
+
 (* Set error if amphos is below nominal voltage *)
 IF  (bAmphosOn AND fVoltage < stSetpoints.nMinNominalVoltage) THEN
     Timer(IN:=TRUE, PT:=T#1S); //1 SEC Timer
@@ -51,6 +63,15 @@ IF  (bAmphosOn AND fVoltage < stSetpoints.nMinNominalVoltage) THEN
     END_IF;
 ELSE
     Timer(IN:=FALSE);
+END_IF
+
+IF bAmphosOn AND (fVoltage < stSetpoints.nMinNominalVoltage) THEN
+    bBelowNominal := TRUE;
+END_IF
+
+IF bMasterLatchReset THEN
+    bBelowNominal := FALSE;
+    bError := FALSE;
 END_IF]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{4d0d047c-855b-465e-b61b-8ddd3d445dcf}">
