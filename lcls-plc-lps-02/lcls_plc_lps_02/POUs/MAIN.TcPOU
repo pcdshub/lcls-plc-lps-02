@@ -30,7 +30,7 @@ VAR
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:AMPHOS'}
     fbAmphos : FB_Laser_Timer; // Amphos laser
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:RESET
+        pv: @(PREFIX):LPS:AMPHOS:RESET
         io: o
     '}
     bAmphosReset : BOOL; // Amphos laser error unlatch flag
@@ -268,12 +268,14 @@ GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
 (* Enable Dump chiller if interlock logic passes *)
 GVL_IO.bDumpChillerRelay := F_DumpChillerEnable(
     stErrors := stErrors,
+	Mode := Mode_LPS
     //bMasterOverride := bMasterOverride
 );
 
 (* Enable Baseplate chiller if interlock logic passes *)
 GVL_IO.bBaseplateChillerRelay := F_BaseplateChillerEnable(
     stErrors := stErrors,
+	Mode := Mode_LPS
     //bMasterOverride := bMasterOverride
 );
 
