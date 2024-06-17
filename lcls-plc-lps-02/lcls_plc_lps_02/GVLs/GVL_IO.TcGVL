@@ -133,7 +133,7 @@ VAR_GLOBAL
 
     (* Slot11 EL1124 *)
     {attribute 'pytmc' := '
-        pv: @(PREFIX):LPS:OPCPA:POWER_STATE
+        pv: @(PREFIX):LPS:MPC:POWER_STATE
         io: i
         field: ZNAM "OFF"
         field: ONAM "ON"

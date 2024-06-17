@@ -42,13 +42,13 @@ VAR
     '}
     bOpcpaReset : BOOL; // OPCPA laser error unlatch flag
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:MPC'}
-    fbMPC : FB_Laser_Timer; // MultiPass Cell
+    fbMPC : FB_Laser_Timer_MPC; // MultiPass Cell
     {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:MPC:RESET
         io: o
     '}
     bMPCReset : BOOL; // MPC laser error unlatch flag
-
+	
     // Chillers
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
     fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
@@ -162,6 +162,12 @@ fbChillerLoop04(
     bError => stErrors.bChillerLoop04
 );
 
+(* Monitors for error events on chiller loop 5 *)
+fbChillerLoop05(
+    bLoopTempSW := GVL_IO.bLoopTempSW05,
+    bError => stErrors.bChillerLoop05
+);
+
 
 (* Monitors the Amphos laser *)
 fbAmphos(
@@ -184,8 +190,8 @@ fbOpcpa(
 (* Monitors the MPC laser *)
 fbMPC(
     nVoltageRaw := GVL_IO.nMultiPassVoltageRaw,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_Laser.stOpcpaSP,
+    bCarbideOn := GVL_IO.bCarbideOn,
+    stSetpoints := GVL_Laser.stMPCSP,
     bError => stErrors.bMPCBeam,
 	bMasterLatchReset := bMasterLatchReset
 );
