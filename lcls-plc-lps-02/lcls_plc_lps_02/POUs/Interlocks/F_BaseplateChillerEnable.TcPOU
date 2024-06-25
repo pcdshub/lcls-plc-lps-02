@@ -15,12 +15,15 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF (stErrors.bHardwareFailure // Disable baseplate chiller if there is a hardware failure
-   OR stErrors.bLeakUnderTable) // Disable baseplate chiller if there is a leak under the table
-   OR ( NOT (MODE = E_Mode.MASTER_Override))
+   OR stErrors.bLeakUnderTable) // Disable baseplate chiller if there is a leak under the table   
 THEN
     F_BaseplateChillerEnable := FALSE;
-ELSE 
+ELSIF
+	(MODE = E_Mode.MASTER_Override)
+	THEN 
 	F_BaseplateChillerEnable := TRUE;	
+ELSE
+	F_BaseplateChillerEnable := TRUE;
 END_IF
 
 ]]></ST>

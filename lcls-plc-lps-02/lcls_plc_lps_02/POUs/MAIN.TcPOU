@@ -75,11 +75,11 @@ VAR
 
     (*
     This is the map of the Mode Int to the defintion
-    MODE = 1 ==> OPCPA Protection
-    MODE = 2 ==> OPCPA Override
-    MODE = 3 ==> MPC Protection
-    MODE = 4 ==> MPC Override
-    MODE = 5 ==> Master Override
+    MODE = 1 ==> Master Override
+    MODE = 2 ==> OPCPA Protection
+    MODE = 3 ==> OPCPA Override
+    MODE = 4 ==> MPC Protection
+    MODE = 5 ==> MPC Override
     Any other mode is invalid.
     We can later convert this MODE into an ENUM
     *)

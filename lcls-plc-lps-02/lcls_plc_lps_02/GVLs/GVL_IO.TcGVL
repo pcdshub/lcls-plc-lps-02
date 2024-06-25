@@ -100,7 +100,7 @@ VAR_GLOBAL
         field: ZNAM DISABLED
         field: ONAM ENABLED
     '}
-    {attribute 'TcLinkTo' := 'TIIB[[EL1124_00_11]^Channel 2^Input'}
+    {attribute 'TcLinkTo' := 'TIIB[EL1124_00_11]^Channel 2^Input'}
     bAmphosShutterStatus AT %I* : BOOL; // EL1124_02 - Ch2 Labjack IO Amphos Shutter Status
     bAmphosShutterEnableManualOperation AT %Q* : BOOL := TRUE;
 
