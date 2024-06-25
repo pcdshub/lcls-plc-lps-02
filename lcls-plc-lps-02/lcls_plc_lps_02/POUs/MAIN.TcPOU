@@ -35,7 +35,7 @@ VAR
     '}
     bAmphosReset : BOOL; // Amphos laser error unlatch flag
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:OPCPA'}
-    fbOpcpa : FB_Laser_Timer; // OPCPA laser
+    fbOpcpa : FB_Laser_Timer_MPC; // OPCPA laser
     {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:OPCPA:RESET
         io: o
@@ -175,13 +175,13 @@ fbAmphos(
     bAmphosOn := GVL_IO.bAmphosOn,
     stSetpoints := GVL_Laser.stAmphosSP,
     bError => stErrors.bAmphosBeam,
-	bMasterLatchReset := bMasterLatchReset
+	//bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the OPCPA laser *)
 fbOpcpa(
     nVoltageRaw := GVL_IO.nOpcpaVoltageRaw,
-    bAmphosOn := GVL_IO.bAmphosOn,
+    bCarbideOn := GVL_IO.bCarbideOn,
     stSetpoints := GVL_Laser.stOpcpaSP,
     bError => stErrors.bOpcpaBeam,
 	bMasterLatchReset := bMasterLatchReset

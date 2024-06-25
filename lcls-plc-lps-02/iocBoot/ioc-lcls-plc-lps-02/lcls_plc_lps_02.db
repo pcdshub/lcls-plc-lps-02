@@ -123,7 +123,7 @@ record(bi, "$(PREFIX):LPS:BASEPLATE_CHILLER_RELAY:ENABLE_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "$(PREFIX):LPS:OPCPA:POWER_STATE_RBV") {
+record(bi, "$(PREFIX):LPS:MPC:POWER_STATE_RBV") {
   field(DESC, "GVL_IO.bCarbideOn")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -822,7 +822,7 @@ record(mbbo, "$(PREFIX):LPS:MODE") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):LPS:AMPHOS:RESET_RBV") {
+record(bi, "$(PREFIX):LPS:AMPHOS:RESET_RBV") {
   field(DESC, "MAIN.bAmphosReset")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -835,7 +835,7 @@ record(bi, "$(BASE):LPS:AMPHOS:RESET_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "$(BASE):LPS:AMPHOS:RESET") {
+record(bo, "$(PREFIX):LPS:AMPHOS:RESET") {
   field(DESC, "MAIN.bAmphosReset")
   field(DTYP, "asynInt32")
   field(UDFS, "0")
@@ -942,6 +942,30 @@ record(bo, "$(PREFIX):LPS:MPC:RESET") {
   info(archive, "VAL")
 }
 
+record(bi, "$(PREFIX):LPS:MASTER_LATCH_RESET_RBV") {
+  field(DESC, "MAIN.bMasterLatchReset")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.bMasterLatchReset?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "$(PREFIX):LPS:MASTER_LATCH_RESET") {
+  field(DESC, "MAIN.bMasterLatchReset")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/MAIN.bMasterLatchReset=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
 record(bi, "$(PREFIX):LPS:MASTER_OVERRIDE_RBV") {
   field(DESC, "MAIN.bMasterOverride")
   field(SCAN, "I/O Intr")
@@ -1002,6 +1026,19 @@ record(bi, "$(PREFIX):LPS:AMPHOS:ERROR_RBV") {
   field(ZNAM, "OK")
   field(ONAM, "ERROR")
   info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "$(PREFIX):LPS:AMPHOS:SCALED_PWR_RBV") {
+  field(DESC, "MAIN.fbAmphos.fPower")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbAmphos.fPower?")
+  field(PREC, "3")
+  field(EGU, "Watts")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
   info(archive, "VAL")
 }
 
@@ -2396,6 +2433,19 @@ record(bi, "$(PREFIX):LPS:MPC:ERROR_RBV") {
   info(archive, "VAL")
 }
 
+record(ai, "$(PREFIX):LPS:MPC:SCALED_PWR_RBV") {
+  field(DESC, "MAIN.fbMPC.fPower")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbMPC.fPower?")
+  field(PREC, "3")
+  field(EGU, "Watts")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
 record(ai, "$(PREFIX):LPS:MPC:VOLTAGE_RBV") {
   field(DESC, "MAIN.fbMPC.fVoltage")
   field(SCAN, "I/O Intr")
@@ -2425,6 +2475,19 @@ record(bi, "$(PREFIX):LPS:OPCPA:ERROR_RBV") {
   field(ZNAM, "OK")
   field(ONAM, "ERROR")
   info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "$(PREFIX):LPS:OPCPA:SCALED_PWR_RBV") {
+  field(DESC, "MAIN.fbOpcpa.fPower")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbOpcpa.fPower?")
+  field(PREC, "3")
+  field(EGU, "Watts")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
   info(archive, "VAL")
 }
 
