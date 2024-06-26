@@ -57,8 +57,8 @@ fPower := fVoltage; //Value is scaled by user set ASLO and AOFF fields (for disp
 (* Set error if amphos is below nominal voltage *)
 IF  (bCarbideOn AND fVoltage < stSetpoints.nMinVoltage) THEN
     Timer(IN:=TRUE, PT:=T#1S); //1 SEC Timer
-    IF Timer.Q THEN
-            bError := TRUE;
+	bError := TRUE;
+    IF Timer.Q THEN            
             Timer(IN:=FALSE);   // Reset Timer
     END_IF;
 ELSE

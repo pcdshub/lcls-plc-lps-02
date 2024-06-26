@@ -48,7 +48,11 @@ VAR
         io: o
     '}
     bMPCReset : BOOL; // MPC laser error unlatch flag
-	
+	{attribute 'pytmc' := '
+        pv: @(PREFIX):LPS:MPC_MODE:RESET
+        io: o
+    '}	
+	bAmphosEnable_MPC : FB_Amphos_Enable; // Latch for Amphos enable in MPC mode
     // Chillers
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
     fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
@@ -175,7 +179,7 @@ fbAmphos(
     bAmphosOn := GVL_IO.bAmphosOn,
     stSetpoints := GVL_Laser.stAmphosSP,
     bError => stErrors.bAmphosBeam,
-	//bMasterLatchReset := bMasterLatchReset
+	bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the OPCPA laser *)
@@ -211,6 +215,16 @@ fbBaseplateChiller(
 	bMasterLatchReset := bMasterLatchReset
 );
 
+// Latch for Amphos Enable in MPC mode
+bAmphosEnable_MPC(
+	bMasterLatchReset := bMasterLatchReset,
+	Mode := Mode_LPS,
+	fAmphosVoltage := fbAmphos.fVoltage,
+	bError => stErrors.bAmphosRelay,
+	stAmphosSetpoints := GVL_Laser.stAmphosSP,
+    stErrors := stErrors );
+	
+
 (*******************************************************************
 Now that each of the input signals have been checked and errors stored,
 run the interlock logic.
@@ -224,6 +238,8 @@ GVL_IO.bAmphosEnable := F_AmphosEnable(
     stAmphosSetpoints := GVL_Laser.stAmphosSP,
     stOPCPASetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors);
+
+// Amphos Enable Latch 
 
 //Enable Amphos shutter if interlock logic passes
 GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(

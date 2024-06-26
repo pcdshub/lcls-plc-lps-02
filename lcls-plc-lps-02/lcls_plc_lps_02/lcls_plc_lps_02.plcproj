@@ -77,6 +77,9 @@
     <Compile Include="POUs\Devices\FB_BaseplateChiller.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Devices\FB_Amphos_Enable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Devices\FB_ChillerLoop.TcPOU">
       <SubType>Code</SubType>
     </Compile>

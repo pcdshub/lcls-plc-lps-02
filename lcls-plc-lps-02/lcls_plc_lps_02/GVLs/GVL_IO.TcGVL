@@ -73,7 +73,7 @@ VAR_GLOBAL
 
     {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:AMPHOS:SHUTTER_CMD
-        io: i
+        io: io
         field: ZNAM "OFF"
         field: ONAM "ON"
     '}

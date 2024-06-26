@@ -93,6 +93,17 @@ record(bi, "$(PREFIX):LPS:AMPHOS:SHUTTER_CMD_RBV") {
   info(archive, "VAL")
 }
 
+record(bo, "$(PREFIX):LPS:AMPHOS:SHUTTER_CMD") {
+  field(DESC, "GVL_IO.bAmphosShutterCMD")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_IO.bAmphosShutterCMD=")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
 record(bi, "$(PREFIX):LPS:AMPHOS_SHUTTER:ENABLE_RBV") {
   field(DESC, "GVL_IO.bAmphosShutterStatus")
   field(SCAN, "I/O Intr")
@@ -819,6 +830,21 @@ record(mbbo, "$(PREFIX):LPS:MODE") {
   field(FRST, "MPC_Override")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/MAIN.Mode_LPS=")
   info(autosaveFields_pass0, "COSV DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV VAL ZRSV")
+  info(archive, "VAL")
+}
+
+record(bi, "$(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV") {
+  field(DESC, "MAIN.bAmphosEnable_MPC.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.bAmphosEnable_MPC.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
   info(archive, "VAL")
 }
 

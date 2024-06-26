@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <DUT Name="ST_ErrorStates" Id="{01fc80e0-e88b-4244-badd-6975c9c0b2a0}">
     <Declaration><![CDATA[// Error states that can occur in the program
 TYPE ST_ErrorStates :
@@ -40,6 +40,9 @@ STRUCT
 
     // Hardware Failure
     bHardwareFailure : BOOL; // A component of the EPS has failed
+	
+	//Amphos Relay
+	bAmphosRelay : BOOL; // Amphos Enable error
 
 END_STRUCT
 END_TYPE

@@ -9,6 +9,7 @@ VAR_INPUT
     AmphosStatus : BOOL; //Amphos Laser Status
     Mode : E_Mode;
 	//ShutterStatus : BOOL; //Shutter State from Amphos
+	
 END_VAR
 VAR_IN_OUT CONSTANT
     stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
@@ -21,13 +22,11 @@ END_VAR
 THEN
     F_AmphosEnable := FALSE;
 ELSE
-    IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)  //Per LPS Interlock Logic thruth table
+    IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
     OR
-    ( MODE = E_Mode.OPCPA_Protection AND fOPCPAVoltage < stOPCPASetpoints.nMinVoltage)
+    (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
     OR
-    (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
-    OR
-    (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage AND AmphosStatus)
+    (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
 	THEN
     F_AmphosEnable := FALSE;
     ELSE
