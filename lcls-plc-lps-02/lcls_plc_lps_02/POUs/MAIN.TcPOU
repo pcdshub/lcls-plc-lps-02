@@ -105,8 +105,8 @@ VAR
     '}
     bMasterLatchReset : BOOL; //Master release of latched error conditions
     bLatchStart : BOOL := FALSE; //Latch at start of loop.
-		
-	bAmphosShutterEnableInterlock : FB_AmphosShutterEnable; 		///Interlock bit for shutter command
+
+    bAmphosShutterEnableInterlock : FB_AmphosShutterEnable; 		///Interlock bit for shutter command
 
 END_VAR
 ]]></Declaration>
@@ -243,7 +243,7 @@ GVL_IO.bAmphosEnable := F_AmphosEnable(
 
 // Amphos Enable Latch
 bAmphosShutterEnableInterlock(
-	fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
+    fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
     fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
     AmphosStatus := GVL_IO.bAmphosOn, //Amphos Laser Shutter Status
     Mode := Mode_LPS,
