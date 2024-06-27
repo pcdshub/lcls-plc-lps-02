@@ -14,7 +14,7 @@ VAR_INPUT
     bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
     Mode : E_Mode; // Mode of operation
-	ShutterStatus : BOOL; //Shutter Status
+    ShutterStatus : BOOL; //Shutter Status
 END_VAR
 
 VAR_IN_OUT CONSTANT
@@ -28,7 +28,7 @@ END_VAR]]></Declaration>
       <ST><![CDATA[(*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
 // AmphosShutterEnable := True := OPEN SHUTTER
 // AmphosShutterEnable := FALSE := CLOSE SHUTTER
-The below logic follows the logic table 
+The below logic follows the logic table
 Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
 *)
 
@@ -54,13 +54,13 @@ ELSE
     THEN
     F_AmphosShutterEnable := FALSE;
     ELSIF
-	(MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND (NOT ShutterStatus)
-		THEN  F_AmphosShutterEnable := TRUE;
-	ELSIF (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND ShutterStatus
-		THEN F_AmphosShutterEnable := FALSE;
-	ELSE
-	F_AmphosShutterEnable := TRUE;
-	END_IF
+    (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND (NOT ShutterStatus)
+        THEN  F_AmphosShutterEnable := TRUE;
+    ELSIF (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND ShutterStatus
+        THEN F_AmphosShutterEnable := FALSE;
+    ELSE
+    F_AmphosShutterEnable := TRUE;
+    END_IF
 END_IF ]]></ST>
     </Implementation>
   </POU>

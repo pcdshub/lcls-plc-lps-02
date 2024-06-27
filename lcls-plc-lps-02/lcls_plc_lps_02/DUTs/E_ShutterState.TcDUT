@@ -8,12 +8,12 @@ TYPE E_ShutterState :
     INIT := 0 ,
     OPENREQ := 1,
     OPENACK := 2,
-	OPENTOGGLE := 3,
+    OPENTOGGLE := 3,
     OPENREADY:= 4,
     OPENED := 5,
     CLOSEREQ := 6,
     CLOSEACK := 7,
-	CLOSETOGGLE := 8,
+    CLOSETOGGLE := 8,
     CLOSEREADY := 9,
     CLOSED := 10
 );

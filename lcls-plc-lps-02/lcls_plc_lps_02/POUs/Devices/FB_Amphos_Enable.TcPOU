@@ -7,8 +7,8 @@ VAR_INPUT
     //bAmphosOn : BOOL; // Whether the amphos is turned on
     //bAmphosEnable : BOOL; // Signal from the flow sensor. Normally high.
     bMasterLatchReset : BOOL; //Master latched error reset
-	Mode : E_Mode; // Mode
-	fAmphosVoltage : LREAL; // The Amphos voltage
+    Mode : E_Mode; // Mode
+    fAmphosVoltage : LREAL; // The Amphos voltage
 END_VAR
 VAR_OUTPUT
     {attribute 'pytmc' := '
@@ -32,10 +32,10 @@ END_VAR
     <Implementation>
       <ST><![CDATA[(* Latch error if the baseplate chiller flow detects an error *)
 IF (MODE = E_Mode.MPC_Protection OR MODE = E_Mode.MPC_Override) AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage
-THEN 
-	bError := TRUE;
-ELSE 
-	bError := FALSE;
+THEN
+    bError := TRUE;
+ELSE
+    bError := FALSE;
 END_IF
 
 IF bMasterLatchReset THEN
@@ -43,7 +43,7 @@ IF bMasterLatchReset THEN
 END_IF
 
 
-	]]></ST>
+    ]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{53a6dd50-32a0-4dc1-8c53-dccc328279b4}">
       <Declaration><![CDATA[// Reset latched errors

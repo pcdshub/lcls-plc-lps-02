@@ -40,9 +40,9 @@ STRUCT
 
     // Hardware Failure
     bHardwareFailure : BOOL; // A component of the EPS has failed
-	
-	//Amphos Relay
-	bAmphosRelay : BOOL; // Amphos Enable error
+
+    //Amphos Relay
+    bAmphosRelay : BOOL; // Amphos Enable error
 
 END_STRUCT
 END_TYPE

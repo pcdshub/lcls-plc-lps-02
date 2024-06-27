@@ -8,8 +8,8 @@ VAR_INPUT
     fOPCPAVoltage : LREAL; //OPCPA Voltage
     AmphosStatus : BOOL; //Amphos Laser Status
     Mode : E_Mode;
-	//ShutterStatus : BOOL; //Shutter State from Amphos
-	
+    //ShutterStatus : BOOL; //Shutter State from Amphos
+
 END_VAR
 VAR_IN_OUT CONSTANT
     stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
@@ -32,10 +32,10 @@ ELSE
     (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
     OR
     (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-	THEN
+    THEN
     F_AmphosEnable := FALSE;
     ELSE
-	F_AmphosEnable := TRUE;
+    F_AmphosEnable := TRUE;
     END_IF
 END_IF
 

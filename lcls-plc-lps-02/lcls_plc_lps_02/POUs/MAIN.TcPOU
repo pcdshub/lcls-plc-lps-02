@@ -48,16 +48,16 @@ VAR
         io: o
     '}
     bMPCReset : BOOL; // MPC laser error unlatch flag
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:MPC_MODE:RESET
         io: o
-    '}	
-	bAmphosEnable_MPC : FB_Amphos_Enable; // Latch for Amphos enable in MPC mode
+    '}
+    bAmphosEnable_MPC : FB_Amphos_Enable; // Latch for Amphos enable in MPC mode
     // Chillers
     {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
     fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
-    
-	{attribute 'pytmc' := '
+
+    {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:DUMP_CHILLER:RESET
         io: o
     '}
@@ -99,13 +99,13 @@ VAR
     Shutter_State_ENUM : E_ShutterState; // Shutter State ENUM
     fb_ShutterControl : FB_ShutterControl; // Shutter control function block
 
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:MASTER_LATCH_RESET
         io: o
     '}
     bMasterLatchReset : BOOL; //Master release of latched error conditions
     bLatchStart : BOOL := FALSE; //Latch at start of loop.
-	
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -179,7 +179,7 @@ fbAmphos(
     bAmphosOn := GVL_IO.bAmphosOn,
     stSetpoints := GVL_Laser.stAmphosSP,
     bError => stErrors.bAmphosBeam,
-	bMasterLatchReset := bMasterLatchReset
+    bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the OPCPA laser *)
@@ -188,7 +188,7 @@ fbOpcpa(
     bCarbideOn := GVL_IO.bCarbideOn,
     stSetpoints := GVL_Laser.stOpcpaSP,
     bError => stErrors.bOpcpaBeam,
-	bMasterLatchReset := bMasterLatchReset
+    bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the MPC laser *)
@@ -197,7 +197,7 @@ fbMPC(
     bCarbideOn := GVL_IO.bCarbideOn,
     stSetpoints := GVL_Laser.stMPCSP,
     bError => stErrors.bMPCBeam,
-	bMasterLatchReset := bMasterLatchReset
+    bMasterLatchReset := bMasterLatchReset
 );
 
 //Flow sensor monitor for the dump chiller
@@ -205,25 +205,25 @@ fbDumpChiller(
     //bAmphosOn := GVL_IO.bAmphosOn,
     bDumpChillerFlow := GVL_IO.bDumpChillerFlow,
     bError => stErrors.bDumpChiller,
-	bMasterLatchReset := bMasterLatchReset
+    bMasterLatchReset := bMasterLatchReset
 );
 
 (* Flow sensor monitor for the baseplate chiller *)
 fbBaseplateChiller(
     bBaseplateChillerFlow := GVL_IO.bBaseplateChillerFlow,
     bError => stErrors.bBaseplateChiller,
-	bMasterLatchReset := bMasterLatchReset
+    bMasterLatchReset := bMasterLatchReset
 );
 
 // Latch for Amphos Enable in MPC mode
 bAmphosEnable_MPC(
-	bMasterLatchReset := bMasterLatchReset,
-	Mode := Mode_LPS,
-	fAmphosVoltage := fbAmphos.fVoltage,
-	bError => stErrors.bAmphosRelay,
-	stAmphosSetpoints := GVL_Laser.stAmphosSP,
+    bMasterLatchReset := bMasterLatchReset,
+    Mode := Mode_LPS,
+    fAmphosVoltage := fbAmphos.fVoltage,
+    bError => stErrors.bAmphosRelay,
+    stAmphosSetpoints := GVL_Laser.stAmphosSP,
     stErrors := stErrors );
-	
+
 
 (*******************************************************************
 Now that each of the input signals have been checked and errors stored,
@@ -239,7 +239,7 @@ GVL_IO.bAmphosEnable := F_AmphosEnable(
     stOPCPASetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors);
 
-// Amphos Enable Latch 
+// Amphos Enable Latch
 
 //Enable Amphos shutter if interlock logic passes
 GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
@@ -252,7 +252,7 @@ GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
     bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
     bLoopTempOverride05 := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
     ShutterStatus := GVL_IO.bAmphosShutterStatus,
-	Mode := Mode_LPS,
+    Mode := Mode_LPS,
     stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
     stAmphosSetpoints := GVL_Laser.stAmphosSP
@@ -264,7 +264,7 @@ fb_ShutterControl(
     CMDShutterCLOSE := GVL_IO.bAmphosRelayCLOSE,
     LaserBusy		:= GVL_IO.bAmphosLaserBusy,
     LaserAck 		:= GVL_IO.bAmphosLaserACK,
-	LaserON			:= GVL_IO.bAmphosOn,
+    LaserON			:= GVL_IO.bAmphosOn,
     ShutterState	:= GVL_IO.bAmphosShutterStatus,);
 
 // Enable Carbide shutter if interlock logic passes *)
@@ -284,14 +284,14 @@ GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
 (* Enable Dump chiller if interlock logic passes *)
 GVL_IO.bDumpChillerRelay := F_DumpChillerEnable(
     stErrors := stErrors,
-	Mode := Mode_LPS
+    Mode := Mode_LPS
     //bMasterOverride := bMasterOverride
 );
 
 (* Enable Baseplate chiller if interlock logic passes *)
 GVL_IO.bBaseplateChillerRelay := F_BaseplateChillerEnable(
     stErrors := stErrors,
-	Mode := Mode_LPS
+    Mode := Mode_LPS
     //bMasterOverride := bMasterOverride
 );
 
