@@ -78,7 +78,15 @@ VAR_GLOBAL
         field: ONAM "ON"
     '}
     bAmphosShutterCMD : BOOL ; // CMD to Amphos for Shutter Operation
-
+	
+	{attribute 'pytmc' := '
+        pv: @(PREFIX):LPS:AMPHOS:SHUTTER_ENABLE
+        io: i
+        field: ZNAM "OFF"
+        field: ONAM "ON"
+    '}
+	bAmphosShutterEnable : BOOL; // Shutter Enable RBV
+	
 // Amphos Enable
      {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:AMPHOS:ENABLE

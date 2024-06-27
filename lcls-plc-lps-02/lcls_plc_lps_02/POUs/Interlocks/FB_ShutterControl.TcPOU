@@ -9,8 +9,11 @@ VAR_INPUT
     LaserAck : BOOL;				// Laser Acknowledge bit from Labjack IO
     ShutterState : BOOL;		  	// Shutter state from Labjack IO
 	LaserON : BOOL; 				// Laser ON state from Labjack 
-	Timer_OPENREQ : TON ; //Timer for reset
-	Timer_OPENTOG : TON; 
+	T_OPENREQ : TON ; 			//Timer for reset
+	T_OPENTOG : TON; 			// Timer for OPEN Toggle
+	T_CLOSEREQ : TON; 
+	T_CLOSETOG : TON;
+	Interlock_bit : BOOL; 			// From function block
 END_VAR
 VAR_OUTPUT
     State : E_ShutterState := 0; 	// ENUM States
@@ -20,11 +23,14 @@ END_VAR]]></Declaration>
 /// Logic will follow the following
 // GVL_IO.bAmphosShutterCMD := TRUE ( Request to OPEN Shutter)
 // GVL_IO.bAmphosShutterCMD := FALSE( Request to CLOSE Shutter)
+///// AMPHOS Shutter State Descriptions: 
+//////// TRUE : CLOSED
+/////// FALSE : OPEN
+
 
 CASE State OF
 
 E_ShutterState.INIT :
-    //IF GVL_IO.bAmphosShutterCMD = TRUE AND (ShutterState) AND (NOT LaserBusy) AND (CMDShutterCLOSE)
     GVL_IO.bAmphosRelayOPEN := TRUE;
     GVL_IO.bAmphosRelayCLOSE := TRUE;
     IF ShutterState
@@ -39,9 +45,9 @@ E_ShutterState.OPENREQ :
         THEN		
 		GVL_IO.bAmphosRelayOPEN := FALSE;
         GVL_IO.bAmphosRelayCLOSE := TRUE;  
-		Timer_OPENREQ(IN:=TRUE, PT:=T#1S);
-		IF Timer_OPENREQ.Q THEN            
-            Timer_OPENREQ(IN:=FALSE);   // Reset Timer
+		T_OPENREQ(IN:=TRUE, PT:=T#1S);
+		IF T_OPENREQ.Q THEN            
+            T_OPENREQ(IN:=FALSE);   // Reset Timer
 			State := E_ShutterState.OPENTOGGLE; 
     	END_IF;       
     END_IF
@@ -51,9 +57,9 @@ E_ShutterState.OPENTOGGLE :
 		THEN
 		GVL_IO.bAmphosRelayCLOSE := TRUE;
         GVL_IO.bAmphosRelayOPEN := TRUE;
-		Timer_OPENTOG(IN:=TRUE, PT:=T#1S);
-		IF Timer_OPENTOG.Q THEN            
-            Timer_OPENTOG(IN:=FALSE);   // Reset Timer
+		T_OPENTOG(IN:=TRUE, PT:=T#1S);
+		IF T_OPENTOG.Q THEN            
+            T_OPENTOG(IN:=FALSE);   // Reset Timer
 			State := E_ShutterState.OPENACK; 
     	END_IF; 		
 	END_IF
@@ -78,9 +84,13 @@ E_ShutterState.OPENED :
 E_ShutterState.CLOSEREQ :
     IF GVL_IO.bAmphosShutterCMD = FALSE AND (NOT ShutterState)AND (NOT LaserON) AND (LaserBusy)
         THEN
-        State := E_ShutterState.CLOSETOGGLE;
         GVL_IO.bAmphosRelayCLOSE := FALSE;
         GVL_IO.bAmphosRelayOPEN := TRUE;
+		T_CLOSEREQ(IN:=TRUE, PT:=T#1S);
+		IF T_CLOSEREQ.Q THEN            
+            T_CLOSEREQ(IN:=FALSE);   // Reset Timer
+			State := E_ShutterState.CLOSETOGGLE; 
+    	END_IF;       
     END_IF
 
 E_ShutterState.CLOSETOGGLE :
@@ -88,7 +98,11 @@ E_ShutterState.CLOSETOGGLE :
 		THEN
 		GVL_IO.bAmphosRelayCLOSE := TRUE;
         GVL_IO.bAmphosRelayOPEN := TRUE;
-		State := E_ShutterState.CLOSEACK;
+		T_CLOSETOG(IN:=TRUE, PT:=T#1S);
+		IF T_CLOSETOG.Q THEN            
+            T_CLOSETOG(IN:=FALSE);   // Reset Timer
+			State := E_ShutterState.CLOSEACK; 
+    	END_IF; 				
 	END_IF
 
 E_ShutterState.CLOSEACK :

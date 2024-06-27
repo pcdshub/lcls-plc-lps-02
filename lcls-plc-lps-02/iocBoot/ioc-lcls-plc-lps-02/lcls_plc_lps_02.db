@@ -104,6 +104,19 @@ record(bo, "$(PREFIX):LPS:AMPHOS:SHUTTER_CMD") {
   info(archive, "VAL")
 }
 
+record(bi, "$(PREFIX):LPS:AMPHOS:SHUTTER_ENABLE_RBV") {
+  field(DESC, "GVL_IO.bAmphosShutterEnable")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_IO.bAmphosShutterEnable?")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
 record(bi, "$(PREFIX):LPS:AMPHOS_SHUTTER:ENABLE_RBV") {
   field(DESC, "GVL_IO.bAmphosShutterStatus")
   field(SCAN, "I/O Intr")
