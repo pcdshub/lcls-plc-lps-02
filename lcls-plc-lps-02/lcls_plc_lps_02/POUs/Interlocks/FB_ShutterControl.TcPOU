@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ShutterControl" Id="{613b3e11-f29b-429d-a5f5-594fa349ee9b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ShutterControl
+VAR_INPUT
+    CMDShutterOPEN : BOOL; 			// CMD Shutter OPEN Relay state current state from EL2624 Relay
+    CMDShutterCLOSE : BOOL; 		// CMD Shutter CLOSE Relay state current state from EL2624 Relay
+    LaserBusy : BOOL;				// Laser Busy bit from Labjack IO
+    LaserAck : BOOL;				// Laser Acknowledge bit from Labjack IO
+    ShutterState : BOOL;		  	// Shutter state from Labjack IO
+    LaserON : BOOL; 				// Laser ON state from Labjack
+    T_OPENREQ : TON ; 			//Timer for reset
+    T_OPENTOG : TON; 			// Timer for OPEN Toggle
+    T_CLOSEREQ : TON;
+    T_CLOSETOG : TON;
+    Interlock_bit : BOOL; 			// From function block
+END_VAR
+VAR_OUTPUT
+    State : E_ShutterState := 0; 	// ENUM States
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[/// Function to assess CMD shutter state to Amphos
+/// Logic will follow the following
+// GVL_IO.bAmphosShutterCMD := TRUE ( Request to OPEN Shutter)
+// GVL_IO.bAmphosShutterCMD := FALSE( Request to CLOSE Shutter)
+///// AMPHOS Shutter State Descriptions:
+//////// TRUE : CLOSED
+/////// FALSE : OPEN
+
+
+CASE State OF
+
+E_ShutterState.INIT :
+    GVL_IO.bAmphosRelayOPEN := TRUE;
+    GVL_IO.bAmphosRelayCLOSE := TRUE;
+    IF ShutterState
+    THEN
+        State := E_ShutterState.CLOSED;
+        ELSE
+        State := E_ShutterState.OPENED;
+    END_IF
+
+E_ShutterState.OPENREQ :
+    IF GVL_IO.bAmphosShutterCMD = TRUE AND ShutterState AND LaserON AND (NOT LaserBusy)
+        THEN
+        GVL_IO.bAmphosRelayOPEN := FALSE;
+        GVL_IO.bAmphosRelayCLOSE := TRUE;
+        T_OPENREQ(IN:=TRUE, PT:=T#1S);
+        IF T_OPENREQ.Q THEN
+            T_OPENREQ(IN:=FALSE);   // Reset Timer
+            State := E_ShutterState.OPENTOGGLE;
+        END_IF;
+    END_IF
+
+E_ShutterState.OPENTOGGLE :
+    IF GVL_IO.bAmphosShutterCMD = TRUE AND ShutterState
+        THEN
+        GVL_IO.bAmphosRelayCLOSE := TRUE;
+        GVL_IO.bAmphosRelayOPEN := TRUE;
+        T_OPENTOG(IN:=TRUE, PT:=T#1S);
+        IF T_OPENTOG.Q THEN
+            T_OPENTOG(IN:=FALSE);   // Reset Timer
+            State := E_ShutterState.OPENACK;
+        END_IF;
+    END_IF
+
+E_ShutterState.OPENACK :
+    IF GVL_IO.bAmphosShutterCMD = TRUE AND LaserAck
+    THEN
+        State := E_ShutterState.OPENREADY;
+    END_IF
+
+E_ShutterState.OPENREADY :
+    IF GVL_IO.bAmphosShutterCMD = TRUE AND (NOT LaserBusy) AND (NOT LaserAck)
+        THEN
+        State := E_ShutterState.OPENED;
+    END_IF
+
+E_ShutterState.OPENED :
+    IF GVL_IO.bAmphosShutterCMD = FALSE THEN
+        State := E_ShutterState.CLOSEREQ;
+    END_IF
+
+E_ShutterState.CLOSEREQ :
+    IF GVL_IO.bAmphosShutterCMD = FALSE AND (NOT ShutterState)AND (NOT LaserON) AND (LaserBusy)
+        THEN
+        GVL_IO.bAmphosRelayCLOSE := FALSE;
+        GVL_IO.bAmphosRelayOPEN := TRUE;
+        T_CLOSEREQ(IN:=TRUE, PT:=T#1S);
+        IF T_CLOSEREQ.Q THEN
+            T_CLOSEREQ(IN:=FALSE);   // Reset Timer
+            State := E_ShutterState.CLOSETOGGLE;
+        END_IF;
+    END_IF
+
+E_ShutterState.CLOSETOGGLE :
+    IF GVL_IO.bAmphosShutterCMD = FALSE AND (NOT ShutterState)
+        THEN
+        GVL_IO.bAmphosRelayCLOSE := TRUE;
+        GVL_IO.bAmphosRelayOPEN := TRUE;
+        T_CLOSETOG(IN:=TRUE, PT:=T#1S);
+        IF T_CLOSETOG.Q THEN
+            T_CLOSETOG(IN:=FALSE);   // Reset Timer
+            State := E_ShutterState.CLOSEACK;
+        END_IF;
+    END_IF
+
+E_ShutterState.CLOSEACK :
+    IF GVL_IO.bAmphosShutterCMD = FALSE AND (NOT LaserAck)
+        THEN
+        State := E_ShutterState.CLOSEREADY;
+    END_IF
+
+E_ShutterState.CLOSEREADY :
+    IF GVL_IO.bAmphosShutterCMD = FALSE AND LaserBusy AND LaserAck
+        THEN
+        State := E_ShutterState.CLOSED;
+    END_IF
+
+E_ShutterState.CLOSED :
+    IF GVL_IO.bAmphosShutterCMD = TRUE THEN
+    State := E_ShutterState.OPENREQ;
+    END_IF
+
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

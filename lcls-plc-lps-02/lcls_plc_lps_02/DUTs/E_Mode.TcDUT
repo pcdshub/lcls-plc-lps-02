@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_Mode" Id="{b192f05f-9cc3-4a3c-a548-a2ff9597acb8}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE E_Mode :
+(
+    MASTER_Override :=1,
+    OPCPA_Protection := 2,
+    OPCPA_Override := 3,
+    MPC_Protection := 4,
+    MPC_Override := 5
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

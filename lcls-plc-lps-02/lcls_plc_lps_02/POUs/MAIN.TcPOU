@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="MAIN" Id="{749355aa-8fe6-4a8e-b863-c3c2acf01034}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -7,81 +7,105 @@ VAR
     fbErrorTriggers : FB_ErrorTriggers; // Brand new errors this cycle
 
     // Leak Monitor
-    {attribute 'pytmc' := 'pv: @(BASE):TTSIM:DEV01'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):TTSIM:DEV01'}
     fbTraceTekModbus : FB_TraceTekModbus; // Modbus connection to TraceTek
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:LEAK:RESET'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:LEAK:RESET'}
     bLeakMonitorReset : BOOL; // Leak monitor reset flag
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:LEAK'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:LEAK'}
     fbLeakMonitor : FB_LeakMonitor; // Leak detection
 
     // Chiller Loop temperature monitors
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP01'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP01'}
     fbChillerLoop01 : FB_ChillerLoop; // Chiller loop 01
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP02'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP02'}
     fbChillerLoop02 : FB_ChillerLoop; // Chiller loop 02
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP03'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP03'}
     fbChillerLoop03 : FB_ChillerLoop; // Chiller loop 03
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:TEMP04'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP04'}
     fbChillerLoop04 : FB_ChillerLoop; // Chiller loop 04
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:TEMP05'}
+    fbChillerLoop05 : FB_ChillerLoop; // Chiller loop 05
 
     // Laser monitors
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:AMPHOS'}
     fbAmphos : FB_Laser_Timer; // Amphos laser
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:AMPHOS:RESET
+        pv: @(PREFIX):LPS:AMPHOS:RESET
         io: o
     '}
     bAmphosReset : BOOL; // Amphos laser error unlatch flag
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:OPCPA'}
-    fbOpcpa : FB_Laser_Timer; // OPCPA laser
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:OPCPA'}
+    fbOpcpa : FB_Laser_Timer_MPC; // OPCPA laser
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:OPCPA:RESET
+        pv: @(PREFIX):LPS:OPCPA:RESET
         io: o
     '}
     bOpcpaReset : BOOL; // OPCPA laser error unlatch flag
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:MPC'}
-    fbMPC : FB_Laser_Timer; // MultiPass Cell
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:MPC'}
+    fbMPC : FB_Laser_Timer_MPC; // MultiPass Cell
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:MPC:RESET
+        pv: @(PREFIX):LPS:MPC:RESET
         io: o
     '}
     bMPCReset : BOOL; // MPC laser error unlatch flag
-
-    // Chillers
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:DUMP_CHILLER'}
-    fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:DUMP_CHILLER:RESET
+        pv: @(PREFIX):LPS:MPC_MODE:RESET
+        io: o
+    '}
+    bAmphosEnable_MPC : FB_Amphos_Enable; // Latch for Amphos enable in MPC mode
+    // Chillers
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
+    fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
+
+    {attribute 'pytmc' := '
+        pv: @(PREFIX):LPS:DUMP_CHILLER:RESET
         io: o
     '}
     bDumpChillerReset : BOOL; // Dump chiller error unlatch flag
 
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:BASEPLATE_CHILLER'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:BASEPLATE_CHILLER'}
     fbBaseplateChiller : FB_BaseplateChiller; // Flow sensor monitor for the baseplate chiller
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:BASEPLATE_CHILLER:RESET
+        pv: @(PREFIX):LPS:BASEPLATE_CHILLER:RESET
         io: o
     '}
     bBaseplateChillerReset : BOOL; // Baseplate chiller error unlatch flag
 
-    (*
-    // Amphos MRCs
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS_MRC01'}
-    fbAmphosMRC01 : FB_AmphosMRC; // MRC monitor 01
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS_MRC02'}
-    fbAmphosMRC02 : FB_AmphosMRC; // MRC monitor 02
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:AMPHOS_MRC03'}
-    fbAmphosMRC03 : FB_AmphosMRC; // MRC monitor 03
-    *)
-
     {attribute 'pytmc' := '
-        pv: @(BASE):LPS:MASTER_OVERRIDE
+        pv: @(PREFIX):LPS:MASTER_OVERRIDE
         io: o
     '}
     bMasterOverride : BOOL; // Master override control for safety system.
 
-    {attribute 'pytmc' := 'pv: @(BASE):LPS:PLC'}
+    (*
+    This is the map of the Mode Int to the defintion
+    MODE = 1 ==> Master Override
+    MODE = 2 ==> OPCPA Protection
+    MODE = 3 ==> OPCPA Override
+    MODE = 4 ==> MPC Protection
+    MODE = 5 ==> MPC Override
+    Any other mode is invalid.
+    We can later convert this MODE into an ENUM
+    *)
+    {attribute 'pytmc' := '
+        pv: @(PREFIX):LPS:MODE
+        io: io
+    '}
+    Mode_LPS : E_Mode; // Mode Definition
+
+    {attribute 'pytmc' := 'pv: @(PREFIX):LPS:PLC'}
     fbDiag : FB_EcatDiag; // Ethercat diagnostics
+
+    Shutter_State_ENUM : E_ShutterState; // Shutter State ENUM
+    fb_ShutterControl : FB_ShutterControl; // Shutter control function block
+
+    {attribute 'pytmc' := '
+        pv: @(PREFIX):LPS:MASTER_LATCH_RESET
+        io: o
+    '}
+    bMasterLatchReset : BOOL; //Master release of latched error conditions
+    bLatchStart : BOOL := FALSE; //Latch at start of loop.
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -89,8 +113,14 @@ END_VAR
         Update diagnostics. Check for hardware failures
 *******************************************************************)
 (* Check PLC hardware for failures *)
-fbDiag(AMSNetId := GVL_PLC.AMSNetId);
-stErrors.bHardwareFailure := (fbDiag.bError OR fbTraceTekModbus.bError) AND NOT bMasterOverride;
+//fbDiag(AMSNetId := GVL_PLC.AMSNetId);
+//stErrors.bHardwareFailure := (fbDiag.bError OR fbTraceTekModbus.bError);
+stErrors.bHardwareFailure := FALSE;
+
+(* Ensure master latch is TRUE for at least one full cycle of the PLC logic *)
+IF bMasterLatchReset AND NOT bLatchStart THEN
+    bLatchStart := TRUE;
+END_IF
 
 (*******************************************************************
 Feed each device function block inputs from the PLC IO. Collect error states detected
@@ -102,7 +132,7 @@ fbLeakMonitor(
     nLocationResistance := fbTraceTekModbus.nLocationResistance,
     bAmphosOn := GVL_IO.bAmphosOn,
     bCarbideOn := GVL_IO.bCarbideOn,
-    bLeakDetected := GVL_IO.bLeakDetected,
+    bLeakDetected := GVL_IO.bTracetekAlarm,
     stBound := GVL_TraceTek.stLeakMonitorBoundaries,
     bLeakOpticalTableAmphosOn => stErrors.bLeakOpticalTableAmphosOn,
     bLeakOpticaltableNoLaser => stErrors.bLeakOpticalTableNoLaser,
@@ -110,6 +140,7 @@ fbLeakMonitor(
     bLeakUnderTable => stErrors.bLeakUnderTable,
     bLeakInsideRacks => stErrors.bLeakInsideRacks
 );
+
 
 (* Monitors for error events on chiller loop 1 *)
 fbChillerLoop01(
@@ -135,116 +166,133 @@ fbChillerLoop04(
     bError => stErrors.bChillerLoop04
 );
 
+(* Monitors for error events on chiller loop 5 *)
+fbChillerLoop05(
+    bLoopTempSW := GVL_IO.bLoopTempSW05,
+    bError => stErrors.bChillerLoop05
+);
+
+
 (* Monitors the Amphos laser *)
 fbAmphos(
     nVoltageRaw := GVL_IO.nAmphosVoltageRaw,
     bAmphosOn := GVL_IO.bAmphosOn,
     stSetpoints := GVL_Laser.stAmphosSP,
-    bError => stErrors.bAmphosBeam
+    bError => stErrors.bAmphosBeam,
+    bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the OPCPA laser *)
 fbOpcpa(
     nVoltageRaw := GVL_IO.nOpcpaVoltageRaw,
-    bAmphosOn := GVL_IO.bAmphosOn,
+    bCarbideOn := GVL_IO.bCarbideOn,
     stSetpoints := GVL_Laser.stOpcpaSP,
-    bError => stErrors.bOpcpaBeam
+    bError => stErrors.bOpcpaBeam,
+    bMasterLatchReset := bMasterLatchReset
 );
 
 (* Monitors the MPC laser *)
 fbMPC(
     nVoltageRaw := GVL_IO.nMultiPassVoltageRaw,
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stSetpoints := GVL_Laser.stOpcpaSP,
-    bError => stErrors.bOpcpaBeam
+    bCarbideOn := GVL_IO.bCarbideOn,
+    stSetpoints := GVL_Laser.stMPCSP,
+    bError => stErrors.bMPCBeam,
+    bMasterLatchReset := bMasterLatchReset
 );
 
 //Flow sensor monitor for the dump chiller
 fbDumpChiller(
-    bAmphosOn := GVL_IO.bAmphosOn,
+    //bAmphosOn := GVL_IO.bAmphosOn,
     bDumpChillerFlow := GVL_IO.bDumpChillerFlow,
-    bError => stErrors.bDumpChiller
+    bError => stErrors.bDumpChiller,
+    bMasterLatchReset := bMasterLatchReset
 );
 
 (* Flow sensor monitor for the baseplate chiller *)
 fbBaseplateChiller(
     bBaseplateChillerFlow := GVL_IO.bBaseplateChillerFlow,
-    bError => stErrors.bBaseplateChiller
+    bError => stErrors.bBaseplateChiller,
+    bMasterLatchReset := bMasterLatchReset
 );
 
-(*
-(* Detects problems with MRC 1 *)
-fbAmphosMRC01(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    bMRC := GVL_IO.bAmphosMRC01,
-    bError => stErrors.bAmphosMRC01
-);
+// Latch for Amphos Enable in MPC mode
+bAmphosEnable_MPC(
+    bMasterLatchReset := bMasterLatchReset,
+    Mode := Mode_LPS,
+    fAmphosVoltage := fbAmphos.fVoltage,
+    bError => stErrors.bAmphosRelay,
+    stAmphosSetpoints := GVL_Laser.stAmphosSP,
+    stErrors := stErrors );
 
-(* Detects problems with MRC 2 *)
-fbAmphosMRC02(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    bMRC := GVL_IO.bAmphosMRC02,
-    bError => stErrors.bAmphosMRC02
-);
-
-(* Detects problems with MRC 3 *)
-fbAmphosMRC03(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    bMRC := GVL_IO.bAmphosMRC03,
-    bError => stErrors.bAmphosMRC03
-);
-*)
 
 (*******************************************************************
 Now that each of the input signals have been checked and errors stored,
 run the interlock logic.
 *******************************************************************)
-(* Enable Amphos attenuator if interlock logic passes *)
-(*
-GVL_IO.bAmphosAttenuatorEnable := F_AmphosAttenuatorEnable(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    stErrors := stErrors
-);
-Deprecated Logic -- Not Currently Used*)
+//Enable Amphos if the interlock passes
+GVL_IO.bAmphosEnable := F_AmphosEnable(
+    fAmphosVoltage := fbAmphos.fVoltage,
+    fOPCPAVoltage := fbOPCPA.fVoltage,
+    AmphosStatus := GVL_IO.bAmphosOn,
+    Mode := Mode_LPS,
+    stAmphosSetpoints := GVL_Laser.stAmphosSP,
+    stOPCPASetpoints := GVL_Laser.stOpcpaSP,
+    stErrors := stErrors);
 
-(* Enable Amphos shutter if interlock logic passes *)
-GVL_IO.bAmphosShutterEnable := F_AmphosShutterEnable(
-    bAmphosOn := GVL_IO.bAmphosOn,
-    fOpcpaVoltage := fbOpcpa.fVoltage,
-    bLoopTempOverride01 := fbChillerLoop01.bOperatorOverride,
-    bLoopTempOverride02 := fbChillerLoop02.bOperatorOverride,
-    bLoopTempOverride03 := fbChillerLoop03.bOperatorOverride,
-    bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride,
+// Amphos Enable Latch
+
+//Enable Amphos shutter if interlock logic passes
+GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
+    fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
+    fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
+    AmphosStatus := GVL_IO.bAmphosOn, //Amphos Laser Shutter Status
+    bLoopTempOverride01 := fbChillerLoop01.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride02 := fbChillerLoop02.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride03 := fbChillerLoop03.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
+    bLoopTempOverride05 := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
+    ShutterStatus := GVL_IO.bAmphosShutterStatus,
+    Mode := Mode_LPS,
     stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
-    bMasterOverride := bMasterOverride
+    stAmphosSetpoints := GVL_Laser.stAmphosSP
 );
 
-(* Enable Carbide shutter if interlock logic passes *)
+// Function block for Shutter Control to Amphos Software
+fb_ShutterControl(
+    CMDShutterOPEN 	:= GVL_IO.bAmphosRelayOPEN,
+    CMDShutterCLOSE := GVL_IO.bAmphosRelayCLOSE,
+    LaserBusy		:= GVL_IO.bAmphosLaserBusy,
+    LaserAck 		:= GVL_IO.bAmphosLaserACK,
+    LaserON			:= GVL_IO.bAmphosOn,
+    ShutterState	:= GVL_IO.bAmphosShutterStatus,);
+
+// Enable Carbide shutter if interlock logic passes *)
 GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
+    fOpcpaVoltage := fbOPCPA.fVoltage,
+    fAmphosVoltage := fbAmphos.fVoltage,
+    fMPCVoltage := fbMPC.fVoltage,
+    AmphosLaserStatus := GVL_IO.bAmphosOn,
+    Mode := Mode_LPS,
+    stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
     stErrors := stErrors,
-    bMasterOverride := bMasterOverride
+    stAmphosSetpoints := GVL_Laser.stAmphosSP,
+    stMPCSetpoints := GVL_Laser.stMPCSP
 );
+
 
 (* Enable Dump chiller if interlock logic passes *)
 GVL_IO.bDumpChillerRelay := F_DumpChillerEnable(
     stErrors := stErrors,
-    bMasterOverride := bMasterOverride
+    Mode := Mode_LPS
+    //bMasterOverride := bMasterOverride
 );
 
 (* Enable Baseplate chiller if interlock logic passes *)
 GVL_IO.bBaseplateChillerRelay := F_BaseplateChillerEnable(
     stErrors := stErrors,
-    bMasterOverride := bMasterOverride
-);
-
-(* Enable Amphos if interlock logic passes *)
-GVL_IO.bAmphosRelay := F_AmphosEnable(
-    fAmphosVoltage := fbAmphos.fVoltage,
-    bEnabled := GVL_IO.bAmphosRelay,
-    stAmphosSetpoints := GVL_Laser.stAmphosSP,
-    stErrors := stErrors,
-    bMasterOverride := bMasterOverride
+    Mode := Mode_LPS
+    //bMasterOverride := bMasterOverride
 );
 
 (*******************************************************************
@@ -255,7 +303,7 @@ communicating with external hardware.
 handled later when diagnostics are run *)
 fbTraceTekModbus(
     nModbusSlaveAddress := GVL_TraceTek.nModbusSlaveAddress,
-    bLeakDetected := GVL_IO.bLeakDetected
+    bLeakDetected := GVL_IO.bTracetekAlarm
 );
 
 (*******************************************************************
@@ -263,8 +311,8 @@ As per the specification, the reset PV is not checked until after the EPS has ta
 Check the reset flags to see if they have been set and the errors can be unlatched.
 *******************************************************************)
 (* Check for rising-edge errors *)
-fbErrorTriggers(stErrors := stErrors, nLeakLocations := fbLeakMonitor.nLeakLocations);
-
+fbErrorTriggers(stErrors := stErrors);
+(*
 (* Check for new leak errors *)
 IF fbErrorTriggers.NewLeakError() THEN
     bLeakMonitorReset := FALSE; // If there is a new error turn off reset
@@ -273,7 +321,7 @@ ELSIF bLeakMonitorReset THEN
     fbLeakMonitor.Reset();
     fbErrorTriggers.ResetLeakTriggers();
 END_IF
-
+*)
 (* Check for new Amphos beam errors *)
 IF fbErrorTriggers.stNewErrors.bAmphosBeam THEN
     bAmphosReset := FALSE; // If there is a new error turn off reset
@@ -292,6 +340,15 @@ ELSIF bOpcpaReset THEN
     fbErrorTriggers.ResetOpcpaTrigger();
 END_IF
 
+(* Check for new MPC errors *)
+IF fbErrorTriggers.stNewErrors.bMPCBeam THEN
+     bMPCReset := FALSE; // If there is a new error turn off reset
+ELSIF bMPCReset THEN
+    // If there are no new errors and reset is on, reset the errors
+    fbMPC.Reset();
+    fbErrorTriggers.ResetMPCTrigger();
+END_IF
+
 (* Check for new Beam Dump chiller errors *)
 IF fbErrorTriggers.stNewErrors.bDumpChiller THEN
     bDumpChillerReset := FALSE; // If there is a new error turn off reset
@@ -308,7 +365,12 @@ ELSIF bBaseplateChillerReset THEN
     fbBaseplateChiller.Reset();
     fbErrorTriggers.ResetBaseplateChillerTrigger();
 END_IF
-]]></ST>
+
+(* Remove Master Latch Reset after one scan *)
+IF bMasterLatchReset AND bLatchStart THEN
+    bMasterLatchReset := FALSE;
+    bLatchStart := FALSE;
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_LeakMonitor" Id="{e43e7b93-d8f6-4d91-924b-e9e5b24db374}" SpecialFunc="None">
     <Declaration><![CDATA[// Detect leaks and leak locations
 FUNCTION_BLOCK FB_LeakMonitor
@@ -119,6 +119,12 @@ IF (bLeakDetected OR bLowResistance) THEN
     IF (stBound.nLMin6 <= nLocationResistance AND nLocationResistance < stBound.nLMax6) THEN
         bLeakInsideRacks := TRUE;
     END_IF
+    (* Temp code*)
+    IF bLeakDetected THEN
+         bLeakUnderTable := TRUE;
+         bLeakInsideRacks := TRUE;
+    END_IF
+
 END_IF
 ]]></ST>
     </Implementation>
