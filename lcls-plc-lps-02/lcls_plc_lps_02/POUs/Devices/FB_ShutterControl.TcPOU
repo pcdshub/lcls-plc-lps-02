@@ -43,7 +43,7 @@ E_ShutterState.INIT :
 E_ShutterState.OPENREQ :
 	GVL_IO.bAmphosRelayCLOSE := TRUE;
 	GVL_IO.bAmphosRelayOPEN := FALSE;
-	IF GVL_IO.bAmphosLaserACK THEN
+	IF GVL_IO.bAmphosLaserACK OR ShutterState THEN
 		State := E_ShutterState.OPENACK;
 	END_IF
 (*
@@ -102,7 +102,7 @@ E_ShutterState.OPENED :
 E_ShutterState.CLOSEREQ :
 	GVL_IO.bAmphosRelayCLOSE := FALSE;
 	GVL_IO.bAmphosRelayOPEN := TRUE;
-	IF GVL_IO.bAmphosLaserACK THEN
+	IF GVL_IO.bAmphosLaserACK OR (NOT ShutterState) THEN
 		State := E_ShutterState.CLOSEACK;
 	END_IF
 (*

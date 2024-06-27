@@ -85,7 +85,7 @@ VAR_GLOBAL
         field: ZNAM "OFF"
         field: ONAM "ON"
     '}
-    bAmphosShutterEnable : BOOL; // Shutter Enable RBV
+    bAmphosShutterEnable : BOOL; // Shutter Enable RBV from User
 
 // Amphos Enable
      {attribute 'pytmc' := '
