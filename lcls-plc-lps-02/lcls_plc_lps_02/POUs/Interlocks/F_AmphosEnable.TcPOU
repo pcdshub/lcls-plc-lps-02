@@ -23,7 +23,7 @@ As per logic table, the Amphos Enable is Disabled in OPCPA Protection, MPC Prote
 based on the Amphos PM voltage less than Minimum set user Voltage
 *)
 
-IF (stErrors.bHardwareFailure) OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
+IF (stErrors.bHardwareFailure) // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
 THEN
     F_AmphosEnable := FALSE;
 ELSE
@@ -35,7 +35,7 @@ ELSE
     THEN
     F_AmphosEnable := FALSE;
     ELSE
-    F_AmphosEnable := TRUE;
+	F_AmphosEnable := TRUE;
     END_IF
 END_IF
 
