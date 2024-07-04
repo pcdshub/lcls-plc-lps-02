@@ -71,11 +71,6 @@ IF bAmphosOn AND (fVoltage < stSetpoints.nMinNominalVoltage) THEN
     bBelowNominal := TRUE;
 END_IF
 
-IF (Mode = E_Mode.MPC_Override OR Mode = E_Mode.MPC_Protection) AND bError
-	THEN 
-	bError := TRUE;
-END_IF
-
 IF bMasterLatchReset THEN
     bBelowNominal := FALSE;
     bError := FALSE;

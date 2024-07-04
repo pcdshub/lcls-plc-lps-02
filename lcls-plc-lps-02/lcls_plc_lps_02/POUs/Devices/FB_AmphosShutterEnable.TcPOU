@@ -35,7 +35,7 @@ IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
         (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW04))OR
         (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW05)))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
    // OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
-    OR stErrors.bDumpChiller) OR (NOT GVL_IO.bDumpChillerFlow)OR (NOT GVL_IO.bBaseplateChillerFlow)// Close shutter if there is a Dump Chiller error
+    OR stErrors.bDumpChiller OR stErrors.bBaseplateChiller) OR (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bDumpChillerFlow))OR (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bBaseplateChillerFlow))// Close shutter if there is a Dump Chiller error
 THEN
     GVL_IO.bAmphosShutterCMD := FALSE;
     GVL_IO.bAmphosShutterEnable := FALSE;
@@ -49,8 +49,7 @@ ELSE
     GVL_IO.bAmphosShutterCMD := FALSE;
     GVL_IO.bAmphosShutterEnable := FALSE;
     ELSIF
-    (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override)
-    THEN
+    (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) THEN
     GVL_IO.bAmphosShutterCMD := GVL_IO.bAmphosShutterEnable;
     ELSE
     GVL_IO.bAmphosShutterCMD := TRUE;
