@@ -9,7 +9,7 @@ VAR_INPUT
     Timer : TON ; //Timer for reset
     bMasterLatchReset : BOOL; //Master latched error reset
     bCarbideOn : BOOL; // Whether Carbide is ON
-	Mode : E_Mode;
+    Mode : E_Mode;
 END_VAR
 VAR_IN_OUT CONSTANT
     stSetpoints : ST_LaserSetpoints; // Setpoints for the laser

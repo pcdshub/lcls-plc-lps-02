@@ -14,7 +14,7 @@ VAR_INPUT
     T_CLOSEREQ : TON;
     T_CLOSETOG : TON;
     Interlock_bit : BOOL; 			// From function block
-	Mode : E_Mode; 					//Mode Definition
+    Mode : E_Mode; 					//Mode Definition
 END_VAR
 VAR_OUTPUT
     State : E_ShutterState := 0; 	// ENUM States
@@ -41,9 +41,9 @@ E_ShutterState.INIT :
         State := E_ShutterState.OPENED;
     END_IF
 
-E_ShutterState.AMPHOSOFF : 
-    IF GVL_IO.bAmphosOn THEN 
-    State := E_ShutterState.INIT; 
+E_ShutterState.AMPHOSOFF :
+    IF GVL_IO.bAmphosOn THEN
+    State := E_ShutterState.INIT;
     END_IF
 
 E_ShutterState.OPENREQ :
@@ -113,13 +113,13 @@ E_ShutterState.OPENREADY :
     END_IF
 *)
 E_ShutterState.OPENED :
-    IF GVL_IO.bAmphosOn THEN 
+    IF GVL_IO.bAmphosOn THEN
         IF (NOT GVL_IO.bAmphosShutterCMD) THEN
-        	State := E_ShutterState.CLOSEREQ;
-		END_IF
-	ELSIF (NOT ShutterState) THEN 
-			State := E_ShutterState.CLOSEREQ;
-	ELSE
+            State := E_ShutterState.CLOSEREQ;
+        END_IF
+    ELSIF (NOT ShutterState) THEN
+            State := E_ShutterState.CLOSEREQ;
+    ELSE
     State := E_ShutterState.AMPHOSOFF;
     END_IF
 
@@ -130,8 +130,8 @@ E_ShutterState.CLOSEREQ :
         IF GVL_IO.bAmphosLaserACK OR (ShutterState) THEN
         State := E_ShutterState.CLOSEACK;
         END_IF
-    ELSE 
-    State := E_ShutterState.AMPHOSOFF; 
+    ELSE
+    State := E_ShutterState.AMPHOSOFF;
     END_IF
 (*
     IF (NOT GVL_IO.bAmphosShutterCMD) AND (NOT ShutterState) AND (NOT LaserON) AND (LaserBusy)
@@ -191,13 +191,13 @@ E_ShutterState.CLOSEREADY :
     *)
 
 E_ShutterState.CLOSED :
-    IF GVL_IO.bAmphosOn THEN 
-    	IF GVL_IO.bAmphosShutterCMD THEN
-        	State := E_ShutterState.OPENREQ;
-    	END_IF
-	ELSIF (ShutterState) THEN
-		State := E_ShutterState.OPENREQ;
-	ELSE
+    IF GVL_IO.bAmphosOn THEN
+        IF GVL_IO.bAmphosShutterCMD THEN
+            State := E_ShutterState.OPENREQ;
+        END_IF
+    ELSIF (ShutterState) THEN
+        State := E_ShutterState.OPENREQ;
+    ELSE
     State := E_ShutterState.AMPHOSOFF;
     END_IF
 END_CASE

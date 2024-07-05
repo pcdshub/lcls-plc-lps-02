@@ -276,7 +276,7 @@ fb_ShutterControl(
     LaserAck 		:= GVL_IO.bAmphosLaserACK,
     LaserON			:= GVL_IO.bAmphosOn,
     ShutterState	:= GVL_IO.bAmphosShutterStatus,
-	Mode := Mode_LPS,);
+    Mode := Mode_LPS,);
 
 // Enable Carbide shutter if interlock logic passes *)
 GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(

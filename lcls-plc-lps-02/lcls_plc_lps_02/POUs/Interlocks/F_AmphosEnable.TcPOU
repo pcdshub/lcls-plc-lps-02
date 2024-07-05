@@ -35,7 +35,7 @@ ELSE
     THEN
     F_AmphosEnable := FALSE;
     ELSE
-	F_AmphosEnable := TRUE;
+    F_AmphosEnable := TRUE;
     END_IF
 END_IF
 
