@@ -173,7 +173,7 @@ VAR_GLOBAL
     bBaseplateChillerRelay AT %Q* : BOOL; // Ch2 Baseplate chiller NC relay
 
 // LSS Mirror Status
-	{attribute 'pytmc' := '
+    {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:MIRROR_STATUS
         io: i
         field: ZNAM "OFF"
@@ -181,7 +181,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := 'TIIB[EL1004_00_8A]^Channel 1^Input'}
     bMirrorStatus AT %I* : BOOL; //  LSS Mirror Status
-	
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
