@@ -35,12 +35,18 @@ Note : In master override modes, the Shutter state will hold the previous state 
 
 IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
    // OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
-     AND (
+     OR (
         (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
         (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
         (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
         (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)OR
-        (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
+        (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05)
+    OR
+        (NOT GVL_IO.bLoopTempSW01 OR
+        NOT GVL_IO.bLoopTempSW02  OR
+        NOT GVL_IO.bLoopTempSW03  OR
+        NOT GVL_IO.bLoopTempSW04 OR
+        NOT GVL_IO.bLoopTempSW05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
     OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
     OR stErrors.bDumpChiller) OR (NOT GVL_IO.bDumpChillerFlow)OR (NOT GVL_IO.bBaseplateChillerFlow)// Close shutter if there is a Dump Chiller error
 THEN

@@ -74,6 +74,9 @@
     <Compile Include="POUs\Devices\FB_AmphosMRC.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Devices\FB_AmphosShutterEnable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Devices\FB_BaseplateChiller.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +99,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Devices\FB_LeakMonitor.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Devices\FB_ShutterControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Devices\FB_TemperatureMonitor.TcPOU">
@@ -123,9 +129,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Interlocks\F_DumpChillerEnable.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Interlocks\FB_ShutterControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">

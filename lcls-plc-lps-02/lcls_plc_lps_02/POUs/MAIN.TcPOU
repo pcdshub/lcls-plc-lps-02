@@ -106,6 +106,8 @@ VAR
     bMasterLatchReset : BOOL; //Master release of latched error conditions
     bLatchStart : BOOL := FALSE; //Latch at start of loop.
 
+    bAmphosShutterEnableInterlock : FB_AmphosShutterEnable; 		///Interlock bit for shutter command
+
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -240,8 +242,16 @@ GVL_IO.bAmphosEnable := F_AmphosEnable(
     stErrors := stErrors);
 
 // Amphos Enable Latch
+bAmphosShutterEnableInterlock(
+    fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
+    fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
+    AmphosStatus := GVL_IO.bAmphosOn, //Amphos Laser Shutter Status
+    Mode := Mode_LPS,
+    stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
+    stErrors := stErrors,
+    stAmphosSetpoints := GVL_Laser.stAmphosSP);
 
-//Enable Amphos shutter if interlock logic passes
+(*//Enable Amphos shutter if interlock logic passes
 GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
     fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
     fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
@@ -257,7 +267,7 @@ GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
     stErrors := stErrors,
     stAmphosSetpoints := GVL_Laser.stAmphosSP
 );
-
+*)
 // Function block for Shutter Control to Amphos Software
 fb_ShutterControl(
     CMDShutterOPEN 	:= GVL_IO.bAmphosRelayOPEN,
@@ -265,7 +275,8 @@ fb_ShutterControl(
     LaserBusy		:= GVL_IO.bAmphosLaserBusy,
     LaserAck 		:= GVL_IO.bAmphosLaserACK,
     LaserON			:= GVL_IO.bAmphosOn,
-    ShutterState	:= GVL_IO.bAmphosShutterStatus,);
+    ShutterState	:= GVL_IO.bAmphosShutterStatus,
+    Mode := Mode_LPS,);
 
 // Enable Carbide shutter if interlock logic passes *)
 GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(

@@ -9,6 +9,7 @@ VAR_INPUT
     Timer : TON ; //Timer for reset
     bMasterLatchReset : BOOL; //Master latched error reset
     bCarbideOn : BOOL; // Whether Carbide is ON
+    Mode : E_Mode;
 END_VAR
 VAR_IN_OUT CONSTANT
     stSetpoints : ST_LaserSetpoints; // Setpoints for the laser
@@ -57,11 +58,11 @@ fPower := fVoltage; //Value is scaled by user set ASLO and AOFF fields (for disp
 
 (* Set error if amphos is below nominal voltage *)
 IF  (bAmphosOn AND fVoltage < stSetpoints.nMinVoltage) THEN
-    Timer(IN:=TRUE, PT:=T#5S); //5 SEC Timer
-    bError := TRUE;
-    IF Timer.Q THEN
-            Timer(IN:=FALSE);   // Reset Timer
-    END_IF;
+    Timer(IN:=TRUE, PT:=T#500ms); //500ms SEC Timer
+        IF Timer.Q THEN
+            bError := TRUE;
+            Timer(IN:=FALSE);
+        END_IF;
 ELSE
     Timer(IN:=FALSE);
 END_IF
@@ -69,7 +70,6 @@ END_IF
 IF bAmphosOn AND (fVoltage < stSetpoints.nMinNominalVoltage) THEN
     bBelowNominal := TRUE;
 END_IF
-
 
 IF bMasterLatchReset THEN
     bBelowNominal := FALSE;
