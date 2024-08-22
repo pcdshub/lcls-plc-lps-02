@@ -12,6 +12,10 @@
     <Implicit_KindOfTask>{64bea8d1-8d62-4691-b955-268e8de6db89}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{f5082da9-1631-491c-bca2-dcce07a08e4b}</Implicit_Jitter_Distribution>
     <LibraryReferences>{fc3773df-8f53-4fe4-9253-5055d8dd9fab}</LibraryReferences>
+    <Company>SLAC</Company>
+    <Released>false</Released>
+    <Title>lcls-plc-pls-02</Title>
+    <ProjectVersion>1.0.0</ProjectVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\E_ShutterState.TcDUT">
