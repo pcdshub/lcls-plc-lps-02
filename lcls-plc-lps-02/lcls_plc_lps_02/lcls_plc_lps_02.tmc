@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{90F10761-7CC1-05F5-1DA1-A3A874F66378}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{A88377B7-E8D6-1545-87F4-46CBA59B68E6}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name GUID="{6F5942ED-BFA1-497D-8225-23C6DAAD0A09}" TcBaseType="true">ST_LibVersion</Name>
@@ -2723,6 +2723,24 @@
       </Properties>
     </DataType>
     <DataType>
+      <Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+      <BitSize>48</BitSize>
+      <BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+      <ArrayInfo>
+        <LBound>0</LBound>
+        <Elements>6</Elements>
+      </ArrayInfo>
+      <Format>
+        <Printf>%d.%d.%d.%d.%d.%d</Printf>
+        <Parameter>[0]</Parameter>
+        <Parameter>[1]</Parameter>
+        <Parameter>[2]</Parameter>
+        <Parameter>[3]</Parameter>
+        <Parameter>[4]</Parameter>
+        <Parameter>[5]</Parameter>
+      </Format>
+    </DataType>
+    <DataType>
       <Name>ST_LeakBoundaries</Name>
       <Comment> Boundaries indicating leak monitor locations</Comment>
       <BitSize>192</BitSize>
@@ -3864,24 +3882,6 @@
           <Value>FunctionBlock</Value>
         </Property>
       </Properties>
-    </DataType>
-    <DataType>
-      <Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
-      <BitSize>48</BitSize>
-      <BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-      <ArrayInfo>
-        <LBound>0</LBound>
-        <Elements>6</Elements>
-      </ArrayInfo>
-      <Format>
-        <Printf>%d.%d.%d.%d.%d.%d</Printf>
-        <Parameter>[0]</Parameter>
-        <Parameter>[1]</Parameter>
-        <Parameter>[2]</Parameter>
-        <Parameter>[3]</Parameter>
-        <Parameter>[4]</Parameter>
-        <Parameter>[5]</Parameter>
-      </Format>
     </DataType>
     <DataType>
       <Name Namespace="Tc2_EtherCAT">ST_EcSlaveState</Name>
@@ -5758,6 +5758,186 @@ linked to EPICS records. Remove unecessary diagnostics.
       </Properties>
     </DataType>
     <DataType>
+      <Name>FB_ShutterControl</Name>
+      <BitSize>1216</BitSize>
+      <SubItem>
+        <Name>CMDShutterOPEN</Name>
+        <Type>BOOL</Type>
+        <Comment> CMD Shutter OPEN Relay state current state from EL2624 Relay</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>64</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>CMDShutterCLOSE</Name>
+        <Type>BOOL</Type>
+        <Comment> CMD Shutter CLOSE Relay state current state from EL2624 Relay</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>72</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>LaserBusy</Name>
+        <Type>BOOL</Type>
+        <Comment> Laser Busy bit from Labjack IO</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>80</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>LaserAck</Name>
+        <Type>BOOL</Type>
+        <Comment> Laser Acknowledge bit from Labjack IO</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>88</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>ShutterState</Name>
+        <Type>BOOL</Type>
+        <Comment> Shutter state from Labjack IO</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>96</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>LaserON</Name>
+        <Type>BOOL</Type>
+        <Comment> Laser ON state from Labjack</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>104</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>T_OPENREQ</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <Comment>Timer for reset</Comment>
+        <BitSize>256</BitSize>
+        <BitOffs>128</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>T_OPENTOG</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <Comment> Timer for OPEN Toggle</Comment>
+        <BitSize>256</BitSize>
+        <BitOffs>384</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>T_CLOSEREQ</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <BitSize>256</BitSize>
+        <BitOffs>640</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>T_CLOSETOG</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <BitSize>256</BitSize>
+        <BitOffs>896</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>Interlock_bit</Name>
+        <Type>BOOL</Type>
+        <Comment> From function block</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>1152</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>Mode</Name>
+        <Type>E_Mode</Type>
+        <Comment>Mode Definition</Comment>
+        <BitSize>16</BitSize>
+        <BitOffs>1168</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>State</Name>
+        <Type>E_ShutterState</Type>
+        <Comment> ENUM States</Comment>
+        <BitSize>16</BitSize>
+        <BitOffs>1184</BitOffs>
+        <Default>
+          <Value>0</Value>
+        </Default>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Output</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <Properties>
+        <Property>
+          <Name>PouType</Name>
+          <Value>FunctionBlock</Value>
+        </Property>
+      </Properties>
+    </DataType>
+    <DataType>
       <Name>FB_AmphosShutterEnable</Name>
       <BitSize>448</BitSize>
       <SubItem>
@@ -6391,186 +6571,6 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Property>
       </Properties>
     </DataType>
-    <DataType>
-      <Name>FB_ShutterControl</Name>
-      <BitSize>1216</BitSize>
-      <SubItem>
-        <Name>CMDShutterOPEN</Name>
-        <Type>BOOL</Type>
-        <Comment> CMD Shutter OPEN Relay state current state from EL2624 Relay</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>64</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>CMDShutterCLOSE</Name>
-        <Type>BOOL</Type>
-        <Comment> CMD Shutter CLOSE Relay state current state from EL2624 Relay</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>72</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>LaserBusy</Name>
-        <Type>BOOL</Type>
-        <Comment> Laser Busy bit from Labjack IO</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>80</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>LaserAck</Name>
-        <Type>BOOL</Type>
-        <Comment> Laser Acknowledge bit from Labjack IO</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>88</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>ShutterState</Name>
-        <Type>BOOL</Type>
-        <Comment> Shutter state from Labjack IO</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>96</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>LaserON</Name>
-        <Type>BOOL</Type>
-        <Comment> Laser ON state from Labjack</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>104</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>T_OPENREQ</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <Comment>Timer for reset</Comment>
-        <BitSize>256</BitSize>
-        <BitOffs>128</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>T_OPENTOG</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <Comment> Timer for OPEN Toggle</Comment>
-        <BitSize>256</BitSize>
-        <BitOffs>384</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>T_CLOSEREQ</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <BitSize>256</BitSize>
-        <BitOffs>640</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>T_CLOSETOG</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <BitSize>256</BitSize>
-        <BitOffs>896</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>Interlock_bit</Name>
-        <Type>BOOL</Type>
-        <Comment> From function block</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>1152</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>Mode</Name>
-        <Type>E_Mode</Type>
-        <Comment>Mode Definition</Comment>
-        <BitSize>16</BitSize>
-        <BitOffs>1168</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>State</Name>
-        <Type>E_ShutterState</Type>
-        <Comment> ENUM States</Comment>
-        <BitSize>16</BitSize>
-        <BitOffs>1184</BitOffs>
-        <Default>
-          <Value>0</Value>
-        </Default>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Output</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <Properties>
-        <Property>
-          <Name>PouType</Name>
-          <Value>FunctionBlock</Value>
-        </Property>
-      </Properties>
-    </DataType>
   </DataTypes>
   <Modules>
     <Module GUID="{7E6324ED-D095-477C-A53A-AB0B226412A2}" TcSmClass="TComPlcObjDef" TargetPlatform="TwinCAT RT (x64)">
@@ -7009,6 +7009,35 @@ linked to EPICS records. Remove unecessary diagnostics.
               </Property>
             </Properties>
             <BitOffs>3142304</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_IO.bMirrorStatus</Name>
+            <Comment>  LSS Mirror Status</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: @(PREFIX):LPS:MIRROR_STATUS
+        io: i
+        field: ZNAM "OFF"
+        field: ONAM "ON"
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>TIIB[EL1004_00_8A]^Channel 1^Input</Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>3142328</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_PLC.AMSNetId</Name>
@@ -11482,6 +11511,13 @@ linked to EPICS records. Remove unecessary diagnostics.
             <BitOffs>3116032</BitOffs>
           </Symbol>
           <Symbol>
+            <Name>MAIN.fb_ShutterControl</Name>
+            <Comment> Shutter control function block</Comment>
+            <BitSize>1216</BitSize>
+            <BaseType>FB_ShutterControl</BaseType>
+            <BitOffs>3140160</BitOffs>
+          </Symbol>
+          <Symbol>
             <Name>MAIN.bLatchStart</Name>
             <Comment>Latch at start of loop.</Comment>
             <BitSize>8</BitSize>
@@ -11600,21 +11636,6 @@ linked to EPICS records. Remove unecessary diagnostics.
             <BitOffs>3142240</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>GVL_TraceTek.nModbusSlaveAddress</Name>
-            <Comment> Modbus slave address of the TraceTek device</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BYTE</BaseType>
-            <Default>
-              <Value>199</Value>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>3142328</BitOffs>
-          </Symbol>
-          <Symbol>
             <Name>GVL_Laser.stAmphosSP</Name>
             <Comment> Amphos setpoints</Comment>
             <BitSize>128</BitSize>
@@ -11672,19 +11693,19 @@ linked to EPICS records. Remove unecessary diagnostics.
             <BitOffs>3142592</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>Constants.bLittleEndian</Name>
-            <Comment> Does the target support multiple cores?</Comment>
+            <Name>GVL_TraceTek.nModbusSlaveAddress</Name>
+            <Comment> Modbus slave address of the TraceTek device</Comment>
             <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
+            <BaseType>BYTE</BaseType>
             <Default>
-              <Bool>true</Bool>
+              <Value>199</Value>
             </Default>
             <Properties>
               <Property>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142776</BitOffs>
+            <BitOffs>3142768</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP01</Name>
@@ -11850,6 +11871,36 @@ linked to EPICS records. Remove unecessary diagnostics.
             <BitOffs>3143296</BitOffs>
           </Symbol>
           <Symbol>
+            <Name>Constants.bLittleEndian</Name>
+            <Comment> Does the target support multiple cores?</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Default>
+              <Bool>true</Bool>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>3143488</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>Constants.bSimulationMode</Name>
+            <Comment> Does the target support multiple cores?</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Default>
+              <Bool>false</Bool>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>3143496</BitOffs>
+          </Symbol>
+          <Symbol>
             <Name>Constants.RuntimeVersion</Name>
             <Comment> Does the target support multiple cores?</Comment>
             <BitSize>64</BitSize>
@@ -11877,7 +11928,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143488</BitOffs>
+            <BitOffs>3143504</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.CompilerVersion</Name>
@@ -11907,37 +11958,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143552</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Constants.bSimulationMode</Name>
-            <Comment> Does the target support multiple cores?</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <Default>
-              <Bool>false</Bool>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>3143616</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>Constants.bFPUSupport</Name>
-            <Comment> Does the target support multiple cores?</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <Default>
-              <Bool>true</Bool>
-            </Default>
-            <Properties>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>3143624</BitOffs>
+            <BitOffs>3143568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.nRegisterSize</Name>
@@ -11970,6 +11991,21 @@ linked to EPICS records. Remove unecessary diagnostics.
             <BitOffs>3143648</BitOffs>
           </Symbol>
           <Symbol>
+            <Name>Constants.bFPUSupport</Name>
+            <Comment> Does the target support multiple cores?</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Default>
+              <Bool>true</Bool>
+            </Default>
+            <Properties>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>3143664</BitOffs>
+          </Symbol>
+          <Symbol>
             <Name>Constants.bMulticoreSupport</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
@@ -11981,7 +12017,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143664</BitOffs>
+            <BitOffs>3143672</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.RuntimeVersionNumeric</Name>
@@ -12215,13 +12251,6 @@ linked to EPICS records. Remove unecessary diagnostics.
             </Properties>
             <BitOffs>3148928</BitOffs>
           </Symbol>
-          <Symbol>
-            <Name>MAIN.fb_ShutterControl</Name>
-            <Comment> Shutter control function block</Comment>
-            <BitSize>1216</BitSize>
-            <BaseType>FB_ShutterControl</BaseType>
-            <BitOffs>3520768</BitOffs>
-          </Symbol>
         </DataArea>
       </DataAreas>
       <Deployment/>
@@ -12233,7 +12262,7 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-07-03T17:10:10</Value>
+          <Value>2024-07-30T16:13:55</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
