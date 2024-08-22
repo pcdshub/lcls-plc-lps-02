@@ -2,18 +2,18 @@ IOC_TOP=/reg/g/pcds/epics/ioc/common/ads-ioc/R0.6.1
 IOC_INSTANCE_PATH := $(shell pwd)
 
 # Set PRODUCTION_IOC to 1 to move from a testing to a production IOC:
-PRODUCTION_IOC := 0
+PRODUCTION_IOC := 1
 
 PROJECT_NAME := lcls-plc-lps-02
 PROJECT_PATH := ../../lcls-plc-lps-02.tsproj
 PLC := lcls_plc_lps_02
 
 PYTMC_OPTS :=
-PREFIX := PLC:$(PLC)
+PREFIX := PLC:LAS:OPCPA:02
 
 # With two $$, as in $$(IOC) below, this will be expanded in the
 # environment of st.cmd:
-DB_PARAMETERS := 'PREFIX=$(PREFIX):,IOCNAME=$$(IOC),IOC=$$(IOC)'
+DB_PARAMETERS := 'PREFIX=$(PREFIX),IOCNAME=$$(IOC),IOC=$$(IOC)'
 
 # If you know the netconfig name of the PLC, enter it here.  If specified, this
 # will be used in place of the auto-detected IP address from the PLC project:
