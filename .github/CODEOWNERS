@@ -1,20 +1,20 @@
 # default group
-* @pcdshub/twincat-reviewers
+* @pcdshub/laser-sme 
 
 # language-specific group(s)
 ## TWINCAT files
-*.tsproj @pcdshub/twincat-reviewers
-*.plcproj @pcdshub/twincat-reviewers
-*.tmc @pcdshub/twincat-reviewers
-*.tpr @pcdshub/twincat-reviewers
-*.xti @pcdshub/twincat-reviewers
-*.TcTTO @pcdshub/twincat-reviewers
-*.TcPOU @pcdshub/twincat-reviewers
-*.TcDUT @pcdshub/twincat-reviewers
-*.TcGVL @pcdshub/twincat-reviewers
-*.TcVis @pcdshub/twincat-reviewers
-*.TcVMO @pcdshub/twincat-reviewers
-*.TcGTLO @pcdshub/twincat-reviewers
+*.tsproj @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.plcproj @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.tmc @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.tpr @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.xti @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcTTO @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcPOU @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcDUT @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcGVL @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcVis @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcVMO @pcdshub/twincat-reviewers @pcdshub/laser-sme 
+*.TcGTLO @pcdshub/twincat-reviewers @pcdshub/laser-sme 
 
 # github folder holds administrative files
 .github/** @pcdshub/software-admin
