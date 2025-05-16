@@ -24,7 +24,7 @@ Settings
 Pragmas
 -------
 
-Total pragmas found: 153
+Total pragmas found: 148
 Total linter errors: 0
 
 
@@ -54,16 +54,16 @@ Constants
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        Constants.bFPUSupport, BOOL, 3143664 (8)
-        Constants.bLittleEndian, BOOL, 3143488 (8)
-        Constants.bMulticoreSupport, BOOL, 3143672 (8)
-        Constants.bSimulationMode, BOOL, 3143496 (8)
-        Constants.CompilerVersion, VERSION, 3143568 (64)
-        Constants.CompilerVersionNumeric, DWORD, 3143712 (32)
-        Constants.nPackMode, UINT, 3143648 (16)
-        Constants.nRegisterSize, WORD, 3143632 (16)
-        Constants.RuntimeVersion, VERSION, 3143504 (64)
-        Constants.RuntimeVersionNumeric, DWORD, 3143680 (32)
+        Constants.bFPUSupport, BOOL, 3144048 (8)
+        Constants.bLittleEndian, BOOL, 3143872 (8)
+        Constants.bMulticoreSupport, BOOL, 3144056 (8)
+        Constants.bSimulationMode, BOOL, 3143880 (8)
+        Constants.CompilerVersion, VERSION, 3143952 (64)
+        Constants.CompilerVersionNumeric, DWORD, 3144096 (32)
+        Constants.nPackMode, UINT, 3144032 (16)
+        Constants.nRegisterSize, WORD, 3144016 (16)
+        Constants.RuntimeVersion, VERSION, 3143888 (64)
+        Constants.RuntimeVersionNumeric, DWORD, 3144064 (32)
 
 
 FB_TraceTekModbus
@@ -373,10 +373,10 @@ GVL_EL3174
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_EL3174.fRawLowerLimit, LREAL, 3141952 (64)
-        GVL_EL3174.fRawUpperLimit, LREAL, 3141888 (64)
-        GVL_EL3174.fScaleLowerLimit, LREAL, 3142080 (64)
-        GVL_EL3174.fScaleUpperLimit, LREAL, 3142016 (64)
+        GVL_EL3174.fRawLowerLimit, LREAL, 3142336 (64)
+        GVL_EL3174.fRawUpperLimit, LREAL, 3142272 (64)
+        GVL_EL3174.fScaleLowerLimit, LREAL, 3142464 (64)
+        GVL_EL3174.fScaleUpperLimit, LREAL, 3142400 (64)
 
 
 GVL_IO
@@ -391,34 +391,34 @@ GVL_IO
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_IO.bAmphosEnable, BOOL, 3142248 (8)
-        GVL_IO.bAmphosLaserACK, BOOL, 3142216 (8)
-        GVL_IO.bAmphosLaserBusy, BOOL, 3142224 (8)
-        GVL_IO.bAmphosLaserReady, BOOL, 3142208 (8)
-        GVL_IO.bAmphosOn, BOOL, 3142200 (8)
-        GVL_IO.bAmphosRelayCLOSE, BOOL, 3142280 (8)
-        GVL_IO.bAmphosRelayOPEN, BOOL, 3142272 (8)
-        GVL_IO.bAmphosShutterCMD, BOOL, 3142232 (8)
-        GVL_IO.bAmphosShutterEnable, BOOL, 3142240 (8)
-        GVL_IO.bAmphosShutterEnableManualOperation, BOOL, 3142264 (8)
-        GVL_IO.bAmphosShutterStatus, BOOL, 3142256 (8)
-        GVL_IO.bBaseplateChillerFlow, BOOL, 3142184 (8)
-        GVL_IO.bBaseplateChillerRelay, BOOL, 3142320 (8)
-        GVL_IO.bCarbideOn, BOOL, 3142304 (8)
-        GVL_IO.bCarbideShutterEnable, BOOL, 3142288 (8)
-        GVL_IO.bCarbideShutterEnableManualOperation, BOOL, 3142296 (8)
-        GVL_IO.bDumpChillerFlow, BOOL, 3142192 (8)
-        GVL_IO.bDumpChillerRelay, BOOL, 3142312 (8)
-        GVL_IO.bLoopTempSW01, BOOL, 3142144 (8)
-        GVL_IO.bLoopTempSW02, BOOL, 3142152 (8)
-        GVL_IO.bLoopTempSW03, BOOL, 3142160 (8)
-        GVL_IO.bLoopTempSW04, BOOL, 3142168 (8)
-        GVL_IO.bLoopTempSW05, BOOL, 3142176 (8)
-        GVL_IO.bMirrorStatus, BOOL, 3142328 (8)
-        GVL_IO.bTracetekAlarm, BOOL, 3141384 (8)
-        GVL_IO.nAmphosVoltageRaw, INT, 3141408 (16)
-        GVL_IO.nMultiPassVoltageRaw, INT, 3141424 (16)
-        GVL_IO.nOpcpaVoltageRaw, INT, 3141392 (16)
+        GVL_IO.bAmphosEnable, BOOL, 3142632 (8)
+        GVL_IO.bAmphosLaserACK, BOOL, 3142600 (8)
+        GVL_IO.bAmphosLaserBusy, BOOL, 3142608 (8)
+        GVL_IO.bAmphosLaserReady, BOOL, 3142592 (8)
+        GVL_IO.bAmphosOn, BOOL, 3142584 (8)
+        GVL_IO.bAmphosRelayCLOSE, BOOL, 3142664 (8)
+        GVL_IO.bAmphosRelayOPEN, BOOL, 3142656 (8)
+        GVL_IO.bAmphosShutterCMD, BOOL, 3142616 (8)
+        GVL_IO.bAmphosShutterEnable, BOOL, 3142624 (8)
+        GVL_IO.bAmphosShutterEnableManualOperation, BOOL, 3142648 (8)
+        GVL_IO.bAmphosShutterStatus, BOOL, 3142640 (8)
+        GVL_IO.bBaseplateChillerFlow, BOOL, 3142568 (8)
+        GVL_IO.bBaseplateChillerRelay, BOOL, 3142704 (8)
+        GVL_IO.bCarbideOn, BOOL, 3142688 (8)
+        GVL_IO.bCarbideShutterEnable, BOOL, 3142672 (8)
+        GVL_IO.bCarbideShutterEnableManualOperation, BOOL, 3142680 (8)
+        GVL_IO.bDumpChillerFlow, BOOL, 3142576 (8)
+        GVL_IO.bDumpChillerRelay, BOOL, 3142696 (8)
+        GVL_IO.bLoopTempSW01, BOOL, 3142528 (8)
+        GVL_IO.bLoopTempSW02, BOOL, 3142536 (8)
+        GVL_IO.bLoopTempSW03, BOOL, 3142544 (8)
+        GVL_IO.bLoopTempSW04, BOOL, 3142552 (8)
+        GVL_IO.bLoopTempSW05, BOOL, 3142560 (8)
+        GVL_IO.bMirrorStatus, BOOL, 3142712 (8)
+        GVL_IO.bTracetekAlarm, BOOL, 3141448 (8)
+        GVL_IO.nAmphosVoltageRaw, INT, 3141472 (16)
+        GVL_IO.nMultiPassVoltageRaw, INT, 3141488 (16)
+        GVL_IO.nOpcpaVoltageRaw, INT, 3141456 (16)
 
 .. raw:: html
 
@@ -433,9 +433,9 @@ GVL_Laser
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_Laser.stAmphosSP, ST_LaserSetpoints, 3142336 (128)
-        GVL_Laser.stMPCSP, ST_LaserSetpoints, 3142592 (128)
-        GVL_Laser.stOpcpaSP, ST_LaserSetpoints, 3142464 (128)
+        GVL_Laser.stAmphosSP, ST_LaserSetpoints, 3142720 (128)
+        GVL_Laser.stMPCSP, ST_LaserSetpoints, 3142976 (128)
+        GVL_Laser.stOpcpaSP, ST_LaserSetpoints, 3142848 (128)
 
 
 GVL_PLC
@@ -445,7 +445,7 @@ GVL_PLC
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_PLC.AMSNetId, AMSNETID, 3142720 (48)
+        GVL_PLC.AMSNetId, AMSNETID, 3143104 (48)
 
 
 GVL_TemperatureMonitor
@@ -455,14 +455,14 @@ GVL_TemperatureMonitor
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_TemperatureMonitor.stTempMonSP01, ST_TemperatureMonitorSetpoints, 3142784 (64)
-        GVL_TemperatureMonitor.stTempMonSP02, ST_TemperatureMonitorSetpoints, 3142848 (64)
-        GVL_TemperatureMonitor.stTempMonSP03, ST_TemperatureMonitorSetpoints, 3142912 (64)
-        GVL_TemperatureMonitor.stTempMonSP04, ST_TemperatureMonitorSetpoints, 3142976 (64)
-        GVL_TemperatureMonitor.stTempMonSP05, ST_TemperatureMonitorSetpoints, 3143040 (64)
-        GVL_TemperatureMonitor.stTempMonSP06, ST_TemperatureMonitorSetpoints, 3143104 (64)
-        GVL_TemperatureMonitor.stTempMonSP07, ST_TemperatureMonitorSetpoints, 3143168 (64)
-        GVL_TemperatureMonitor.stTempMonSP08, ST_TemperatureMonitorSetpoints, 3143232 (64)
+        GVL_TemperatureMonitor.stTempMonSP01, ST_TemperatureMonitorSetpoints, 3143168 (64)
+        GVL_TemperatureMonitor.stTempMonSP02, ST_TemperatureMonitorSetpoints, 3143232 (64)
+        GVL_TemperatureMonitor.stTempMonSP03, ST_TemperatureMonitorSetpoints, 3143296 (64)
+        GVL_TemperatureMonitor.stTempMonSP04, ST_TemperatureMonitorSetpoints, 3143360 (64)
+        GVL_TemperatureMonitor.stTempMonSP05, ST_TemperatureMonitorSetpoints, 3143424 (64)
+        GVL_TemperatureMonitor.stTempMonSP06, ST_TemperatureMonitorSetpoints, 3143488 (64)
+        GVL_TemperatureMonitor.stTempMonSP07, ST_TemperatureMonitorSetpoints, 3143552 (64)
+        GVL_TemperatureMonitor.stTempMonSP08, ST_TemperatureMonitorSetpoints, 3143616 (64)
 
 
 GVL_TraceTek
@@ -472,8 +472,8 @@ GVL_TraceTek
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        GVL_TraceTek.nModbusSlaveAddress, BYTE, 3142768 (8)
-        GVL_TraceTek.stLeakMonitorBoundaries, ST_LeakBoundaries, 3143296 (192)
+        GVL_TraceTek.nModbusSlaveAddress, BYTE, 3143152 (8)
+        GVL_TraceTek.stLeakMonitorBoundaries, ST_LeakBoundaries, 3143680 (192)
 
 
 MAIN
@@ -488,31 +488,31 @@ MAIN
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        MAIN.bAmphosEnable_MPC, FB_Amphos_Enable, 3115392 (384)
         MAIN.bAmphosReset, BOOL, 3092128 (8)
-        MAIN.bAmphosShutterEnableInterlock, FB_AmphosShutterEnable, 3141440 (448)
         MAIN.bBaseplateChillerReset, BOOL, 3099464 (8)
         MAIN.bDumpChillerReset, BOOL, 3092152 (8)
-        MAIN.bLatchStart, BOOL, 3141376 (8)
+        MAIN.bLatchStart, BOOL, 3141440 (8)
         MAIN.bLeakMonitorReset, BOOL, 3079400 (8)
         MAIN.bMasterLatchReset, BOOL, 3099480 (8)
         MAIN.bMasterOverride, BOOL, 3099472 (8)
         MAIN.bMPCReset, BOOL, 3092144 (8)
         MAIN.bOpcpaReset, BOOL, 3092136 (8)
-        MAIN.fb_ShutterControl, FB_ShutterControl, 3140160 (1216)
+        MAIN.fb_ShutterControl, FB_ShutterControl, 3140224 (1216)
         MAIN.fbAmphos, FB_Laser_Timer, 3113280 (704)
-        MAIN.fbBaseplateChiller, FB_BaseplateChiller, 3115904 (128)
+        MAIN.fbAmphosEnable_MPC, FB_Amphos_Enable, 3115392 (448)
+        MAIN.fbBaseplateChiller, FB_BaseplateChiller, 3115968 (128)
         MAIN.fbChillerLoop01, FB_ChillerLoop, 3112640 (128)
         MAIN.fbChillerLoop02, FB_ChillerLoop, 3112768 (128)
         MAIN.fbChillerLoop03, FB_ChillerLoop, 3112896 (128)
         MAIN.fbChillerLoop04, FB_ChillerLoop, 3113024 (128)
         MAIN.fbChillerLoop05, FB_ChillerLoop, 3113152 (128)
-        MAIN.fbDiag, FB_EcatDiag, 3116032 (24128)
-        MAIN.fbDumpChiller, FB_DumpChiller, 3115776 (128)
+        MAIN.fbDiag, FB_EcatDiag, 3116096 (24128)
+        MAIN.fbDumpChiller, FB_DumpChiller, 3115840 (128)
         MAIN.fbErrorTriggers, FB_ErrorTriggers, 3099520 (1856)
         MAIN.fbLeakMonitor, FB_LeakMonitor, 3112384 (256)
         MAIN.fbMPC, FB_Laser_Timer_MPC, 3114688 (704)
         MAIN.fbOpcpa, FB_Laser_Timer_MPC, 3113984 (704)
+        MAIN.fbShutterEnableInterlocks, FB_LaserInterlock, 3141504 (768)
         MAIN.fbTraceTekModbus, FB_TraceTekModbus, 3101376 (11008)
         MAIN.fbTraceTekModbus.fbModbusMaster.InData, MB_KL6inData22B, 3101872 (192)
         MAIN.fbTraceTekModbus.fbModbusMaster.OutData, MB_KL6outData22B, 3102064 (192)
@@ -533,7 +533,7 @@ TwinCAT_LicenseInfoVarList
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        TwinCAT_LicenseInfoVarList._LicenseInfo, PlcLicenseInfo, 3143744 (2048)
+        TwinCAT_LicenseInfoVarList._LicenseInfo, PlcLicenseInfo, 3144128 (2048)
 
 
 TwinCAT_SystemInfoVarList
@@ -543,10 +543,10 @@ TwinCAT_SystemInfoVarList
     :header: Symbol, Type, Offset/Size
     :align: center
 
-        TwinCAT_SystemInfoVarList.__PlcTask, _Implicit_Task_Info, 3148928 (896)
-        TwinCAT_SystemInfoVarList._AppInfo, PlcAppSystemInfo, 3145792 (2048)
-        TwinCAT_SystemInfoVarList._TaskInfo, PlcTaskSystemInfo, 3147840 (1024)
-        TwinCAT_SystemInfoVarList._TaskOid_PlcTask, OTCID, 3148896 (32)
-        TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask, OTCID, 3148864 (32)
+        TwinCAT_SystemInfoVarList.__PlcTask, _Implicit_Task_Info, 3149312 (896)
+        TwinCAT_SystemInfoVarList._AppInfo, PlcAppSystemInfo, 3146176 (2048)
+        TwinCAT_SystemInfoVarList._TaskInfo, PlcTaskSystemInfo, 3148224 (1024)
+        TwinCAT_SystemInfoVarList._TaskOid_PlcTask, OTCID, 3149280 (32)
+        TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask, OTCID, 3149248 (32)
 
 

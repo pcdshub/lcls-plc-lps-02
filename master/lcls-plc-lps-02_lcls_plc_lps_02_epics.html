@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -5,22 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Types &mdash; pcdshub/lcls-plc-lps-02  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
       <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/docs-versions-menu.js?v=3d6a1aea"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/docs-versions-menu.js?v=3d6a1aea"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -2217,6 +2215,7 @@
 <td><p>mbbi</p></td>
 <td><p>MAIN.Mode_LPS</p></td>
 <td><div class="line-block">
+<div class="line">field: NOBT 3</div>
 <div class="line">io: output</div>
 </div>
 </td>
@@ -2225,23 +2224,12 @@
 <td><p>mbbo</p></td>
 <td><p>MAIN.Mode_LPS</p></td>
 <td><div class="line-block">
+<div class="line">field: NOBT 3</div>
 <div class="line">io: output</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV</p></td>
-<td><p>bi</p></td>
-<td><p>MAIN.bAmphosEnable_MPC.bError</p></td>
-<td><div class="line-block">
-<div class="line">field: ONAM ERROR</div>
-<div class="line">field: OSV MAJOR</div>
-<div class="line">field: ZNAM OK</div>
-<div class="line">field: ZSV NO_ALARM</div>
-<div class="line">io: input</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:AMPHOS:RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:AMPHOS:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bAmphosReset</p></td>
 <td><div class="line-block">
@@ -2249,7 +2237,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:AMPHOS:RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:AMPHOS:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bAmphosReset</p></td>
 <td><div class="line-block">
@@ -2257,7 +2245,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:BASEPLATE_CHILLER:RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:BASEPLATE_CHILLER:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bBaseplateChillerReset</p></td>
 <td><div class="line-block">
@@ -2265,7 +2253,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:BASEPLATE_CHILLER:RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:BASEPLATE_CHILLER:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bBaseplateChillerReset</p></td>
 <td><div class="line-block">
@@ -2273,7 +2261,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:DUMP_CHILLER:RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:DUMP_CHILLER:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bDumpChillerReset</p></td>
 <td><div class="line-block">
@@ -2281,7 +2269,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:DUMP_CHILLER:RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:DUMP_CHILLER:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bDumpChillerReset</p></td>
 <td><div class="line-block">
@@ -2289,7 +2277,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:LEAK:RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:LEAK:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bLeakMonitorReset</p></td>
 <td><div class="line-block">
@@ -2297,7 +2285,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:LEAK:RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:LEAK:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bLeakMonitorReset</p></td>
 <td><div class="line-block">
@@ -2305,7 +2293,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:MPC:RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:MPC:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bMPCReset</p></td>
 <td><div class="line-block">
@@ -2313,7 +2301,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:MPC:RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:MPC:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bMPCReset</p></td>
 <td><div class="line-block">
@@ -2321,7 +2309,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:MASTER_LATCH_RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:MASTER_LATCH_RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bMasterLatchReset</p></td>
 <td><div class="line-block">
@@ -2329,7 +2317,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:MASTER_LATCH_RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:MASTER_LATCH_RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bMasterLatchReset</p></td>
 <td><div class="line-block">
@@ -2337,7 +2325,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:MASTER_OVERRIDE_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:MASTER_OVERRIDE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bMasterOverride</p></td>
 <td><div class="line-block">
@@ -2345,7 +2333,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:MASTER_OVERRIDE</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:MASTER_OVERRIDE</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bMasterOverride</p></td>
 <td><div class="line-block">
@@ -2353,7 +2341,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:OPCPA:RESET_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:OPCPA:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.bOpcpaReset</p></td>
 <td><div class="line-block">
@@ -2361,7 +2349,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:OPCPA:RESET</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:OPCPA:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>MAIN.bOpcpaReset</p></td>
 <td><div class="line-block">
@@ -2369,7 +2357,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:AMPHOS:ERROR_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:AMPHOS:ERROR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>MAIN.fbAmphos.bError</p></td>
 <td><div class="line-block">
@@ -2381,7 +2369,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>$(PREFIX):LPS:AMPHOS:SCALED_PWR_RBV</p></td>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:AMPHOS:SCALED_PWR_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>MAIN.fbAmphos.fPower</p></td>
 <td><div class="line-block">
@@ -2390,7 +2378,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>$(PREFIX):LPS:AMPHOS:VOLTAGE_RBV</p></td>
+<tr class="row-even"><td><p>$(PREFIX):LPS:AMPHOS:VOLTAGE_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>MAIN.fbAmphos.fVoltage</p></td>
 <td><div class="line-block">
@@ -2399,6 +2387,18 @@
 <div class="line">field: LLSV MAJOR</div>
 <div class="line">field: LOPR 0.0</div>
 <div class="line">field: LSV MINOR</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>$(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>MAIN.fbAmphosEnable_MPC.bError</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ERROR</div>
+<div class="line">field: OSV MAJOR</div>
+<div class="line">field: ZNAM OK</div>
+<div class="line">field: ZSV NO_ALARM</div>
 <div class="line">io: input</div>
 </div>
 </td>
@@ -3514,7 +3514,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, SLAC National Accelerator Laboratory.</p>
+    <p>&#169; Copyright 2025, SLAC National Accelerator Laboratory.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

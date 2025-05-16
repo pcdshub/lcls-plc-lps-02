@@ -25,7 +25,7 @@ FB_Amphos_Enable
         | io: input
 
 
-  
+ 
 FB_BaseplateChiller
 ^^^^^^^^^^^^^^^^^^^
 
@@ -813,7 +813,7 @@ FB_Laser_Timer_MPC
         | io: input
 
 
- 
+  
 FB_LeakMonitor
 ^^^^^^^^^^^^^^
 
@@ -1700,23 +1700,15 @@ Database Records
     * - $(PREFIX):LPS:MODE_RBV
       - mbbi
       - MAIN.Mode_LPS
-      - | io: output
+      - | field: NOBT 3
+        | io: output
 
 
     * - $(PREFIX):LPS:MODE
       - mbbo
       - MAIN.Mode_LPS
-      - | io: output
-
-
-    * - $(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV
-      - bi
-      - MAIN.bAmphosEnable_MPC.bError
-      - | field: ONAM ERROR
-        | field: OSV MAJOR
-        | field: ZNAM OK
-        | field: ZSV NO_ALARM
-        | io: input
+      - | field: NOBT 3
+        | io: output
 
 
     * - $(PREFIX):LPS:AMPHOS:RESET_RBV
@@ -1840,6 +1832,16 @@ Database Records
         | field: LLSV MAJOR
         | field: LOPR 0.0
         | field: LSV MINOR
+        | io: input
+
+
+    * - $(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV
+      - bi
+      - MAIN.fbAmphosEnable_MPC.bError
+      - | field: ONAM ERROR
+        | field: OSV MAJOR
+        | field: ZNAM OK
+        | field: ZSV NO_ALARM
         | io: input
 
 

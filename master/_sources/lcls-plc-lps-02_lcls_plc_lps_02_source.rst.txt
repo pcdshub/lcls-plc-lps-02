@@ -57,10 +57,8 @@ E_Mode
     TYPE E_Mode :
     (
         MASTER_Override :=1,
-        OPCPA_Protection := 2,
-        OPCPA_Override := 3,
-        MPC_Protection := 4,
-        MPC_Override := 5
+        Protection := 2,
+        AMPHOS_Maintenance := 3
     );
     END_TYPE
 
@@ -635,171 +633,6 @@ POUs
 ----
 
 
-F_AmphosAttenuatorEnable
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    // Interlock logic for the Amphos attenuator
-    FUNCTION F_AmphosAttenuatorEnable : BOOL
-    VAR_INPUT
-        bAmphosOn : BOOL; // Whether the Amphos is turned on
-    END_VAR
-    VAR_IN_OUT CONSTANT
-        stErrors : ST_ErrorStates; // Currently detected errors
-    END_VAR
-    VAR
-    END_VAR
-    IF stErrors.bHardwareFailure // Close attenuator if there is a hardware failure
-        OR NOT bAmphosOn // Close attenuator if Amphos is not on
-        OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close attenuator if there is a leak on the optical table with amphos on, there is a leak in the OPCPA with the carbide on, or there is a leak under the table
-        (* OR stErrors.bAmphosMRC01 // Close attenuator if there is an AmphosMRC01 error *)
-    THEN
-        F_AmphosAttenuatorEnable := FALSE;
-    ELSE
-        F_AmphosAttenuatorEnable := TRUE;
-    END_IF
-
-    END_FUNCTION
-
-
-Related:
-    * `ST_ErrorStates`_
-
-
-F_AmphosEnable
-^^^^^^^^^^^^^^
-
-::
-
-    // Interlock logic for the Amphos relay
-    FUNCTION F_AmphosEnable : BOOL
-    VAR_INPUT
-        fAmphosVoltage : LREAL; // The Amphos voltage
-        fOPCPAVoltage : LREAL; //OPCPA Voltage
-        AmphosStatus : BOOL; //Amphos Laser Status
-        Mode : E_Mode;
-        //ShutterStatus : BOOL; //Shutter State from Amphos
-
-    END_VAR
-    VAR_IN_OUT CONSTANT
-        stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-        stErrors : ST_ErrorStates; // Currently detected errors
-        stOPCPASetpoints : ST_LaserSetpoints; //OPCPA Setpoints
-    END_VAR
-    (* // Amphos Enable bit is needed to turn ON the Amphos Laser
-    As per logic table, the Amphos Enable is Disabled in OPCPA Protection, MPC Protection and MPC override
-    based on the Amphos PM voltage less than Minimum set user Voltage
-    *)
-
-    IF (stErrors.bHardwareFailure) // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
-    THEN
-        F_AmphosEnable := FALSE;
-    ELSE
-        IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-        OR
-        (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-        OR
-        (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-        THEN
-        F_AmphosEnable := FALSE;
-        ELSE
-        F_AmphosEnable := TRUE;
-        END_IF
-    END_IF
-
-    END_FUNCTION
-
-
-Related:
-    * `E_Mode`_
-    * `GVL_IO`_
-    * `ST_ErrorStates`_
-    * `ST_LaserSetpoints`_
-
-
-F_AmphosShutterEnable
-^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    // Interlock logic for the Amphos shutter
-    FUNCTION F_AmphosShutterEnable : BOOL
-    VAR_INPUT
-        //bAmphosOn : BOOL; // Whether the amphos is on
-        fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-        fAmphosVoltage : LREAL; // The Amphos voltage
-        AmphosStatus :BOOL; //Amphos Laser Shutter Status
-        bLoopTempOverride01 : BOOL; // Whether the chiller loop error is overriden
-        bLoopTempOverride02 : BOOL; // Whether the chiller loop error is overriden
-        bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
-        bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
-        bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
-        Mode : E_Mode; // Mode of operation
-        ShutterStatus : BOOL; //Shutter Status
-    END_VAR
-
-    VAR_IN_OUT CONSTANT
-        stErrors : ST_ErrorStates; // Currently detected errors
-        stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-        stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-    END_VAR
-    VAR
-    END_VAR
-    (*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
-    // AmphosShutterEnable := True := OPEN SHUTTER
-    // AmphosShutterEnable := FALSE := CLOSE SHUTTER
-    The below logic follows the logic table
-    Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
-    *)
-
-
-    IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
-       // OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
-         OR (
-            (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
-            (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
-            (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
-            (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)OR
-            (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05)
-        OR
-            (NOT GVL_IO.bLoopTempSW01 OR
-            NOT GVL_IO.bLoopTempSW02  OR
-            NOT GVL_IO.bLoopTempSW03  OR
-            NOT GVL_IO.bLoopTempSW04 OR
-            NOT GVL_IO.bLoopTempSW05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
-        OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
-        OR stErrors.bDumpChiller) OR (NOT GVL_IO.bDumpChillerFlow)OR (NOT GVL_IO.bBaseplateChillerFlow)// Close shutter if there is a Dump Chiller error
-    THEN
-        F_AmphosShutterEnable := FALSE;
-    ELSE
-        IF ( MODE = E_Mode.OPCPA_Protection AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage))  //Per LPS Interlock Logic thruth table
-        OR
-        (MODE = E_Mode.MPC_Protection AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR (NOT AmphosStatus)))
-        OR
-        (MODE = E_Mode.MPC_Override AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR (NOT AmphosStatus)))
-        THEN
-        F_AmphosShutterEnable := FALSE;
-        ELSIF
-        (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND (NOT ShutterStatus)
-            THEN  F_AmphosShutterEnable := TRUE;
-        ELSIF (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND ShutterStatus
-            THEN F_AmphosShutterEnable := FALSE;
-        ELSE
-        F_AmphosShutterEnable := TRUE;
-        END_IF
-    END_IF
-
-    END_FUNCTION
-
-
-Related:
-    * `E_Mode`_
-    * `GVL_IO`_
-    * `ST_ErrorStates`_
-    * `ST_LaserSetpoints`_
-
-
 F_BaseplateChillerEnable
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -816,66 +649,19 @@ F_BaseplateChillerEnable
     END_VAR
     VAR
     END_VAR
-    IF (stErrors.bHardwareFailure // Disable baseplate chiller if there is a hardware failure
-       OR stErrors.bLeakUnderTable) // Disable baseplate chiller if there is a leak under the table
-    THEN
-        F_BaseplateChillerEnable := FALSE;
-    ELSIF
-        (MODE = E_Mode.MASTER_Override)
+    // Disable baseplate chiller if there is a hardware failure or leak under the table
+    IF (stErrors.bHardwareFailure OR stErrors.bLeakUnderTable)
         THEN
-        F_BaseplateChillerEnable := TRUE;
-    ELSE
-        F_BaseplateChillerEnable := TRUE;
-    END_IF
-
-    END_FUNCTION
-
-
-Related:
-    * `E_Mode`_
-    * `ST_ErrorStates`_
-
-
-F_CarbideShutterEnable
-^^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    // Interlock logic for the Carbide Shutter
-    FUNCTION F_CarbideShutterEnable : BOOL
-    VAR_INPUT
-        fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-        fAmphosVoltage : LREAL; // The Amphos voltage
-        fMPCVoltage : LREAL; // The Amphos voltage
-        AmphosLaserStatus :BOOL; //Amphos Shutter Status
-        Mode :E_Mode; // Mode of operation
-    END_VAR
-    VAR_IN_OUT CONSTANT
-        stErrors : ST_ErrorStates; // Currently detected errors
-        stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-        stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-        stMPCSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-    END_VAR
-    VAR
-    END_VAR
-    (* // Carbide Shutter Enable bit is needed to turn the Shutter OPEN/CLOSE position
-    As per logic table, the CarbideShutterEnable function is Disabled in OPCPA Protection, MPC Protection
-    *)
-
-
-    IF (stErrors.bHardwareFailure) // Close carbide shutter if there is a hardware failure
-        //OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable) // Close carbide shutter if leak in OPCPA with carbide on or if there is a leak under the table
-    THEN
-        F_CarbideShutterEnable := FALSE;
-    ELSE
-        IF ( MODE = E_Mode.OPCPA_Protection AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-        OR
-        (MODE = E_Mode.MPC_Protection AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
-        THEN
-        F_CarbideShutterEnable := FALSE;
+        F_BasePlateChillerEnable := FALSE;
         ELSE
-        F_CarbideShutterEnable := TRUE;
-        END_IF
+        CASE MODE OF
+            // Master override does indeed override
+            E_Mode.MASTER_Override:
+               F_BasePlateChillerEnable := TRUE;
+            // And yet redundantly our default state is TRUE?
+            ELSE
+               F_BasePlateChillerEnable := TRUE;
+        END_CASE
     END_IF
 
     END_FUNCTION
@@ -884,7 +670,6 @@ F_CarbideShutterEnable
 Related:
     * `E_Mode`_
     * `ST_ErrorStates`_
-    * `ST_LaserSetpoints`_
 
 
 F_DumpChillerEnable
@@ -903,17 +688,21 @@ F_DumpChillerEnable
     END_VAR
     VAR
     END_VAR
-    IF (stErrors.bHardwareFailure // Disable dump chiller if there's a hardware failure
-        //OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpticalTableNoLaser OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable) // Disable dump chiller for these leak conditions
+    // Disable dump chiller if there's a hardware failure
+    IF (stErrors.bHardwareFailure
+        // Disable dump chiller for these leak conditions
+        //OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpticalTableNoLaser OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable)
        OR stErrors.bLeakUnderTable)
     THEN
         F_DumpChillerEnable := FALSE;
-    ELSIF
-        (MODE = E_Mode.MASTER_Override)
-        THEN
-        F_DumpChillerEnable := TRUE;
     ELSE
-        F_DumpChillerEnable := TRUE;
+        CASE MODE OF
+            E_Mode.MASTER_Override:
+                F_DumpChillerEnable := TRUE;
+            // Otherwise things are okay
+            ELSE
+                F_DumpChillerEnable := TRUE;
+        END_CASE
     END_IF
 
     END_FUNCTION
@@ -932,12 +721,12 @@ FB_Amphos_Enable
     // Monitors the baseplate chiller from the flow sensor
     FUNCTION_BLOCK FB_Amphos_Enable
     VAR_INPUT
-        //bAmphosOn : BOOL; // Whether the amphos is turned on
-        //bAmphosEnable : BOOL; // Signal from the flow sensor. Normally high.
+        //bAmphosOn         : BOOL; // Whether the amphos is turned on
+        //bAmphosEnable      : BOOL; // Signal from the flow sensor. Normally high.
         bMasterLatchReset : BOOL; //Master latched error reset
-        Mode : E_Mode; // Mode
-        fAmphosVoltage : LREAL; // The Amphos voltage
+        fAmphosVoltage    : LREAL; // The Amphos voltage
     END_VAR
+
     VAR_OUTPUT
         {attribute 'pytmc' := '
             pv: ERROR
@@ -947,22 +736,34 @@ FB_Amphos_Enable
             field: ZNAM OK
             field: ONAM ERROR
         '}
-        bError : BOOL; // Whether an error was detected. Should latch until reset
+        bError            : BOOL; // Whether an error was detected. Should latch until reset
     END_VAR
+
     VAR_IN_OUT CONSTANT
-        stErrors : ST_ErrorStates; // Currently detected errors
+        stErrors          : ST_ErrorStates; // Currently detected errors
        // stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
         stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
     END_VAR
+
+    VAR_IN_OUT
+        Mode              : E_Mode; // Mode
+    END_VAR
+
     VAR
     END_VAR
     (* Latch error if the baseplate chiller flow detects an error *)
-    IF (MODE = E_Mode.MPC_Protection OR MODE = E_Mode.MPC_Override OR MODE = E_Mode.OPCPA_Protection OR MODE = E_Mode.OPCPA_Override OR MODE = E_Mode.MASTER_Override) AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage
-    THEN
-        bError := TRUE;
-    ELSE
-        bError := FALSE;
-    END_IF
+    CASE MODE OF
+        E_Mode.MASTER_Override, E_Mode.Protection, E_Mode.AMPHOS_Maintenance:
+        IF fAmphosVoltage < stAmphosSetpoints.nMinVoltage
+            THEN
+                bError := TRUE;
+            ELSE
+                bError := FALSE;
+        END_IF
+        // Undefined state, do not get here
+        ELSE
+            Mode := E_Mode.Protection;
+    END_CASE
 
     IF bMasterLatchReset THEN
         bError := FALSE;
@@ -980,108 +781,6 @@ FB_Amphos_Enable
 
 Related:
     * `E_Mode`_
-    * `ST_ErrorStates`_
-    * `ST_LaserSetpoints`_
-
-
-FB_AmphosMRC
-^^^^^^^^^^^^
-
-::
-
-    // Monitors the Amphos MRC input signal for errors
-    FUNCTION_BLOCK FB_AmphosMRC
-    VAR_INPUT
-        bAmphosOn : BOOL; // Whether the Amphos is turned on
-        bMRC : BOOL; // Error signal. Signal should normally be high
-    END_VAR
-    VAR_OUTPUT
-        {attribute 'pytmc' := '
-            pv: ERROR
-            io: i
-            field: OSV MAJOR
-            field: ZSV NO_ALARM
-            field: ZNAM OK
-            field: ONAM ERROR
-        '}
-        bError : BOOL; // Whether an error was detected. Error should go back to normal on its own
-    END_VAR
-    VAR
-    END_VAR
-    (* Set error flag if amphos is on and the MRC has an error *)
-    bError := bAmphosOn AND NOT bMRC;
-
-    END_FUNCTION_BLOCK
-
-
-
-
-FB_AmphosShutterEnable
-^^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    FUNCTION_BLOCK FB_AmphosShutterEnable
-    VAR_INPUT
-        fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-        fAmphosVoltage : LREAL; // The Amphos voltage
-        AmphosStatus :BOOL; //Amphos Laser Shutter Status
-        Mode : E_Mode; // Mode of operation
-        ShutterStatus : BOOL; //Shutter Status
-    END_VAR
-    VAR_OUTPUT
-    END_VAR
-    VAR
-    END_VAR
-    VAR_IN_OUT CONSTANT
-        stErrors : ST_ErrorStates; // Currently detected errors
-        stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-        stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-    END_VAR
-    (*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
-    // AmphosShutterEnable := True := OPEN SHUTTER
-    // AmphosShutterEnable := FALSE := CLOSE SHUTTER
-    The below logic follows the logic table
-    Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
-    *)
-
-    IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
-       // OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
-         OR (
-            (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW01)) OR
-            (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW02)) OR
-            (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW03)) OR
-            (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW04))OR
-            (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bLoopTempSW05)))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
-       // OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
-        OR stErrors.bDumpChiller OR stErrors.bBaseplateChiller) OR (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bDumpChillerFlow))OR (MODE <> E_Mode.MASTER_Override AND (NOT GVL_IO.bBaseplateChillerFlow))// Close shutter if there is a Dump Chiller error
-    THEN
-        GVL_IO.bAmphosShutterCMD := FALSE;
-        GVL_IO.bAmphosShutterEnable := FALSE;
-    ELSE
-        IF ( MODE = E_Mode.OPCPA_Protection AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage))  //Per LPS Interlock Logic thruth table
-        OR
-        (MODE = E_Mode.MPC_Protection AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR (NOT AmphosStatus)))
-        OR
-        (MODE = E_Mode.MPC_Override AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR (NOT AmphosStatus)))
-        THEN
-        GVL_IO.bAmphosShutterCMD := FALSE;
-        GVL_IO.bAmphosShutterEnable := FALSE;
-        ELSIF
-        (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) THEN
-        GVL_IO.bAmphosShutterCMD := GVL_IO.bAmphosShutterEnable;
-        ELSE
-        GVL_IO.bAmphosShutterCMD := TRUE;
-        GVL_IO.bAmphosShutterEnable := TRUE;
-        END_IF
-    END_IF
-
-    END_FUNCTION_BLOCK
-
-
-Related:
-    * `E_Mode`_
-    * `GVL_IO`_
     * `ST_ErrorStates`_
     * `ST_LaserSetpoints`_
 
@@ -1586,69 +1285,6 @@ Related:
     * `ST_ErrorStates`_
 
 
-FB_Laser
-^^^^^^^^
-
-::
-
-    // Monitors the lasers for under voltage events
-    FUNCTION_BLOCK FB_Laser
-    VAR_INPUT
-        nVoltageRaw : INT; // The raw signal collected from the ADC
-        bAmphosOn : BOOL; // Whether the amphos is turned on
-    END_VAR
-    VAR_IN_OUT CONSTANT
-        stSetpoints : ST_LaserSetpoints; // Setpoints for the laser
-    END_VAR
-    VAR_OUTPUT
-        {attribute 'pytmc' := '
-            pv: VOLTAGE
-            io: i
-            field: HOPR 10.0
-            field: LOPR 0.0
-            field: LSV MINOR
-            field: LLSV MAJOR
-            field: EGU Volts
-        '}
-        fVoltage : LREAL; // Voltage calculated from the raw ADC input
-        {attribute 'pytmc' := '
-            pv: ERROR
-            io: i
-            field: OSV MAJOR
-            field: ZSV NO_ALARM
-            field: ZNAM OK
-            field: ONAM ERROR
-        '}
-        bError : BOOL; // Whether an error was detected. Latches until reset
-    END_VAR
-    (* Scale the analog signal to voltage *)
-    fVoltage := F_Scale(
-        fRawData := nVoltageRaw,
-        fRawDataLowerOffLimit := GVL_EL3174.fRawLowerLimit,
-        fRawDataUpperOffLimit := GVL_EL3174.fRawUpperLimit,
-        fScaleDataLowerOffLimit := GVL_EL3174.fScaleLowerLimit,
-        fScaleDataUpperOffLimit := GVL_EL3174.fScaleUpperLimit);
-
-    (* Set error if amphos is below nominal voltage *)
-    IF  bAmphosOn AND fVoltage < stSetpoints.nMinNominalVoltage THEN
-        bError := TRUE;
-    END_IF
-
-    END_FUNCTION_BLOCK
-
-    // Reset latched errors
-    METHOD Reset
-    VAR_INPUT
-    END_VAR
-    bError := FALSE;
-    END_METHOD
-
-
-Related:
-    * `GVL_EL3174`_
-    * `ST_LaserSetpoints`_
-
-
 FB_Laser_Timer
 ^^^^^^^^^^^^^^
 
@@ -1831,6 +1467,180 @@ FB_Laser_Timer_MPC
 
 Related:
     * `GVL_EL3174`_
+    * `ST_LaserSetpoints`_
+
+
+FB_LaserInterlock
+^^^^^^^^^^^^^^^^^
+
+::
+
+    FUNCTION_BLOCK FB_LaserInterlock
+    VAR_INPUT
+        //bAmphosOn : BOOL; // Whether the amphos is on
+        fOpcpaVoltage       : LREAL; // The voltage of the OPCPA
+        fAmphosVoltage      : LREAL; // The Amphos voltage
+        fMPCVoltage         : LREAL; // The MPC voltage
+        AmphosStatus        : BOOL; //Amphos Laser Shutter Status
+        bLoopTempOverride01 : BOOL; // Whether the chiller loop error is overriden
+        bLoopTempOverride02 : BOOL; // Whether the chiller loop error is overriden
+        bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
+        bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
+        bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
+    //    bShutterStatus      : BOOL; // Shutter Status
+    END_VAR
+
+    VAR_IN_OUT CONSTANT
+        stErrors            : ST_ErrorStates; // Currently detected errors
+        stOpcpaSetpoints    : ST_LaserSetpoints; // OPCPA setpoints
+        stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
+        stMPCSetpoints      : ST_LaserSetpoints; // The MPC setpoints
+    END_VAR
+
+    VAR_IN_OUT
+        Mode              : E_Mode; // Mode
+        bAmphosShutter   : BOOL; // Allowed Amphos Shutter state, point to NC Relay GVL
+    END_VAR
+
+    VAR
+        bChillerErrors      : BOOL; // Local logical sum of chiller error states
+        bTempSwitchErrors   : BOOL; // Local logical sum of temperature switch errors
+        bAmphosUnderVolt    : BOOL; // Local var for checking Amphos under MinVoltage
+        bOpcpaUnderVolt     : BOOL; // Local var for checking OPCPA under MinVoltage
+        bMpcUnderVolt       : BOOL; // Local var for checking MPC under MinVoltage
+    END_VAR
+
+    VAR_OUTPUT
+        bCarbideShutter  : BOOL; // Allowed Carbide Shutter state, point to NC Relay GVL
+    END_VAR
+    (*
+    The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
+    AmphosShutterEnable := TRUE := OPEN SHUTTER
+    AmphosShutterEnable := FALSE := CLOSE SHUTTER
+
+    Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
+    GVL_IO.bAmphosShutterEnable is the manual override PV for the shutter enable
+    *)
+
+    bChillerErrors := (
+                     (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
+                     (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
+                     (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
+                     (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04) OR
+                     (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05)
+                     );
+    bTempSwitchErrors := (
+                         NOT GVL_IO.bLoopTempSW01 OR
+                         NOT GVL_IO.bLoopTempSW02 OR
+                         NOT GVL_IO.bLoopTempSW03 OR
+                         NOT GVL_IO.bLoopTempSW04 OR
+                         NOT GVL_IO.bLoopTempSW05
+                         );
+
+    bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
+    bOpcpaUnderVolt := fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage;
+    bMpcUnderVolt := fMPCVoltage < stMPCSetpoints.nMinVoltage;
+
+    CASE MODE OF
+        // With great overrides comes great responsibility, and burnt optics
+        E_Mode.MASTER_Override:
+    // Just pass and retain the previous Amphos Shutter State
+    //            bAmphosShutterIN := bAmphosShutterOUT;
+            bCarbideShutter := TRUE;
+            GVL_IO.bAmphosEnable := TRUE;
+            bAmphosShutter := GVL_IO.bAmphosShutterEnable;
+
+        E_Mode.Protection:
+            // Close shutter if there is a hardware failure
+            IF (stErrors.bHardwareFailure
+            // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
+            (*OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable*)
+            //Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
+             OR (bChillerErrors OR bTempSwitchErrors)
+            // Close shutter if in OPCPA beam error state and OPCPA voltage too low
+             OR (bOpcpaUnderVolt AND stErrors.bOpcpaBeam)
+            // Close the shutter if there is a Dump Chiller error
+             OR stErrors.bDumpChiller
+            )
+            // Check global IO for redundancy of Dump Chiller Errors
+            OR (NOT GVL_IO.bDumpChillerFlow)
+            OR (NOT GVL_IO.bBaseplateChillerFlow)
+            THEN
+                bAmphosShutter := bCarbideShutter := GVL_IO.bAmphosEnable := FALSE;
+            ELSE
+                // If the Amphos trips, always disable it
+                IF bAmphosUnderVolt
+                THEN
+                    //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                    bAmphosShutter := GVL_IO.bAmphosEnable := GVL_IO.bAmphosShutterEnable:= FALSE;
+                ELSE
+                    bAmphosShutter := GVL_IO.bAmphosEnable := TRUE;
+                END_IF
+                // Only open the Amphos shutter if all 3 lasers are happy
+                IF (NOT(bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt))
+                THEN
+                    //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                    bAmphosShutter := GVL_IO.bAmphosShutterEnable:= TRUE;
+                ELSE
+                    //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                    bAmphosShutter := GVL_IO.bAmphosShutterEnable:= FALSE;
+                END_IF
+                // Carbide Shutter is weird, allows solo Carbide use explicitly
+                IF NOT (bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt)
+                    // This state is physically impossible
+                    OR (bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
+                    // But this state happens when the AMPHOS is powered down
+                    OR (bAmphosUnderVolt AND bOpcpaUnderVolt AND NOT bMpcUnderVolt)
+                THEN
+                    bCarbideShutter := TRUE;
+                ELSE
+                    bCarbideShutter := FALSE;
+                END_IF
+            END_IF
+
+        E_Mode.AMPHOS_Maintenance:
+        // Close shutter if there is a hardware failure
+            IF (stErrors.bHardwareFailure
+            // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
+            (*OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable*)
+            //Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
+             OR (bChillerErrors OR bTempSwitchErrors)
+            // Close the shutter if there is a Dump Chiller error
+             OR stErrors.bDumpChiller
+            )
+            // Check global IO for redundancy of Chiller Errors
+            OR (NOT GVL_IO.bDumpChillerFlow)
+            OR (NOT GVL_IO.bBaseplateChillerFlow)
+            THEN
+                //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                bAmphosShutter := bCarbideShutter := GVL_IO.bAmphosEnable := FALSE;
+            ELSE
+        // Just pass the Amphos shutter state and keep it enabled
+                GVL_IO.bAmphosEnable := TRUE;
+                //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                bAmphosShutter := GVL_IO.bAmphosShutterEnable;
+            END_IF
+        // Close the carbide shutter if the MPC is unhappy
+        IF bMpcUnderVolt
+        THEN
+            bCarbideShutter := FALSE;
+        ELSE
+            bCarbideShutter := TRUE;
+        END_IF
+
+        // Undefined state, do not get here. Do not pass go, do not collect 200 dollars
+        ELSE
+        // If you get stuck here you deserve it
+            Mode := E_Mode.Protection;
+    END_CASE
+
+    END_FUNCTION_BLOCK
+
+
+Related:
+    * `E_Mode`_
+    * `GVL_IO`_
+    * `ST_ErrorStates`_
     * `ST_LaserSetpoints`_
 
 
@@ -2197,64 +2007,6 @@ Related:
     * `GVL_IO`_
 
 
-FB_TemperatureMonitor
-^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    // Monitors temperature sensors
-    FUNCTION_BLOCK FB_TemperatureMonitor
-    VAR_INPUT
-        nTempMonRaw : INT; // Raw signal from the ADC
-        bAmphosOn : BOOL; // Whether the Amphos is on
-    END_VAR
-    VAR_IN_OUT
-        stSetpoints : ST_TemperatureMonitorSetpoints; // Temperature sensor setpoints
-    END_VAR
-    VAR_OUTPUT
-        {attribute 'pytmc' := '
-            pv: TEMP
-            io: i
-            field: EGU C
-            field: LOPR 0.0
-            field: HOPR 1000
-            field: LSV MINOR
-        '}
-        fTemperature : LREAL; // Temperature reading in celsius
-        {attribute 'pytmc' := '
-            pv: ERROR
-            io: i
-            field: OSV MAJOR
-            field: ZSV NO_ALARM
-            field: ZNAM OK
-            field: ONAM ERROR
-        '}
-        bError : BOOL; // Whether a temperature event happened. Goes back to normal by itself
-    END_VAR
-    VAR_TEMP
-        fMonitorVoltage : LREAL; // Voltage calculated from the raw ADC input
-    END_VAR
-    (* Scale the analog signal to voltage *)
-    fMonitorVoltage := F_Scale(
-        fRawData := nTempMonRaw,
-        fRawDataLowerOffLimit := GVL_EL3174.fRawLowerLimit,
-        fRawDataUpperOffLimit := GVL_EL3174.fRawUpperLimit,
-        fScaleDataLowerOffLimit := GVL_EL3174.fScaleLowerLimit,
-        fScaleDataUpperOffLimit := GVL_EL3174.fScaleUpperLimit);
-
-    fTemperature := fMonitorVoltage * 100;
-
-    (* Set error flag if temperature above max allowed and the amphos is on *)
-    bError := fTemperature > stSetpoints.fMaxTemperature AND bAmphosOn;
-
-    END_FUNCTION_BLOCK
-
-
-Related:
-    * `GVL_EL3174`_
-    * `ST_TemperatureMonitorSetpoints`_
-
-
 FB_TraceTekModbus
 ^^^^^^^^^^^^^^^^^
 
@@ -2388,7 +2140,7 @@ MAIN
             pv: @(PREFIX):LPS:MPC_MODE:RESET
             io: o
         '}
-        bAmphosEnable_MPC : FB_Amphos_Enable; // Latch for Amphos enable in MPC mode
+        fbAmphosEnable_MPC : FB_Amphos_Enable; // Latch for Amphos enable in MPC mode
         // Chillers
         {attribute 'pytmc' := 'pv: @(PREFIX):LPS:DUMP_CHILLER'}
         fbDumpChiller : FB_DumpChiller; // Flow sensor monitor for the dump chiller
@@ -2416,16 +2168,15 @@ MAIN
         (*
         This is the map of the Mode Int to the defintion
         MODE = 1 ==> Master Override
-        MODE = 2 ==> OPCPA Protection
-        MODE = 3 ==> OPCPA Override
-        MODE = 4 ==> MPC Protection
-        MODE = 5 ==> MPC Override
+        MODE = 2 ==> Protection
+        MODE = 3 ==> Amphos Maintenance
         Any other mode is invalid.
         We can later convert this MODE into an ENUM
         *)
         {attribute 'pytmc' := '
             pv: @(PREFIX):LPS:MODE
             io: io
+            field: NOBT 3
         '}
         Mode_LPS : E_Mode; // Mode Definition
 
@@ -2442,8 +2193,7 @@ MAIN
         bMasterLatchReset : BOOL; //Master release of latched error conditions
         bLatchStart : BOOL := FALSE; //Latch at start of loop.
 
-        bAmphosShutterEnableInterlock : FB_AmphosShutterEnable; 		///Interlock bit for shutter command
-
+        fbShutterEnableInterlocks : FB_LaserInterlock;
     END_VAR
     (*******************************************************************
             Update diagnostics. Check for hardware failures
@@ -2465,47 +2215,47 @@ MAIN
     *******************************************************************)
     (* Detects leaks using the location resitance from the TraceTek *)
     fbLeakMonitor(
-        nLocationResistance := fbTraceTekModbus.nLocationResistance,
-        bAmphosOn := GVL_IO.bAmphosOn,
-        bCarbideOn := GVL_IO.bCarbideOn,
-        bLeakDetected := GVL_IO.bTracetekAlarm,
-        stBound := GVL_TraceTek.stLeakMonitorBoundaries,
-        bLeakOpticalTableAmphosOn => stErrors.bLeakOpticalTableAmphosOn,
-        bLeakOpticaltableNoLaser => stErrors.bLeakOpticalTableNoLaser,
-        bLeakOpcpaCarbideOn => stErrors.bLeakOpcpaCarbideOn,
-        bLeakUnderTable => stErrors.bLeakUnderTable,
-        bLeakInsideRacks => stErrors.bLeakInsideRacks
+                  nLocationResistance       := fbTraceTekModbus.nLocationResistance,
+                  bAmphosOn                 := GVL_IO.bAmphosOn,
+                  bCarbideOn                := GVL_IO.bCarbideOn,
+                  bLeakDetected             := GVL_IO.bTracetekAlarm,
+                  stBound                   := GVL_TraceTek.stLeakMonitorBoundaries,
+                  bLeakOpticalTableAmphosOn  => stErrors.bLeakOpticalTableAmphosOn,
+                  bLeakOpticaltableNoLaser   => stErrors.bLeakOpticalTableNoLaser,
+                  bLeakOpcpaCarbideOn        => stErrors.bLeakOpcpaCarbideOn,
+                  bLeakUnderTable            => stErrors.bLeakUnderTable,
+                  bLeakInsideRacks           => stErrors.bLeakInsideRacks
     );
 
 
     (* Monitors for error events on chiller loop 1 *)
     fbChillerLoop01(
-        bLoopTempSW := GVL_IO.bLoopTempSW01,
-        bError => stErrors.bChillerLoop01
+                    bLoopTempSW     := GVL_IO.bLoopTempSW01,
+                    bError           => stErrors.bChillerLoop01
     );
 
     (* Monitors for error events on chiller loop 2 *)
     fbChillerLoop02(
-        bLoopTempSW := GVL_IO.bLoopTempSW02,
-        bError => stErrors.bChillerLoop02
+                    bLoopTempSW     := GVL_IO.bLoopTempSW02,
+                    bError           => stErrors.bChillerLoop02
     );
 
     (* Monitors for error events on chiller loop 3 *)
     fbChillerLoop03(
-        bLoopTempSW := GVL_IO.bLoopTempSW03,
-        bError => stErrors.bChillerLoop03
+                    bLoopTempSW     := GVL_IO.bLoopTempSW03,
+                    bError           => stErrors.bChillerLoop03
     );
 
     (* Monitors for error events on chiller loop 4 *)
     fbChillerLoop04(
-        bLoopTempSW := GVL_IO.bLoopTempSW04,
-        bError => stErrors.bChillerLoop04
+                    bLoopTempSW     := GVL_IO.bLoopTempSW04,
+                    bError           => stErrors.bChillerLoop04
     );
 
     (* Monitors for error events on chiller loop 5 *)
     fbChillerLoop05(
-        bLoopTempSW := GVL_IO.bLoopTempSW05,
-        bError => stErrors.bChillerLoop05
+                    bLoopTempSW     := GVL_IO.bLoopTempSW05,
+                    bError           => stErrors.bChillerLoop05
     );
 
 
@@ -2520,124 +2270,95 @@ MAIN
 
     (* Monitors the OPCPA laser *)
     fbOpcpa(
-        nVoltageRaw := GVL_IO.nOpcpaVoltageRaw,
-        bCarbideOn := GVL_IO.bCarbideOn,
-        stSetpoints := GVL_Laser.stOpcpaSP,
-        bError => stErrors.bOpcpaBeam,
-        bMasterLatchReset := bMasterLatchReset
+            nVoltageRaw         := GVL_IO.nOpcpaVoltageRaw,
+            bCarbideOn          := GVL_IO.bCarbideOn,
+            stSetpoints         := GVL_Laser.stOpcpaSP,
+            bError               => stErrors.bOpcpaBeam,
+            bMasterLatchReset   := bMasterLatchReset
     );
 
     (* Monitors the MPC laser *)
     fbMPC(
-        nVoltageRaw := GVL_IO.nMultiPassVoltageRaw,
-        bCarbideOn := GVL_IO.bCarbideOn,
-        stSetpoints := GVL_Laser.stMPCSP,
-        bError => stErrors.bMPCBeam,
-        bMasterLatchReset := bMasterLatchReset
+          nVoltageRaw           := GVL_IO.nMultiPassVoltageRaw,
+          bCarbideOn            := GVL_IO.bCarbideOn,
+          stSetpoints           := GVL_Laser.stMPCSP,
+          bError                 => stErrors.bMPCBeam,
+          bMasterLatchReset     := bMasterLatchReset
     );
 
-    //Flow sensor monitor for the dump chiller
+    //Flow sensor monitor for the beam dump chiller
     fbDumpChiller(
-        //bAmphosOn := GVL_IO.bAmphosOn,
-        bDumpChillerFlow := GVL_IO.bDumpChillerFlow,
-        bError => stErrors.bDumpChiller,
-        bMasterLatchReset := bMasterLatchReset
+                  //bAmphosOn := GVL_IO.bAmphosOn,
+                  bDumpChillerFlow      := GVL_IO.bDumpChillerFlow,
+                  bError                 => stErrors.bDumpChiller,
+                  bMasterLatchReset     := bMasterLatchReset
     );
 
     (* Flow sensor monitor for the baseplate chiller *)
     fbBaseplateChiller(
-        bBaseplateChillerFlow := GVL_IO.bBaseplateChillerFlow,
-        bError => stErrors.bBaseplateChiller,
-        bMasterLatchReset := bMasterLatchReset
+                        bBaseplateChillerFlow := GVL_IO.bBaseplateChillerFlow,
+                        bError                 => stErrors.bBaseplateChiller,
+                        bMasterLatchReset     := bMasterLatchReset
     );
 
     // Latch for Amphos Enable in MPC mode
-    bAmphosEnable_MPC(
-        bMasterLatchReset := bMasterLatchReset,
-        Mode := Mode_LPS,
-        fAmphosVoltage := fbAmphos.fVoltage,
-        bError => stErrors.bAmphosRelay,
-        stAmphosSetpoints := GVL_Laser.stAmphosSP,
-        stErrors := stErrors );
+    fbAmphosEnable_MPC(
+                        bMasterLatchReset := bMasterLatchReset,
+                        Mode              := Mode_LPS,
+                        fAmphosVoltage    := fbAmphos.fVoltage,
+                        bError             => stErrors.bAmphosRelay,
+                        stAmphosSetpoints := GVL_Laser.stAmphosSP,
+                        stErrors          := stErrors );
 
 
     (*******************************************************************
     Now that each of the input signals have been checked and errors stored,
     run the interlock logic.
     *******************************************************************)
-    //Enable Amphos if the interlock passes
-    GVL_IO.bAmphosEnable := F_AmphosEnable(
-        fAmphosVoltage := fbAmphos.fVoltage,
-        fOPCPAVoltage := fbOPCPA.fVoltage,
-        AmphosStatus := GVL_IO.bAmphosOn,
-        Mode := Mode_LPS,
-        stAmphosSetpoints := GVL_Laser.stAmphosSP,
-        stOPCPASetpoints := GVL_Laser.stOpcpaSP,
-        stErrors := stErrors);
-
     // Amphos Enable Latch
-    bAmphosShutterEnableInterlock(
-        fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
-        fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
-        AmphosStatus := GVL_IO.bAmphosOn, //Amphos Laser Shutter Status
-        Mode := Mode_LPS,
-        stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
-        stErrors := stErrors,
-        stAmphosSetpoints := GVL_Laser.stAmphosSP);
 
-    (*//Enable Amphos shutter if interlock logic passes
-    GVL_IO.bAmphosShutterCMD := F_AmphosShutterEnable(
-        fOpcpaVoltage := fbOpcpa.fVoltage, // The voltage of the OPCPA
-        fAmphosVoltage := fbAmphos.fVoltage, // The Amphos voltage
-        AmphosStatus := GVL_IO.bAmphosOn, //Amphos Laser Shutter Status
-        bLoopTempOverride01 := fbChillerLoop01.bOperatorOverride, // Whether the chiller loop error is overriden
-        bLoopTempOverride02 := fbChillerLoop02.bOperatorOverride, // Whether the chiller loop error is overriden
-        bLoopTempOverride03 := fbChillerLoop03.bOperatorOverride, // Whether the chiller loop error is overriden
-        bLoopTempOverride04 := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
-        bLoopTempOverride05 := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
-        ShutterStatus := GVL_IO.bAmphosShutterStatus,
-        Mode := Mode_LPS,
-        stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
-        stErrors := stErrors,
-        stAmphosSetpoints := GVL_Laser.stAmphosSP
+    fbShutterEnableInterlocks(
+        fOpcpaVoltage           := fbOpcpa.fVoltage, // The voltage of the OPCPA
+        fAmphosVoltage          := fbAmphos.fVoltage, // The Amphos voltage
+        fMpcVoltage             := fbMPC.fVoltage, // The MPC Voltage
+        AmphosStatus            := GVL_IO.bAmphosOn, //Amphos Laser Shutter Status
+        bLoopTempOverride01     := fbChillerLoop01.bOperatorOverride, // Whether the chiller loop error is overriden
+        bLoopTempOverride02     := fbChillerLoop02.bOperatorOverride, // Whether the chiller loop error is overriden
+        bLoopTempOverride03     := fbChillerLoop03.bOperatorOverride, // Whether the chiller loop error is overriden
+        bLoopTempOverride04     := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
+        bLoopTempOverride05     := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
+    //    ShutterStatus := GVL_IO.bAmphosShutterStatus,
+        bAmphosShutter          := GVL_IO.bAmphosShutterCMD,
+        Mode                    := Mode_LPS,
+        stErrors                := stErrors,
+        stOpcpaSetpoints        := GVL_Laser.stOpcpaSP,
+        stAmphosSetpoints       := GVL_Laser.stAmphosSP,
+        stMPCSetPoints          := GVL_Laser.stMPCSP,
+        bCarbideShutter          => GVL_IO.bCarbideShutterEnable
     );
-    *)
+
     // Function block for Shutter Control to Amphos Software
     fb_ShutterControl(
         CMDShutterOPEN 	:= GVL_IO.bAmphosRelayOPEN,
         CMDShutterCLOSE := GVL_IO.bAmphosRelayCLOSE,
-        LaserBusy		:= GVL_IO.bAmphosLaserBusy,
-        LaserAck 		:= GVL_IO.bAmphosLaserACK,
-        LaserON			:= GVL_IO.bAmphosOn,
-        ShutterState	:= GVL_IO.bAmphosShutterStatus,
-        Mode := Mode_LPS,);
-
-    // Enable Carbide shutter if interlock logic passes *)
-    GVL_IO.bCarbideShutterEnable := F_CarbideShutterEnable(
-        fOpcpaVoltage := fbOPCPA.fVoltage,
-        fAmphosVoltage := fbAmphos.fVoltage,
-        fMPCVoltage := fbMPC.fVoltage,
-        AmphosLaserStatus := GVL_IO.bAmphosOn,
-        Mode := Mode_LPS,
-        stOpcpaSetpoints := GVL_Laser.stOpcpaSP,
-        stErrors := stErrors,
-        stAmphosSetpoints := GVL_Laser.stAmphosSP,
-        stMPCSetpoints := GVL_Laser.stMPCSP
-    );
-
+        LaserBusy       := GVL_IO.bAmphosLaserBusy,
+        LaserAck        := GVL_IO.bAmphosLaserACK,
+        LaserON         := GVL_IO.bAmphosOn,
+        ShutterState    := GVL_IO.bAmphosShutterStatus,
+        Mode            := Mode_LPS);
 
     (* Enable Dump chiller if interlock logic passes *)
     GVL_IO.bDumpChillerRelay := F_DumpChillerEnable(
-        stErrors := stErrors,
-        Mode := Mode_LPS
-        //bMasterOverride := bMasterOverride
+                                                    stErrors := stErrors,
+                                                    Mode := Mode_LPS
+                                                    //bMasterOverride := bMasterOverride
     );
 
     (* Enable Baseplate chiller if interlock logic passes *)
     GVL_IO.bBaseplateChillerRelay := F_BaseplateChillerEnable(
-        stErrors := stErrors,
-        Mode := Mode_LPS
-        //bMasterOverride := bMasterOverride
+                                                              stErrors := stErrors,
+                                                              Mode := Mode_LPS
+                                                              //bMasterOverride := bMasterOverride
     );
 
     (*******************************************************************
@@ -2647,8 +2368,8 @@ MAIN
     (* Read from TraceTek hardware to get leak details. Errors are
     handled later when diagnostics are run *)
     fbTraceTekModbus(
-        nModbusSlaveAddress := GVL_TraceTek.nModbusSlaveAddress,
-        bLeakDetected := GVL_IO.bTracetekAlarm
+                     nModbusSlaveAddress := GVL_TraceTek.nModbusSlaveAddress,
+                     bLeakDetected := GVL_IO.bTracetekAlarm
     );
 
     (*******************************************************************
@@ -2723,22 +2444,19 @@ MAIN
 Related:
     * `E_Mode`_
     * `E_ShutterState`_
-    * `FB_AmphosShutterEnable`_
     * `FB_Amphos_Enable`_
     * `FB_BaseplateChiller`_
     * `FB_ChillerLoop`_
     * `FB_DumpChiller`_
     * `FB_EcatDiag`_
     * `FB_ErrorTriggers`_
+    * `FB_LaserInterlock`_
     * `FB_Laser_Timer`_
     * `FB_Laser_Timer_MPC`_
     * `FB_LeakMonitor`_
     * `FB_ShutterControl`_
     * `FB_TraceTekModbus`_
-    * `F_AmphosEnable`_
-    * `F_AmphosShutterEnable`_
     * `F_BaseplateChillerEnable`_
-    * `F_CarbideShutterEnable`_
     * `F_DumpChillerEnable`_
     * `GVL_IO`_
     * `GVL_Laser`_

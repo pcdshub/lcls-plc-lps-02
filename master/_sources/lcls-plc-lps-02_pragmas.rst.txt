@@ -6,7 +6,7 @@ Pragmas
     :header: PLC Name, Total Pragmas, Errors
     :align: center
 
-    :ref:`lcls_plc_lps_02 <lcls_plc_lps_02_overview_pragmas>`, 153, 0
+    :ref:`lcls_plc_lps_02 <lcls_plc_lps_02_overview_pragmas>`, 148, 0
 
 
 .. _lcls_plc_lps_02_overview_pragmas:
@@ -15,7 +15,7 @@ Pragmas
 lcls_plc_lps_02
 ^^^^^^^^^^^^^^^
 
-Total pragmas found: 153
+Total pragmas found: 148
 Total linter errors: 0
 
 
