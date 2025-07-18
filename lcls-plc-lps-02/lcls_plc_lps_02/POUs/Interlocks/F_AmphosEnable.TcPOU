@@ -25,28 +25,14 @@ END_VAR
 As per logic table, the Amphos Enable is Disabled in OPCPA Protection, MPC Protection and MPC override
 based on the Amphos PM voltage less than Minimum set user Voltage
 *)
-
+// Disable Amphos if there is a hardware failure
 IF (stErrors.bHardwareFailure) // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) 
 THEN
     F_AmphosEnable := FALSE;
 ELSE
 	bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
 	CASE MODE OF
-		E_Mode.OPCPA_Protection:
-			IF bAmphosUnderVolt
-			THEN
-				F_AmphosEnable := FALSE;
-			ELSE
-				F_AmphosEnable := TRUE;
-			END_IF
-		E_Mode.MPC_Protection:
-			IF bAmphosUnderVolt
-			THEN
-				F_AmphosEnable := FALSE;
-			ELSE
-				F_AmphosEnable := TRUE;
-			END_IF
-		E_Mode.MPC_Override:
+		E_Mode.OPCPA_Protection, E_Mode.MPC_Protection, E_Mode.MPC_Override:
 			IF bAmphosUnderVolt
 			THEN
 				F_AmphosEnable := FALSE;
