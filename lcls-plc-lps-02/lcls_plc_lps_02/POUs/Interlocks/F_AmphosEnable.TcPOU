@@ -16,6 +16,9 @@ VAR_IN_OUT CONSTANT
     stErrors : ST_ErrorStates; // Currently detected errors
     stOPCPASetpoints : ST_LaserSetpoints; //OPCPA Setpoints
 END_VAR
+VAR
+	bAmphosUnderVolt : BOOL; //Amphos voltage below setpoint minimum
+END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* // Amphos Enable bit is needed to turn ON the Amphos Laser
@@ -23,22 +26,37 @@ As per logic table, the Amphos Enable is Disabled in OPCPA Protection, MPC Prote
 based on the Amphos PM voltage less than Minimum set user Voltage
 *)
 
-IF (stErrors.bHardwareFailure) // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
+IF (stErrors.bHardwareFailure) // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) 
 THEN
     F_AmphosEnable := FALSE;
 ELSE
-    IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-    OR
-    (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-    OR
-    (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-    THEN
-    F_AmphosEnable := FALSE;
-    ELSE
-    F_AmphosEnable := TRUE;
-    END_IF
+	bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
+	CASE MODE OF
+		E_Mode.OPCPA_Protection:
+			IF bAmphosUnderVolt
+			THEN
+				F_AmphosEnable := FALSE;
+			ELSE
+				F_AmphosEnable := TRUE;
+			END_IF
+		E_Mode.MPC_Protection:
+			IF bAmphosUnderVolt
+			THEN
+				F_AmphosEnable := FALSE;
+			ELSE
+				F_AmphosEnable := TRUE;
+			END_IF
+		E_Mode.MPC_Override:
+			IF bAmphosUnderVolt
+			THEN
+				F_AmphosEnable := FALSE;
+			ELSE
+				F_AmphosEnable := TRUE;
+			END_IF
+		ELSE
+			F_AmphosEnable := TRUE;
+	END_CASE
 END_IF
-
 ]]></ST>
     </Implementation>
   </POU>
