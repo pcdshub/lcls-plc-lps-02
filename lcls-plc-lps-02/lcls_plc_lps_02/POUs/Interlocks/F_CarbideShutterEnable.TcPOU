@@ -17,27 +17,36 @@ VAR_IN_OUT CONSTANT
     stMPCSetpoints : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
 VAR
+    bOpcpaUnderVolt: BOOL; // Local var for checking OPCPA under MinVoltage
+    bMPCUnderVolt: BOOL; // Local var for checking MPC under MinVoltage
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* // Carbide Shutter Enable bit is needed to turn the Shutter OPEN/CLOSE position
 As per logic table, the CarbideShutterEnable function is Disabled in OPCPA Protection, MPC Protection
 *)
-
+bOpcpaUnderVolt := fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage;
+bMPCUnderVolt:= fMPCVoltage < stMPCSetpoints.nMinVoltage;
 
 IF (stErrors.bHardwareFailure) // Close carbide shutter if there is a hardware failure
     //OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable) // Close carbide shutter if leak in OPCPA with carbide on or if there is a leak under the table
 THEN
     F_CarbideShutterEnable := FALSE;
 ELSE
-    IF ( MODE = E_Mode.OPCPA_Protection AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-    OR
-    (MODE = E_Mode.MPC_Protection AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
-    THEN
-    F_CarbideShutterEnable := FALSE;
-    ELSE
-    F_CarbideShutterEnable := TRUE;
-    END_IF
+    CASE MODE OF
+        E_Mode.OPCPA_Protection:
+            IF bOpcpaUnderVolt
+                THEN
+                F_CarbideShutterEnable := FALSE;
+            END_IF
+        E_Mode.MPC_Protection:
+            IF bMPCUnderVolt
+                THEN
+                F_CarbideShutterEnable := FALSE;
+            END_IF
+        ELSE
+            F_CarbideShutterEnable := TRUE;
+    END_CASE
 END_IF]]></ST>
     </Implementation>
   </POU>
