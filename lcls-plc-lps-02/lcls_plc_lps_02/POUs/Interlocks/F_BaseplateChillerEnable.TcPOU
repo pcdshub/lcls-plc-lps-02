@@ -18,12 +18,14 @@ END_VAR
    OR stErrors.bLeakUnderTable) // Disable baseplate chiller if there is a leak under the table
 THEN
     F_BaseplateChillerEnable := FALSE;
-ELSIF
-    (MODE = E_Mode.MASTER_Override)
-    THEN
-    F_BaseplateChillerEnable := TRUE;
 ELSE
-    F_BaseplateChillerEnable := TRUE;
+    // redundant logic is redundant, but at-least is deterministic
+    CASE Mode OF
+        E_Mode.MASTER_Override:
+            F_BaseplateChillerEnable := TRUE;
+        ELSE
+            F_BaseplateChillerEnable := TRUE;
+    END_CASE
 END_IF
 
 ]]></ST>
