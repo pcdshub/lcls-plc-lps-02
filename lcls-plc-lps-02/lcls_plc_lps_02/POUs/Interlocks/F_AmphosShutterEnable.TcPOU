@@ -5,24 +5,29 @@
 FUNCTION F_AmphosShutterEnable : BOOL
 VAR_INPUT
     //bAmphosOn : BOOL; // Whether the amphos is on
-    fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-    fAmphosVoltage : LREAL; // The Amphos voltage
-    AmphosStatus :BOOL; //Amphos Laser Shutter Status
-    bLoopTempOverride01 : BOOL; // Whether the chiller loop error is overriden
-    bLoopTempOverride02 : BOOL; // Whether the chiller loop error is overriden
-    bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
-    bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
-    bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
-    Mode : E_Mode; // Mode of operation
+    fOpcpaVoltage           : LREAL; // The voltage of the OPCPA
+    fAmphosVoltage          : LREAL; // The Amphos voltage
+    AmphosStatus            : BOOL; //Amphos Laser Shutter Status
+    bLoopTempOverride01     : BOOL; // Whether the chiller loop error is overriden
+    bLoopTempOverride02     : BOOL; // Whether the chiller loop error is overriden
+    bLoopTempOverride03     : BOOL; // Whether the chiller loop error is overriden
+    bLoopTempOverride04     : BOOL; // Whether the chiller loop error is overriden
+    bLoopTempOverride05     : BOOL; // Whether the chiller loop error is overriden
+    Mode                    : E_Mode; // Mode of operation
     ShutterStatus : BOOL; //Shutter Status
 END_VAR
 
 VAR_IN_OUT CONSTANT
-    stErrors : ST_ErrorStates; // Currently detected errors
-    stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-    stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+    stErrors                : ST_ErrorStates; // Currently detected errors
+    stOpcpaSetpoints        : ST_LaserSetpoints; // OPCPA setpoints
+    stAmphosSetpoints       : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
+
 VAR
+    bAmphosUnderVolt        : BOOL; // Amphos Power meter under min setpoint voltage
+    bOpcpaUnderVolt         : BOOL; // OPCPA Power meter under min setpoint voltage
+    bChillerErrors          : BOOL; // Any chiller loop errors but is not manually overridden
+    bOverTempErrors         : BOOL; // Any temperature switch errors
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
@@ -31,43 +36,94 @@ END_VAR]]></Declaration>
 The below logic follows the logic table
 Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
 *)
+// consolidate the check for temperature overrides and chiller loop errors
+bChillerErrors := (
+                   (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
+                   (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
+                   (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
+                   (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)OR
+                   (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05)
+                   );
+// consolidate temperature switch faults. Remember, they are NC, so FALSE means ERROR
+bOverTempErrors := (NOT GVL_IO.bLoopTempSW01 OR
+                    NOT GVL_IO.bLoopTempSW02 OR
+                    NOT GVL_IO.bLoopTempSW03 OR
+                    NOT GVL_IO.bLoopTempSW04 OR
+                    NOT GVL_IO.bLoopTempSW05);
 
+bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
+bOpcpaUnderVolt := fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage;
 
-IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
-   // OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
-     OR (
-        (NOT bLoopTempOverride01 AND stErrors.bChillerLoop01) OR
-        (NOT bLoopTempOverride02 AND stErrors.bChillerLoop02) OR
-        (NOT bLoopTempOverride03 AND stErrors.bChillerLoop03) OR
-        (NOT bLoopTempOverride04 AND stErrors.bChillerLoop04)OR
-        (NOT bLoopTempOverride05 AND stErrors.bChillerLoop05)
-    OR
-        (NOT GVL_IO.bLoopTempSW01 OR
-        NOT GVL_IO.bLoopTempSW02  OR
-        NOT GVL_IO.bLoopTempSW03  OR
-        NOT GVL_IO.bLoopTempSW04 OR
-        NOT GVL_IO.bLoopTempSW05))//Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
-    OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage AND stErrors.bOpcpaBeam // Close shutter if in OPCPA beam error state and OPCPA voltage too low
-    OR stErrors.bDumpChiller) OR (NOT GVL_IO.bDumpChillerFlow)OR (NOT GVL_IO.bBaseplateChillerFlow)// Close shutter if there is a Dump Chiller error
+// Close shutter if there is a hardware failure
+IF stErrors.bHardwareFailure 
+   // Close shutter if there is a leak on the optical table with the amphos on, a leak under the table, or a leak inside the OPCPA with Carbide on
+   // OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable
+    OR (bChillerErrors or bOverTempErrors)
+    // Close shutter if in OPCPA beam error state and OPCPA voltage too low
+    OR (bOpcpaUnderVolt AND stErrors.bOpcpaBeam)
+    // Close shutter if there is a Dump Chiller error
+    OR stErrors.bDumpChiller
+    OR (NOT GVL_IO.bDumpChillerFlow)
+    OR (NOT GVL_IO.bBaseplateChillerFlow)
 THEN
     F_AmphosShutterEnable := FALSE;
 ELSE
-    IF ( MODE = E_Mode.OPCPA_Protection AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage))  //Per LPS Interlock Logic thruth table
-    OR
-    (MODE = E_Mode.MPC_Protection AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR (NOT AmphosStatus)))
-    OR
-    (MODE = E_Mode.MPC_Override AND (fAmphosVoltage < stAmphosSetpoints.nMinVoltage OR (NOT AmphosStatus)))
-    THEN
-    F_AmphosShutterEnable := FALSE;
-    ELSIF
-    (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND (NOT ShutterStatus)
-        THEN  F_AmphosShutterEnable := TRUE;
-    ELSIF (MODE = E_Mode.MASTER_Override OR MODE = E_Mode.OPCPA_Override) AND ShutterStatus
-        THEN F_AmphosShutterEnable := FALSE;
-    ELSE
-    F_AmphosShutterEnable := TRUE;
-    END_IF
-END_IF ]]></ST>
+    CASE MODE OF
+        E_Mode.MASTER_Override, E_Mode.Maintenance:
+            IF NOT ShutterStatus
+                THEN F_AmphosShutterEnable := TRUE;
+            ELSE
+                F_AmphosShutterEnable := FALSE;
+            END_IF
+        E_Mode.Protection:
+            IF bAmphosUnderVolt OR bOpcpaUnderVolt OR NOT AmphosStatus
+                THEN
+                F_AmphosShutterEnable := FALSE;
+            ELSE
+                F_AmphosShutterEnable := TRUE;
+            END_IF
+        // Undefined state, do not get here
+        ELSE
+            F_AmphosShutterEnable := FALSE;
+    END_CASE
+END_IF]]></ST>
     </Implementation>
+    <LineIds Name="F_AmphosShutterEnable">
+      <LineId Id="3" Count="5" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="75" Count="2" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="87" Count="4" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="96" Count="1" />
+      <LineId Id="27" Count="2" />
+      <LineId Id="99" Count="1" />
+      <LineId Id="102" Count="1" />
+      <LineId Id="105" Count="1" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="107" Count="2" />
+      <LineId Id="111" Count="2" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="116" Count="1" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
