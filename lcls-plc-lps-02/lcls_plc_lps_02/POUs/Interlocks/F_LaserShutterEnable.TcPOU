@@ -123,7 +123,7 @@ ELSE
 
         // Undefined state, do not get here. Do not pass go, do not collect 200 dollars
         ELSE
-            F_AmphosShutterEnable := FALSE;
+            F_LaserShutterEnable := FALSE;
     END_CASE
 END_IF]]></ST>
     </Implementation>
