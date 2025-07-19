@@ -95,15 +95,15 @@ ELSE
             END_IF
             // Only open the Amphos shutter if all 3 lasers are happy
             IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
-                THEN
-                    bAmphosShutterOUT := TRUE;
+            THEN
+                bAmphosShutterOUT := TRUE;
             ELSE
                     bAmphosShutterOUT := FALSE;
             END_IF
             // Carbide Shutter is weird, allows solo Carbide use explicitly
             IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
                 OR (bAmphosUnderVolt AND bOpcpaUnderVolt AND NOT bMpcUnderVolt)
-                THEN
+            THEN
                 bCarbideShutterOUT := TRUE;
             ELSE
                 bCarbideShutterOUT := FALSE;
@@ -115,9 +115,9 @@ ELSE
         F_LaserShutterEnable := TRUE;
         // Close the carbide shutter if the MPC is unhappy
         IF bMpcUnderVolt
-            THEN
+        THEN
             bCarbideShutterOUT := FALSE;
-            ELSE
+        ELSE
             bCarbideShutterOUT := TRUE;
         END_IF
 

@@ -24,7 +24,7 @@ THEN
 ELSE
     CASE MODE OF
         E_Mode.MASTER_Override:
-        F_DumpChillerEnable := TRUE;
+            F_DumpChillerEnable := TRUE;
         // Otherwise things are okay
         ELSE
             F_DumpChillerEnable := TRUE;

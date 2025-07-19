@@ -40,7 +40,7 @@ ELSE
             F_AmphosEnable := TRUE;
         E_Mode.Protection:
             IF bAmphosUnderVolt
-                THEN
+            THEN
                 F_AmphosEnable := FALSE;
             ELSE
                 F_AmphosEnable := TRUE;
