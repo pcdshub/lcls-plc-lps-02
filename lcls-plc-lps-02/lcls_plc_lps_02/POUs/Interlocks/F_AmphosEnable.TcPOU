@@ -4,17 +4,17 @@
     <Declaration><![CDATA[// Interlock logic for the Amphos relay
 FUNCTION F_AmphosEnable : BOOL
 VAR_INPUT
-    fAmphosVoltage : LREAL; // The Amphos voltage
-    fOPCPAVoltage : LREAL; //OPCPA Voltage
-    AmphosStatus : BOOL; //Amphos Laser Status
-    Mode : E_Mode;
+    fAmphosVoltage      : LREAL; // The Amphos voltage
+    fOPCPAVoltage       : LREAL; //OPCPA Voltage
+    AmphosStatus        : BOOL; //Amphos Laser Status
+    Mode                : E_Mode;
     //ShutterStatus : BOOL; //Shutter State from Amphos
 
 END_VAR
 VAR_IN_OUT CONSTANT
-    stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-    stErrors : ST_ErrorStates; // Currently detected errors
-    stOPCPASetpoints : ST_LaserSetpoints; //OPCPA Setpoints
+    stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
+    stErrors            : ST_ErrorStates; // Currently detected errors
+    stOPCPASetpoints    : ST_LaserSetpoints; //OPCPA Setpoints
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -41,5 +41,9 @@ END_IF
 
 ]]></ST>
     </Implementation>
+    <LineIds Name="F_AmphosEnable">
+      <LineId Id="3" Count="20" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
