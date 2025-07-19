@@ -15,7 +15,7 @@ VAR_INPUT
     bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
     Mode                : E_Mode; // Mode of operation
     bAmphosShutterIN    : BOOL; // Amphos Shutter Status
-    bShutterStatus      : BOOL; // Shutter Status
+//    bShutterStatus      : BOOL; // Shutter Status
 END_VAR
 
 VAR_IN_OUT CONSTANT
@@ -35,8 +35,7 @@ END_VAR
 
 VAR_OUTPUT
     bAmphosShutterOUT   : BOOL; // Allowed Amphos Shutter state, point to NC Relay GVL
-    bOpcpaShutterOUT    : BOOL; // Allowed Opcpa Shutter state, point to NC Relay GVL
-    bCarbideShutterOUT  : BOOL; // Allowed MPC Shutter state, point to NC Relay GVL
+    bCarbideShutterOUT  : BOOL; // Allowed Carbide Shutter state, point to NC Relay GVL
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
@@ -80,6 +79,12 @@ THEN
     bAmphosShutterOUT := bOpcpaShutterOUT := bCarbideShutterOUT := F_LaserShutterEnable := FALSE;
 ELSE
     CASE MODE OF
+        // With great overrides comes great responsibility, and burnt optics
+        E_Mode.MASTER_Override:
+        F_LaserShutterEnable := TRUE;
+        bAmphosShutterIN := bAmphosShutterOUT;
+        bCarbideShutterOUT := TRUE;
+
         E_Mode.Protection:
             // If the Amphos trips, always disable it
             IF bAmphosUnderVolt 
@@ -115,11 +120,7 @@ ELSE
             ELSE
             bCarbideShutterOUT := TRUE;
         END_IF
-        // With great overrides comes great responsibility, and burnt optics
-        E_Mode.MASTER_Override:
-        F_LaserShutterEnable := TRUE;
-        bAmphosShutterIN := bAmphosShutterOUT;
-        bCarbideShutterOUT := TRUE;
+
         // Undefined state, do not get here. Do not pass go, do not collect 200 dollars
         ELSE
             F_AmphosShutterEnable := FALSE;
@@ -129,7 +130,11 @@ END_IF]]></ST>
     <LineIds Name="F_LaserShutterEnable">
       <LineId Id="49" Count="22" />
       <LineId Id="126" Count="0" />
-      <LineId Id="72" Count="17" />
+      <LineId Id="72" Count="16" />
+      <LineId Id="167" Count="3" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="89" Count="0" />
       <LineId Id="121" Count="0" />
       <LineId Id="90" Count="5" />
       <LineId Id="122" Count="0" />
@@ -149,9 +154,7 @@ END_IF]]></ST>
       <LineId Id="149" Count="0" />
       <LineId Id="160" Count="0" />
       <LineId Id="153" Count="5" />
-      <LineId Id="163" Count="0" />
-      <LineId Id="161" Count="1" />
-      <LineId Id="164" Count="1" />
+      <LineId Id="165" Count="0" />
       <LineId Id="159" Count="0" />
       <LineId Id="110" Count="2" />
       <LineId Id="7" Count="0" />
