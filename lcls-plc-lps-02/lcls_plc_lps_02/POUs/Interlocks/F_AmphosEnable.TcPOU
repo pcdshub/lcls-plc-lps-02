@@ -45,6 +45,9 @@ ELSE
             ELSE
                 F_AmphosEnable := TRUE;
             END_IF
+        // Invalid state, do not get here
+        ELSE
+            F_AmphosEnable := FALSE;
     END_CASE
 END_IF
 
@@ -65,6 +68,8 @@ END_IF
       <LineId Id="51" Count="3" />
       <LineId Id="56" Count="2" />
       <LineId Id="55" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="59" Count="1" />
       <LineId Id="50" Count="0" />
       <LineId Id="22" Count="1" />
       <LineId Id="2" Count="0" />
