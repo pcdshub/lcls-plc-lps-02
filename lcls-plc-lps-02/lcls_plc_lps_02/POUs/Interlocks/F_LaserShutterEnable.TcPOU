@@ -81,9 +81,9 @@ ELSE
     CASE MODE OF
         // With great overrides comes great responsibility, and burnt optics
         E_Mode.MASTER_Override:
-        F_LaserShutterEnable := TRUE;
-        bAmphosShutterIN := bAmphosShutterOUT;
-        bCarbideShutterOUT := TRUE;
+            F_LaserShutterEnable := TRUE;
+            bAmphosShutterIN := bAmphosShutterOUT;
+            bCarbideShutterOUT := TRUE;
 
         E_Mode.Protection:
             // If the Amphos trips, always disable it
