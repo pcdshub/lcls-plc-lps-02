@@ -16,33 +16,57 @@ VAR_IN_OUT CONSTANT
     stErrors            : ST_ErrorStates; // Currently detected errors
     stOPCPASetpoints    : ST_LaserSetpoints; //OPCPA Setpoints
 END_VAR
+
+VAR
+    bAmphosUnderVolt    : BOOL; // Amphos voltage underneath min setpoint
+END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* // Amphos Enable bit is needed to turn ON the Amphos Laser
-As per logic table, the Amphos Enable is Disabled in OPCPA Protection, MPC Protection and MPC override
-based on the Amphos PM voltage less than Minimum set user Voltage
+As per logic table, the Amphos Enable is Disabled in Protection mode when the Amphos
+PM voltage less than Minimum set user Voltage. Otherwise, it is enabled.
 *)
 
-IF (stErrors.bHardwareFailure) // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
+bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
+
+IF (stErrors.bHardwareFailure) 
+// OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
 THEN
+// If there is a hardware fault, always disable the Amphos
     F_AmphosEnable := FALSE;
 ELSE
-    IF ( MODE = E_Mode.OPCPA_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-    OR
-    (MODE = E_Mode.MPC_Protection AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-    OR
-    (MODE = E_Mode.MPC_Override AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage) //AND AmphosStatus)
-    THEN
-    F_AmphosEnable := FALSE;
-    ELSE
-    F_AmphosEnable := TRUE;
-    END_IF
+    CASE MODE OF
+        E_Mode.MASTER_Override, E_Mode.Maintenance:
+            F_AmphosEnable := TRUE;
+        E_Mode.Protection:
+            IF bAmphosUnderVolt
+                THEN
+                F_AmphosEnable := FALSE;
+            ELSE
+                F_AmphosEnable := TRUE;
+            END_IF
+    END_CASE
 END_IF
 
 ]]></ST>
     </Implementation>
     <LineIds Name="F_AmphosEnable">
-      <LineId Id="3" Count="20" />
+      <LineId Id="3" Count="1" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="48" Count="1" />
+      <LineId Id="51" Count="3" />
+      <LineId Id="56" Count="2" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="22" Count="1" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
