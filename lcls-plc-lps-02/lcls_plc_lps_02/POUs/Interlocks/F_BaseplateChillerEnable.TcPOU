@@ -14,19 +14,35 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF (stErrors.bHardwareFailure // Disable baseplate chiller if there is a hardware failure
-   OR stErrors.bLeakUnderTable) // Disable baseplate chiller if there is a leak under the table
-THEN
-    F_BaseplateChillerEnable := FALSE;
-ELSIF
-    (MODE = E_Mode.MASTER_Override)
+      <ST><![CDATA[// Disable baseplate chiller if there is a hardware failure or leak under the table
+IF (stErrors.bHardwareFailure OR stErrors.bLeakUnderTable)
     THEN
-    F_BaseplateChillerEnable := TRUE;
-ELSE
-    F_BaseplateChillerEnable := TRUE;
-END_IF
-
-]]></ST>
+    F_BasePlateChillerEnable := FALSE;
+    ELSE
+    CASE MODE OF
+        // Master override does indeed override 
+        E_Mode.MASTER_Override:
+           F_BasePlateChillerEnable := TRUE;
+        // And yet redundantly our default state is TRUE?
+        ELSE
+           F_BasePlateChillerEnable := TRUE;
+    END_CASE
+END_IF]]></ST>
     </Implementation>
+    <LineIds Name="F_BaseplateChillerEnable">
+      <LineId Id="14" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="33" Count="1" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="35" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
