@@ -4,41 +4,61 @@
     <Declaration><![CDATA[// Interlock logic for the Carbide Shutter
 FUNCTION F_CarbideShutterEnable : BOOL
 VAR_INPUT
-    fOpcpaVoltage : LREAL; // The voltage of the OPCPA
-    fAmphosVoltage : LREAL; // The Amphos voltage
-    fMPCVoltage : LREAL; // The Amphos voltage
-    AmphosLaserStatus :BOOL; //Amphos Shutter Status
-    Mode :E_Mode; // Mode of operation
+    fOpcpaVoltage        : LREAL; // The voltage of the OPCPA
+    fAmphosVoltage       : LREAL; // The Amphos voltage
+    fMPCVoltage          : LREAL; // The Amphos voltage
+    AmphosLaserStatus    :BOOL; //Amphos Shutter Status
+    Mode                 :E_Mode; // Mode of operation
 END_VAR
 VAR_IN_OUT CONSTANT
-    stErrors : ST_ErrorStates; // Currently detected errors
-    stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
-    stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
-    stMPCSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+    stErrors             : ST_ErrorStates; // Currently detected errors
+    stOpcpaSetpoints     : ST_LaserSetpoints; // OPCPA setpoints
+    stAmphosSetpoints    : ST_LaserSetpoints; // The Amphos setpoints
+    stMPCSetpoints       : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
 VAR
+    bOpcpaUnderVolt      : BOOL; // Opcpa Power Meter is under min voltage setpoint
+    bMpcUnderVolt        : BOOL; // MPC Power Meter is under min voltage setpoint
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* // Carbide Shutter Enable bit is needed to turn the Shutter OPEN/CLOSE position
 As per logic table, the CarbideShutterEnable function is Disabled in OPCPA Protection, MPC Protection
 *)
+bOpcpaUnderVolt := fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage;
+bMpcUnderVolt := fMPCVoltage < stMPCSetpoints.nMinVoltage;
 
-
-IF (stErrors.bHardwareFailure) // Close carbide shutter if there is a hardware failure
-    //OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable) // Close carbide shutter if leak in OPCPA with carbide on or if there is a leak under the table
-THEN
-    F_CarbideShutterEnable := FALSE;
-ELSE
-    IF ( MODE = E_Mode.OPCPA_Protection AND fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage)  //Per LPS Interlock Logic thruth table
-    OR
-    (MODE = E_Mode.MPC_Protection AND fMPCVoltage < stMPCSetpoints.nMinVoltage)
+IF stErrors.bHardwareFailure
     THEN
     F_CarbideShutterEnable := FALSE;
-    ELSE
-    F_CarbideShutterEnable := TRUE;
-    END_IF
-END_IF]]></ST>
+ELSE
+    CASE MODE OF
+        E_Mode.MASTER_Override:
+            F_CarbideShutterEnable := TRUE;
+        E_Mode.Protection:
+            IF bOpcpaUnderVolt or bMpcUnderVolt
+                THEN
+                F_CarbideShutterEnable := FALSE;
+            ELSE
+                F_CarbideShutterEnable := TRUE;
+            END_IF
+        ELSE
+            F_CarbideShutterEnable := TRUE;
+    END_CASE
+END_IF
+]]></ST>
     </Implementation>
+    <LineIds Name="F_CarbideShutterEnable">
+      <LineId Id="3" Count="3" />
+      <LineId Id="42" Count="3" />
+      <LineId Id="47" Count="3" />
+      <LineId Id="52" Count="3" />
+      <LineId Id="57" Count="2" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="60" Count="1" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="38" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
