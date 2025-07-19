@@ -76,7 +76,7 @@ IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
     OR (NOT GVL_IO.bDumpChillerFlow)
     OR (NOT GVL_IO.bBaseplateChillerFlow)
 THEN
-    bAmphosShutterOUT := bOpcpaShutterOUT := bCarbideShutterOUT := F_LaserShutterEnable := FALSE;
+    bAmphosShutterOUT := bCarbideShutterOUT := bCarbideShutterOUT := F_LaserShutterEnable := FALSE;
 ELSE
     CASE MODE OF
         // With great overrides comes great responsibility, and burnt optics
