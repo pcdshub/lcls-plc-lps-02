@@ -135,6 +135,9 @@
     <Compile Include="POUs\Interlocks\F_DumpChillerEnable.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Interlocks\F_LaserShutterEnable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
