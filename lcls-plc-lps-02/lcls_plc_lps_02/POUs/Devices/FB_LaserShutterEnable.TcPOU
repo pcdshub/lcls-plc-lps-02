@@ -86,14 +86,15 @@ ELSE
 // Just pass and retain the previous Amphos Shutter State
 //            bAmphosShutterIN := bAmphosShutterOUT;
             bCarbideShutter := TRUE;
+            GVL_IO.bAmphosEnable := TRUE;
 
         E_Mode.Protection:
             // If the Amphos trips, always disable it
             IF bAmphosUnderVolt
             THEN
-                bAmphosShutter := FALSE;
+                bAmphosShutter := GVL_IO.bAmphosShutterEnable := FALSE;
             ELSE
-                bAmphosShutter := TRUE;
+                bAmphosShutter := GVL_IO.bAmphosShutterEnable := TRUE;
             END_IF
             // Only open the Amphos shutter if all 3 lasers are happy
             IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
@@ -112,7 +113,8 @@ ELSE
             END_IF
 
         E_Mode.Maintenance:
-        // Just pass the Amphos shutter state and don' do anything
+        // Just pass the Amphos shutter state and keep it enabled
+        GVL_IO.bAmphosEnable := TRUE;
         // Close the carbide shutter if the MPC is unhappy
         IF bMpcUnderVolt
         THEN
