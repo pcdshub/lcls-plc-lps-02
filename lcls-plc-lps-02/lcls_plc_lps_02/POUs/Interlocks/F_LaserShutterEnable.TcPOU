@@ -87,18 +87,20 @@ ELSE
 
         E_Mode.Protection:
             // If the Amphos trips, always disable it
-            IF bAmphosUnderVolt 
+            IF bAmphosUnderVolt
             THEN
                 F_LaserShutterEnable := FALSE;
+                bAmphosShutterOUT := FALSE;
             ELSE
                 F_LaserShutterEnable := TRUE;
+                bAmphosShutterOUT := TRUE;
             END_IF
             // Only open the Amphos shutter if all 3 lasers are happy
             IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
             THEN
                 bAmphosShutterOUT := TRUE;
             ELSE
-                    bAmphosShutterOUT := FALSE;
+                bAmphosShutterOUT := FALSE;
             END_IF
             // Carbide Shutter is weird, allows solo Carbide use explicitly
             IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
@@ -110,9 +112,9 @@ ELSE
             END_IF
 
         E_Mode.Maintenance:
-        // Just pass the Amphos shutter state
-        bAmphosShutterIN := bAmphosShutterOUT;
-        F_LaserShutterEnable := TRUE;
+            // Just pass the Amphos shutter state
+            bAmphosShutterIN := bAmphosShutterOUT;
+            F_LaserShutterEnable := TRUE;
         // Close the carbide shutter if the MPC is unhappy
         IF bMpcUnderVolt
         THEN
@@ -127,40 +129,5 @@ ELSE
     END_CASE
 END_IF]]></ST>
     </Implementation>
-    <LineIds Name="F_LaserShutterEnable">
-      <LineId Id="49" Count="22" />
-      <LineId Id="126" Count="0" />
-      <LineId Id="72" Count="13" />
-      <LineId Id="87" Count="0" />
-      <LineId Id="169" Count="1" />
-      <LineId Id="166" Count="0" />
-      <LineId Id="171" Count="0" />
-      <LineId Id="89" Count="0" />
-      <LineId Id="121" Count="0" />
-      <LineId Id="90" Count="5" />
-      <LineId Id="122" Count="0" />
-      <LineId Id="131" Count="0" />
-      <LineId Id="134" Count="0" />
-      <LineId Id="132" Count="0" />
-      <LineId Id="135" Count="1" />
-      <LineId Id="133" Count="0" />
-      <LineId Id="137" Count="2" />
-      <LineId Id="141" Count="1" />
-      <LineId Id="145" Count="1" />
-      <LineId Id="144" Count="0" />
-      <LineId Id="128" Count="0" />
-      <LineId Id="103" Count="0" />
-      <LineId Id="148" Count="0" />
-      <LineId Id="147" Count="0" />
-      <LineId Id="149" Count="0" />
-      <LineId Id="160" Count="0" />
-      <LineId Id="153" Count="5" />
-      <LineId Id="165" Count="0" />
-      <LineId Id="159" Count="0" />
-      <LineId Id="110" Count="2" />
-      <LineId Id="7" Count="0" />
-      <LineId Id="172" Count="2" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
