@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="F_LaserShutterEnable" Id="{1f42dc3c-bc58-4cee-975c-061cf0c31ef2}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_LaserShutterEnable : BOOL
+  <POU Name="FB_LaserShutterEnable" Id="{52004838-2014-4839-ae20-5315a47326e2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LaserShutterEnable
 VAR_INPUT
     //bAmphosOn : BOOL; // Whether the amphos is on
     fOpcpaVoltage       : LREAL; // The voltage of the OPCPA
@@ -38,9 +38,10 @@ VAR_OUTPUT
     bCarbideShutterOUT  : BOOL; // Allowed Carbide Shutter state, point to NC Relay GVL
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[(*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
-// AmphosShutterEnable := True := OPEN SHUTTER
-// AmphosShutterEnable := FALSE := CLOSE SHUTTER
+      <ST><![CDATA[(*
+The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
+AmphosShutterEnable := TRUE := OPEN SHUTTER
+AmphosShutterEnable := FALSE := CLOSE SHUTTER
 The below logic follows the logic table
 Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
 *)
@@ -59,6 +60,7 @@ bTempSwitchErrors := (
                      NOT GVL_IO.bLoopTempSW04 OR
                      NOT GVL_IO.bLoopTempSW05
                      );
+
 bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
 bOpcpaUnderVolt := fOpcpaVoltage < stOpcpaSetpoints.nMinVoltage;
 bMpcUnderVolt := fMPCVoltage < stMPCSetpoints.nMinVoltage;
@@ -76,12 +78,11 @@ IF (stErrors.bHardwareFailure // Close shutter if there is a hardware failure
     OR (NOT GVL_IO.bDumpChillerFlow)
     OR (NOT GVL_IO.bBaseplateChillerFlow)
 THEN
-    bAmphosShutterOUT := bCarbideShutterOUT := bCarbideShutterOUT := F_LaserShutterEnable := FALSE;
+    bAmphosShutterOUT := bCarbideShutterOUT := bCarbideShutterOUT := FALSE;
 ELSE
     CASE MODE OF
         // With great overrides comes great responsibility, and burnt optics
         E_Mode.MASTER_Override:
-            F_LaserShutterEnable := TRUE;
             bAmphosShutterIN := bAmphosShutterOUT;
             bCarbideShutterOUT := TRUE;
 
@@ -89,10 +90,8 @@ ELSE
             // If the Amphos trips, always disable it
             IF bAmphosUnderVolt
             THEN
-                F_LaserShutterEnable := FALSE;
                 bAmphosShutterOUT := FALSE;
             ELSE
-                F_LaserShutterEnable := TRUE;
                 bAmphosShutterOUT := TRUE;
             END_IF
             // Only open the Amphos shutter if all 3 lasers are happy
@@ -114,7 +113,6 @@ ELSE
         E_Mode.Maintenance:
             // Just pass the Amphos shutter state
             bAmphosShutterIN := bAmphosShutterOUT;
-            F_LaserShutterEnable := TRUE;
         // Close the carbide shutter if the MPC is unhappy
         IF bMpcUnderVolt
         THEN
@@ -125,7 +123,7 @@ ELSE
 
         // Undefined state, do not get here. Do not pass go, do not collect 200 dollars
         ELSE
-            F_LaserShutterEnable := FALSE;
+        // If you get stuck here you deserve it
     END_CASE
 END_IF]]></ST>
     </Implementation>
