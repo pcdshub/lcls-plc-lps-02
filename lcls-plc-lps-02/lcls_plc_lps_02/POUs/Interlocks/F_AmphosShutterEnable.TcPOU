@@ -13,7 +13,6 @@ VAR_INPUT
     bLoopTempOverride03     : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride04     : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride05     : BOOL; // Whether the chiller loop error is overriden
-    Mode                    : E_Mode; // Mode of operation
     ShutterStatus : BOOL; //Shutter Status
 END_VAR
 
@@ -21,6 +20,7 @@ VAR_IN_OUT CONSTANT
     stErrors                : ST_ErrorStates; // Currently detected errors
     stOpcpaSetpoints        : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints       : ST_LaserSetpoints; // The Amphos setpoints
+    Mode                    : E_Mode; // Mode of operation
 END_VAR
 
 VAR
@@ -85,10 +85,14 @@ ELSE
             END_IF
         // Undefined state, do not get here
         ELSE
-            F_AmphosShutterEnable := FALSE;
+            Mode := E_Mode.Protection;
     END_CASE
 END_IF
 ]]></ST>
     </Implementation>
+    <LineIds Name="F_AmphosShutterEnable">
+      <LineId Id="3" Count="57" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

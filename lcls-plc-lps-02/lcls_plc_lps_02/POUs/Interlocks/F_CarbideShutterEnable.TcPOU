@@ -8,14 +8,16 @@ VAR_INPUT
     fAmphosVoltage       : LREAL; // The Amphos voltage
     fMPCVoltage          : LREAL; // The Amphos voltage
     AmphosLaserStatus    :BOOL; //Amphos Shutter Status
-    Mode                 :E_Mode; // Mode of operation
 END_VAR
+
 VAR_IN_OUT CONSTANT
     stErrors             : ST_ErrorStates; // Currently detected errors
     stOpcpaSetpoints     : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints    : ST_LaserSetpoints; // The Amphos setpoints
-    stMPCSetpoints       : ST_LaserSetpoints; // The Amphos setpoints
+    stMPCSetpoints       : ST_LaserSetpoints; // The MPC setpoints
+    Mode                 :E_Mode; // Mode of operation
 END_VAR
+
 VAR
     bOpcpaUnderVolt      : BOOL; // Opcpa Power Meter is under min voltage setpoint
     bMpcUnderVolt        : BOOL; // MPC Power Meter is under min voltage setpoint
@@ -43,7 +45,7 @@ ELSE
                 F_CarbideShutterEnable := TRUE;
             END_IF
         ELSE
-            F_CarbideShutterEnable := TRUE;
+            Mode := E_Mode.Protection;
     END_CASE
 END_IF
 ]]></ST>

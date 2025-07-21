@@ -7,7 +7,6 @@ VAR_INPUT
     fAmphosVoltage      : LREAL; // The Amphos voltage
     fOPCPAVoltage       : LREAL; //OPCPA Voltage
     AmphosStatus        : BOOL; //Amphos Laser Status
-    Mode                : E_Mode;
     //ShutterStatus : BOOL; //Shutter State from Amphos
 
 END_VAR
@@ -15,6 +14,7 @@ VAR_IN_OUT CONSTANT
     stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
     stErrors            : ST_ErrorStates; // Currently detected errors
     stOPCPASetpoints    : ST_LaserSetpoints; //OPCPA Setpoints
+    Mode                : E_Mode; // Mode of operation
 END_VAR
 
 VAR
@@ -47,10 +47,14 @@ ELSE
             END_IF
         // Invalid state, do not get here
         ELSE
-            F_AmphosEnable := FALSE;
+            Mode := E_Mode.Protection;
     END_CASE
 END_IF
 ]]></ST>
     </Implementation>
+    <LineIds Name="F_AmphosEnable">
+      <LineId Id="3" Count="27" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
