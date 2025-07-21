@@ -7,9 +7,9 @@ VAR_INPUT
     //bAmphosOn         : BOOL; // Whether the amphos is turned on
     //bAmphosEnable      : BOOL; // Signal from the flow sensor. Normally high.
     bMasterLatchReset : BOOL; //Master latched error reset
-    Mode              : E_Mode; // Mode
     fAmphosVoltage    : LREAL; // The Amphos voltage
 END_VAR
+
 VAR_OUTPUT
     {attribute 'pytmc' := '
         pv: ERROR
@@ -21,11 +21,14 @@ VAR_OUTPUT
     '}
     bError            : BOOL; // Whether an error was detected. Should latch until reset
 END_VAR
+
 VAR_IN_OUT CONSTANT
     stErrors          : ST_ErrorStates; // Currently detected errors
    // stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+    Mode              : E_Mode; // Mode
 END_VAR
+
 VAR
 END_VAR
 ]]></Declaration>
@@ -41,7 +44,7 @@ CASE MODE OF
     END_IF
     // Undefined state, do not get here
     ELSE
-        bError := TRUE;
+        Mode := E_Mode.Protection;
 END_CASE
 
 IF bMasterLatchReset THEN
