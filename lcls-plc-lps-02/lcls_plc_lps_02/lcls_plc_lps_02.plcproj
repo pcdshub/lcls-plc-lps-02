@@ -96,6 +96,9 @@
     <Compile Include="POUs\Devices\FB_Laser.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Devices\FB_LaserShutterEnable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Devices\FB_Laser_Timer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -133,9 +136,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Interlocks\F_DumpChillerEnable.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Interlocks\F_LaserShutterEnable.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
