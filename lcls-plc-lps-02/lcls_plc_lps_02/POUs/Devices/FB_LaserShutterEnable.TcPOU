@@ -13,7 +13,6 @@ VAR_INPUT
     bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
-    Mode                : E_Mode; // Mode of operation
 //    bAmphosShutterIN    : BOOL; // Amphos Shutter Status
 //    bShutterStatus      : BOOL; // Shutter Status
 END_VAR
@@ -23,6 +22,7 @@ VAR_IN_OUT CONSTANT
     stOpcpaSetpoints    : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
     stMPCSetpoints      : ST_LaserSetpoints; // The MPC setpoints
+    Mode                : E_Mode; // Mode of operation
 END_VAR
 
 VAR
@@ -129,12 +129,13 @@ CASE MODE OF
     // Undefined state, do not get here. Do not pass go, do not collect 200 dollars
     ELSE
     // If you get stuck here you deserve it
-        bAmphosShutter := GVL_IO.bAmphosShutterEnable := bCarbideShutter := FALSE;
+        Mode := E_Mode.Protection;
 END_CASE
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_LaserShutterEnable">
-      <LineId Id="3" Count="26" />
+      <LineId Id="3" Count="25" />
+      <LineId Id="188" Count="0" />
       <LineId Id="45" Count="8" />
       <LineId Id="181" Count="0" />
       <LineId Id="128" Count="0" />
