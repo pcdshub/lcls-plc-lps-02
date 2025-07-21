@@ -88,6 +88,7 @@ VAR
     {attribute 'pytmc' := '
         pv: @(PREFIX):LPS:MODE
         io: io
+        field: NOBT 3
     '}
     Mode_LPS : E_Mode; // Mode Definition
 
