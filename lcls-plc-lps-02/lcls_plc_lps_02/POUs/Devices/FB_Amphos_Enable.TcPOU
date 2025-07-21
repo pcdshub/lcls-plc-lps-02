@@ -26,6 +26,9 @@ VAR_IN_OUT CONSTANT
     stErrors          : ST_ErrorStates; // Currently detected errors
    // stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
+END_VAR
+
+VAR_IN_OUT
     Mode              : E_Mode; // Mode
 END_VAR
 

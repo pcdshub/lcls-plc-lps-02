@@ -22,7 +22,10 @@ VAR_IN_OUT CONSTANT
     stOpcpaSetpoints    : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
     stMPCSetpoints      : ST_LaserSetpoints; // The MPC setpoints
-    Mode                : E_Mode; // Mode of operation
+END_VAR
+
+VAR_IN_OUT
+    Mode              : E_Mode; // Mode
 END_VAR
 
 VAR

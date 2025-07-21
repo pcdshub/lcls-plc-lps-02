@@ -10,11 +10,15 @@ VAR_INPUT
     //ShutterStatus : BOOL; //Shutter State from Amphos
 
 END_VAR
+
 VAR_IN_OUT CONSTANT
     stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
     stErrors            : ST_ErrorStates; // Currently detected errors
     stOPCPASetpoints    : ST_LaserSetpoints; //OPCPA Setpoints
-    Mode                : E_Mode; // Mode of operation
+END_VAR
+
+VAR_IN_OUT
+    Mode              : E_Mode; // Mode
 END_VAR
 
 VAR
