@@ -29,7 +29,7 @@ PM voltage less than Minimum set user Voltage. Otherwise, it is enabled.
 
 bAmphosUnderVolt := fAmphosVoltage < stAmphosSetpoints.nMinVoltage;
 
-IF (stErrors.bHardwareFailure) 
+IF (stErrors.bHardwareFailure)
 // OR (NOT GVL_IO.bBaseplateChillerFlow) OR (NOT GVL_IO.bDumpChillerFlow) // Disable Amphos if there is a hardware failure
 THEN
 // If there is a hardware fault, always disable the Amphos
@@ -50,29 +50,7 @@ ELSE
             F_AmphosEnable := FALSE;
     END_CASE
 END_IF
-
 ]]></ST>
     </Implementation>
-    <LineIds Name="F_AmphosEnable">
-      <LineId Id="3" Count="1" />
-      <LineId Id="47" Count="0" />
-      <LineId Id="6" Count="0" />
-      <LineId Id="46" Count="0" />
-      <LineId Id="45" Count="0" />
-      <LineId Id="7" Count="1" />
-      <LineId Id="39" Count="0" />
-      <LineId Id="9" Count="0" />
-      <LineId Id="40" Count="0" />
-      <LineId Id="10" Count="1" />
-      <LineId Id="48" Count="1" />
-      <LineId Id="51" Count="3" />
-      <LineId Id="56" Count="2" />
-      <LineId Id="55" Count="0" />
-      <LineId Id="61" Count="0" />
-      <LineId Id="59" Count="1" />
-      <LineId Id="50" Count="0" />
-      <LineId Id="22" Count="1" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

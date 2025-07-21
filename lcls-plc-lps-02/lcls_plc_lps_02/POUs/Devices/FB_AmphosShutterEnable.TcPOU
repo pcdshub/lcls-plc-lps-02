@@ -36,7 +36,7 @@ bTempSwitchError := (NOT GVL_IO.bLoopTempSW01
                      OR NOT GVL_IO.bLoopTempSW04
                      OR NOT GVL_IO.bLoopTempSW05);
 
-IF 
+IF
 // Close shutter if there is a hardware failure
 (stErrors.bHardwareFailure  OR stErrors.bDumpChiller OR stErrors.bBaseplateChiller)
 THEN
@@ -68,33 +68,5 @@ ELSE
 END_IF
 ]]></ST>
     </Implementation>
-    <LineIds Name="FB_AmphosShutterEnable">
-      <LineId Id="3" Count="6" />
-      <LineId Id="61" Count="0" />
-      <LineId Id="63" Count="4" />
-      <LineId Id="62" Count="0" />
-      <LineId Id="10" Count="0" />
-      <LineId Id="58" Count="0" />
-      <LineId Id="57" Count="0" />
-      <LineId Id="68" Count="4" />
-      <LineId Id="74" Count="0" />
-      <LineId Id="76" Count="1" />
-      <LineId Id="87" Count="0" />
-      <LineId Id="78" Count="0" />
-      <LineId Id="84" Count="2" />
-      <LineId Id="79" Count="0" />
-      <LineId Id="81" Count="1" />
-      <LineId Id="90" Count="0" />
-      <LineId Id="83" Count="0" />
-      <LineId Id="88" Count="1" />
-      <LineId Id="80" Count="0" />
-      <LineId Id="93" Count="0" />
-      <LineId Id="91" Count="0" />
-      <LineId Id="94" Count="0" />
-      <LineId Id="92" Count="0" />
-      <LineId Id="75" Count="0" />
-      <LineId Id="73" Count="0" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

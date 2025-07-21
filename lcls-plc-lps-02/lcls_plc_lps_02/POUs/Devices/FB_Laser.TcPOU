@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_Laser" Id="{eeae44b8-5281-462f-b9ad-0ed693927e51}" SpecialFunc="None">
     <Declaration><![CDATA[// Monitors the lasers for under voltage events
 FUNCTION_BLOCK FB_Laser
@@ -44,7 +44,8 @@ fVoltage := F_Scale(
 (* Set error if amphos is below nominal voltage *)
 IF  bAmphosOn AND fVoltage < stSetpoints.nMinNominalVoltage THEN
     bError := TRUE;
-END_IF]]></ST>
+END_IF
+]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{d8197360-9c92-40b1-83fa-a89bbb3a2d6e}">
       <Declaration><![CDATA[// Reset latched errors

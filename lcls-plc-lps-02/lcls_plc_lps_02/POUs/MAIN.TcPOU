@@ -408,7 +408,8 @@ END_IF
 IF bMasterLatchReset AND bLatchStart THEN
     bMasterLatchReset := FALSE;
     bLatchStart := FALSE;
-END_IF]]></ST>
+END_IF
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
