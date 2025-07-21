@@ -6,20 +6,23 @@ VAR_INPUT
     fOpcpaVoltage       : LREAL; // The voltage of the OPCPA
     fAmphosVoltage      : LREAL; // The Amphos voltage
     AmphosStatus        :BOOL; //Amphos Laser Shutter Status
-    Mode                : E_Mode; // Mode of operation
     ShutterStatus       : BOOL; //Shutter Status
 END_VAR
+
 VAR_OUTPUT
 END_VAR
+
 VAR
     bAmphosUnderVolt    : BOOL; //Amphos Power meter under min setpoint voltage
     bOpcpaUnderVolt     : BOOL; //Opcpa Power Meter under min setpoint voltage
     bTempSwitchError    : BOOL; //Temp. Switch error, not bypassed
 END_VAR
+
 VAR_IN_OUT CONSTANT
     stErrors            : ST_ErrorStates; // Currently detected errors
     stOpcpaSetpoints    : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints   : ST_LaserSetpoints; // The Amphos setpoints
+    Mode                : E_Mode; // Mode of operation
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(*// The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
@@ -62,11 +65,15 @@ ELSE
             END_IF
         // Invalid mode, do not get here
         ELSE
-            GVL_IO.bAmphosShutterCMD := FALSE;
-            GVL_IO.bAmphosShutterEnable := FALSE;
+            Mode := E_Mode.Protection;
     END_CASE
 END_IF
 ]]></ST>
     </Implementation>
+    <LineIds Name="FB_AmphosShutterEnable">
+      <LineId Id="3" Count="39" />
+      <LineId Id="44" Count="2" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
