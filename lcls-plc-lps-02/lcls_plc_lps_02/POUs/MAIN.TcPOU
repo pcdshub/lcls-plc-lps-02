@@ -257,8 +257,8 @@ fbShutterEnableInterlocks(
     stOpcpaSetpoints        := GVL_Laser.stOpcpaSP,
     stAmphosSetpoints       := GVL_Laser.stAmphosSP,
     stMPCSetPoints          := GVL_Laser.stMPCSP,
-    bAmphosShutter       => GVL_IO.bAmphosShutterCMD,
-    bCarbideShutter      => GVL_IO.bCarbideShutterEnable
+    bAmphosShutter           => GVL_IO.bAmphosShutterCMD,
+    bCarbideShutter          => GVL_IO.bCarbideShutterEnable
 );
 
 (*
@@ -411,5 +411,9 @@ IF bMasterLatchReset AND bLatchStart THEN
 END_IF
 ]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="3" Count="299" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
