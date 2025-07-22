@@ -6,7 +6,7 @@ TYPE E_Mode :
 (
     MASTER_Override :=1,
     Protection := 2,
-    Maintenance := 3
+    AMPHOS_Maintenance := 3
 );
 END_TYPE
 ]]></Declaration>

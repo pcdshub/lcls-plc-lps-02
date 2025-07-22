@@ -81,7 +81,7 @@ VAR
     This is the map of the Mode Int to the defintion
     MODE = 1 ==> Master Override
     MODE = 2 ==> Protection
-    MODE = 3 ==> Maintenance
+    MODE = 3 ==> Amphos Maintenance
     Any other mode is invalid.
     We can later convert this MODE into an ENUM
     *)
