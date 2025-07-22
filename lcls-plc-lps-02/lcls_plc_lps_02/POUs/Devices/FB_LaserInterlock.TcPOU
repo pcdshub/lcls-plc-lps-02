@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="FB_LaserShutterEnable" Id="{52004838-2014-4839-ae20-5315a47326e2}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_LaserShutterEnable
+  <POU Name="FB_LaserInterlock" Id="{52004838-2014-4839-ae20-5315a47326e2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LaserInterlock
 VAR_INPUT
     //bAmphosOn : BOOL; // Whether the amphos is on
     fOpcpaVoltage       : LREAL; // The voltage of the OPCPA
@@ -159,7 +159,7 @@ CASE MODE OF
 END_CASE
 ]]></ST>
     </Implementation>
-    <LineIds Name="FB_LaserShutterEnable">
+    <LineIds Name="FB_LaserInterlock">
       <LineId Id="3" Count="5" />
       <LineId Id="238" Count="0" />
       <LineId Id="9" Count="19" />
