@@ -103,14 +103,17 @@ CASE MODE OF
                 bAmphosShutter := GVL_IO.bAmphosEnable := TRUE;
             END_IF
             // Only open the Amphos shutter if all 3 lasers are happy
-            IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
+            IF (NOT(bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt))
             THEN
                 bAmphosShutter := GVL_IO.bAmphosEnable := TRUE;
             ELSE
                 bAmphosShutter := GVL_IO.bAmphosEnable := FALSE;
             END_IF
             // Carbide Shutter is weird, allows solo Carbide use explicitly
-            IF (NOT bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
+            IF NOT (bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt)
+                // This state is physically impossible
+                OR (bAmphosUnderVolt AND NOT bOpcpaUnderVolt AND NOT bMpcUnderVolt)
+                // But this state happens when the AMPHOS is powered down
                 OR (bAmphosUnderVolt AND bOpcpaUnderVolt AND NOT bMpcUnderVolt)
             THEN
                 bCarbideShutter := TRUE;
@@ -153,7 +156,12 @@ END_CASE
       <LineId Id="186" Count="0" />
       <LineId Id="138" Count="3" />
       <LineId Id="127" Count="0" />
-      <LineId Id="54" Count="21" />
+      <LineId Id="54" Count="15" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="234" Count="0" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="71" Count="4" />
       <LineId Id="142" Count="0" />
       <LineId Id="76" Count="3" />
       <LineId Id="230" Count="0" />
