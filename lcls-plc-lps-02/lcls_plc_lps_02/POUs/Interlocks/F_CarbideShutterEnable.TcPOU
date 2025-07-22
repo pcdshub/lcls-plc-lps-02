@@ -37,7 +37,7 @@ ELSE
     CASE MODE OF
         E_Mode.MASTER_Override:
             F_CarbideShutterEnable := TRUE;
-        E_Mode.Protection, E_Mode.Maintenance:
+        E_Mode.Protection, E_Mode.AMPHOS_Maintenance:
             IF bOpcpaUnderVolt or bMpcUnderVolt
                 THEN
                 F_CarbideShutterEnable := FALSE;

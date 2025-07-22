@@ -40,7 +40,7 @@ THEN
     F_AmphosEnable := FALSE;
 ELSE
     CASE MODE OF
-        E_Mode.MASTER_Override, E_Mode.Maintenance:
+        E_Mode.MASTER_Override, E_Mode.AMPHOS_Maintenance:
             F_AmphosEnable := TRUE;
         E_Mode.Protection:
             IF bAmphosUnderVolt

@@ -13,7 +13,6 @@ VAR_INPUT
     bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride04 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride05 : BOOL; // Whether the chiller loop error is overriden
-    bAmphosShutterIN    : BOOL; // Amphos Shutter Status
 //    bShutterStatus      : BOOL; // Shutter Status
 END_VAR
 
@@ -26,6 +25,7 @@ END_VAR
 
 VAR_IN_OUT
     Mode              : E_Mode; // Mode
+    bAmphosShutter   : BOOL; // Allowed Amphos Shutter state, point to NC Relay GVL
 END_VAR
 
 VAR
@@ -37,7 +37,6 @@ VAR
 END_VAR
 
 VAR_OUTPUT
-    bAmphosShutter   : BOOL; // Allowed Amphos Shutter state, point to NC Relay GVL
     bCarbideShutter  : BOOL; // Allowed Carbide Shutter state, point to NC Relay GVL
 END_VAR]]></Declaration>
     <Implementation>
@@ -45,8 +44,9 @@ END_VAR]]></Declaration>
 The Amphos Shutter Enable function sends and Enable or Disable bit as an output to be used by the Amphos Shutter Command block
 AmphosShutterEnable := TRUE := OPEN SHUTTER
 AmphosShutterEnable := FALSE := CLOSE SHUTTER
-The below logic follows the logic table
+
 Note : In master override modes, the Shutter state will hold the previous state value, unless manually forced
+GVL_IO.bAmphosShutterEnable is the manual override PV for the shutter enable
 *)
 
 bChillerErrors := (
@@ -75,7 +75,7 @@ CASE MODE OF
 //            bAmphosShutterIN := bAmphosShutterOUT;
         bCarbideShutter := TRUE;
         GVL_IO.bAmphosEnable := TRUE;
-        bAmphosShutter := bAmphosShutterIN;
+        bAmphosShutter := GVL_IO.bAmphosShutterEnable;
 
     E_Mode.Protection:
         // Close shutter if there is a hardware failure
@@ -105,9 +105,9 @@ CASE MODE OF
             // Only open the Amphos shutter if all 3 lasers are happy
             IF (NOT(bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt))
             THEN
-                bAmphosShutter := GVL_IO.bAmphosEnable := TRUE;
+                bAmphosShutter := TRUE;
             ELSE
-                bAmphosShutter := GVL_IO.bAmphosEnable := FALSE;
+                bAmphosShutter := FALSE;
             END_IF
             // Carbide Shutter is weird, allows solo Carbide use explicitly
             IF NOT (bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt)
@@ -122,10 +122,10 @@ CASE MODE OF
             END_IF
         END_IF
 
-    E_Mode.Maintenance:
+    E_Mode.AMPHOS_Maintenance:
     // Just pass the Amphos shutter state and keep it enabled
     GVL_IO.bAmphosEnable := TRUE;
-    bAmphosShutter := bAmphosShutterIN;
+    bAmphosShutter := GVL_IO.bAmphosShutterEnable;
     // Close the carbide shutter if the MPC is unhappy
     IF bMpcUnderVolt
     THEN
@@ -142,7 +142,9 @@ END_CASE
 ]]></ST>
     </Implementation>
     <LineIds Name="FB_LaserShutterEnable">
-      <LineId Id="3" Count="25" />
+      <LineId Id="3" Count="5" />
+      <LineId Id="238" Count="0" />
+      <LineId Id="9" Count="19" />
       <LineId Id="188" Count="0" />
       <LineId Id="45" Count="5" />
       <LineId Id="228" Count="1" />

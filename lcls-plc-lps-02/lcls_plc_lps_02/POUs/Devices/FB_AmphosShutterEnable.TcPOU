@@ -47,7 +47,7 @@ THEN
     GVL_IO.bAmphosShutterEnable := FALSE;
 ELSE
     CASE MODE OF
-        E_Mode.MASTER_Override, E_Mode.Maintenance:
+        E_Mode.MASTER_Override, E_Mode.AMPHOS_Maintenance:
             GVL_IO.bAmphosShutterCMD := GVL_IO.bAmphosShutterEnable;
         E_Mode.Protection:
             // Disable shutter if any laser or temperature switch trips

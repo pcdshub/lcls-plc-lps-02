@@ -38,7 +38,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[(* Latch error if the baseplate chiller flow detects an error *)
 CASE MODE OF
-    E_Mode.MASTER_Override, E_Mode.Protection, E_Mode.Maintenance:
+    E_Mode.MASTER_Override, E_Mode.Protection, E_Mode.AMPHOS_Maintenance:
     IF fAmphosVoltage < stAmphosSetpoints.nMinVoltage
         THEN
             bError := TRUE;
