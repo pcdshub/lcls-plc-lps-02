@@ -252,6 +252,7 @@ fbShutterEnableInterlocks(
     bLoopTempOverride03     := fbChillerLoop03.bOperatorOverride, // Whether the chiller loop error is overriden
     bLoopTempOverride04     := fbChillerLoop04.bOperatorOverride, // Whether the chiller loop error is overriden
     bLoopTempOverride05     := fbChillerLoop05.bOperatorOverride, // Whether the chiller loop error is overriden
+    bAmphosShutterIN        := GVL_IO.bAmphosShutterCMD,
 //    ShutterStatus := GVL_IO.bAmphosShutterStatus,
     Mode                    := Mode_LPS,
     stErrors                := stErrors,
@@ -413,7 +414,9 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="3" Count="299" />
+      <LineId Id="3" Count="141" />
+      <LineId Id="411" Count="0" />
+      <LineId Id="145" Count="157" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
