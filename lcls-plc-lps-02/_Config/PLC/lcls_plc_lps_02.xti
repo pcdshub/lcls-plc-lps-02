@@ -71,7 +71,7 @@
 		</DataType>
 	</DataTypes>
 	<Project GUID="{F0E27DBE-1025-4958-B61D-F62F8AC18112}" Name="lcls_plc_lps_02" PrjFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.plcproj" TmcFilePath="..\..\lcls_plc_lps_02\lcls_plc_lps_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{DEF4C7A1-4A7A-94E5-6D6A-37450F00C02B}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="lcls_plc_lps_02\lcls_plc_lps_02.tmc" TmcHash="{2665917B-EAFF-A49D-0509-6661943EF2CF}">
 			<Name>lcls_plc_lps_02 Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -79,6 +79,11 @@
 				<Var>
 					<Name>MAIN.fbTraceTekModbus.fbModbusMaster.InData</Name>
 					<Type GUID="{500A6B3D-5280-418B-91E6-C259C9E0A911}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+				</Var>
+				<Var>
+					<Name>GVL_IO.bTracetekAlarm</Name>
+					<Comment><![CDATA[ Tracetek Alarm]]></Comment>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.nOpcpaVoltageRaw</Name>
@@ -94,11 +99,6 @@
 					<Name>GVL_IO.nMultiPassVoltageRaw</Name>
 					<Comment><![CDATA[ Ch3 MultiPass Cell]]></Comment>
 					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_IO.bTracetekAlarm</Name>
-					<Comment><![CDATA[ Tracetek Alarm]]></Comment>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_IO.bLoopTempSW01</Name>

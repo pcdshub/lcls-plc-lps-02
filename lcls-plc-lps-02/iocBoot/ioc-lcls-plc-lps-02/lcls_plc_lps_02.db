@@ -905,22 +905,6 @@ record(mbbo, "$(PREFIX):LPS:MODE") {
   info(archive, "VAL")
 }
 
-record(bi, "$(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV") {
-  field(DESC, "MAIN.bAmphosEnable_MPC.bError")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.bAmphosEnable_MPC.bError?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "ERROR")
-  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-  field(ASG, "NO_WRITE")
-}
-
 record(bi, "$(PREFIX):LPS:AMPHOS:RESET_RBV") {
   field(DESC, "MAIN.bAmphosReset")
   field(SCAN, "I/O Intr")
@@ -1165,6 +1149,22 @@ record(ai, "$(PREFIX):LPS:AMPHOS:VOLTAGE_RBV") {
   field(LLSV, "MAJOR")
   field(LSV, "MINOR")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+  field(ASG, "NO_WRITE")
+}
+
+record(bi, "$(PREFIX):LPS:MPC_MODE:RESET:ERROR_RBV") {
+  field(DESC, "MAIN.fbAmphosEnable_MPC.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbAmphosEnable_MPC.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
   info(archive, "VAL")
   field(ASG, "NO_WRITE")
 }
