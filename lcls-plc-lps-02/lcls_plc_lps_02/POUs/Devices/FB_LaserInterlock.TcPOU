@@ -132,12 +132,10 @@ CASE MODE OF
         (*OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable*)
         //Close shutter if the amphos is on and the temperature is too high in any loop. Ignore if operator override is enabled
          OR (bChillerErrors OR bTempSwitchErrors)
-        // Close shutter if in OPCPA beam error state and OPCPA voltage too low
-         OR (bOpcpaUnderVolt AND stErrors.bOpcpaBeam)
         // Close the shutter if there is a Dump Chiller error
          OR stErrors.bDumpChiller
         )
-        // Check global IO for redundancy of Dump Chiller Errors
+        // Check global IO for redundancy of Chiller Errors
         OR (NOT GVL_IO.bDumpChillerFlow)
         OR (NOT GVL_IO.bBaseplateChillerFlow)
         THEN
@@ -195,7 +193,8 @@ END_CASE
       <LineId Id="71" Count="4" />
       <LineId Id="142" Count="0" />
       <LineId Id="76" Count="1" />
-      <LineId Id="240" Count="14" />
+      <LineId Id="240" Count="5" />
+      <LineId Id="248" Count="6" />
       <LineId Id="297" Count="0" />
       <LineId Id="239" Count="0" />
       <LineId Id="255" Count="0" />
