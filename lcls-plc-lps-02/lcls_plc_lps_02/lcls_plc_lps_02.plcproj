@@ -96,7 +96,7 @@
     <Compile Include="POUs\Devices\FB_Laser.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Devices\FB_LaserShutterEnable.TcPOU">
+    <Compile Include="POUs\Devices\FB_LaserInterlock.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Devices\FB_Laser_Timer.TcPOU">

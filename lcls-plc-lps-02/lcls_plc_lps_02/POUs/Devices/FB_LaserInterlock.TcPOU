@@ -7,7 +7,7 @@ VAR_INPUT
     fOpcpaVoltage       : LREAL; // The voltage of the OPCPA
     fAmphosVoltage      : LREAL; // The Amphos voltage
     fMPCVoltage         : LREAL; // The MPC voltage
-    AmphosStatus        :BOOL; //Amphos Laser Shutter Status
+    AmphosStatus        : BOOL; //Amphos Laser Shutter Status
     bLoopTempOverride01 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride02 : BOOL; // Whether the chiller loop error is overriden
     bLoopTempOverride03 : BOOL; // Whether the chiller loop error is overriden
@@ -98,16 +98,19 @@ CASE MODE OF
             // If the Amphos trips, always disable it
             IF bAmphosUnderVolt
             THEN
-                bAmphosShutter := GVL_IO.bAmphosEnable := FALSE;
+                //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                bAmphosShutter := GVL_IO.bAmphosEnable := GVL_IO.bAmphosShutterEnable:= FALSE;
             ELSE
                 bAmphosShutter := GVL_IO.bAmphosEnable := TRUE;
             END_IF
             // Only open the Amphos shutter if all 3 lasers are happy
             IF (NOT(bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt))
             THEN
-                bAmphosShutter := TRUE;
+                //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                bAmphosShutter := GVL_IO.bAmphosShutterEnable:= TRUE;
             ELSE
-                bAmphosShutter := FALSE;
+                //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
+                bAmphosShutter := GVL_IO.bAmphosShutterEnable:= FALSE;
             END_IF
             // Carbide Shutter is weird, allows solo Carbide use explicitly
             IF NOT (bAmphosUnderVolt OR bOpcpaUnderVolt OR bMpcUnderVolt)
@@ -138,10 +141,12 @@ CASE MODE OF
         OR (NOT GVL_IO.bDumpChillerFlow)
         OR (NOT GVL_IO.bBaseplateChillerFlow)
         THEN
+            //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
             bAmphosShutter := bCarbideShutter := GVL_IO.bAmphosEnable := FALSE;
         ELSE
     // Just pass the Amphos shutter state and keep it enabled
             GVL_IO.bAmphosEnable := TRUE;
+            //GVL_IO.bAmphosShutterEnable MUST be overwritten to update EPICS downstream
             bAmphosShutter := GVL_IO.bAmphosShutterEnable;
         END_IF
     // Close the carbide shutter if the MPC is unhappy
@@ -176,7 +181,13 @@ END_CASE
       <LineId Id="186" Count="0" />
       <LineId Id="138" Count="3" />
       <LineId Id="127" Count="0" />
-      <LineId Id="54" Count="15" />
+      <LineId Id="54" Count="2" />
+      <LineId Id="294" Count="0" />
+      <LineId Id="57" Count="6" />
+      <LineId Id="295" Count="0" />
+      <LineId Id="64" Count="1" />
+      <LineId Id="296" Count="0" />
+      <LineId Id="66" Count="3" />
       <LineId Id="233" Count="0" />
       <LineId Id="70" Count="0" />
       <LineId Id="234" Count="0" />
@@ -185,9 +196,11 @@ END_CASE
       <LineId Id="142" Count="0" />
       <LineId Id="76" Count="1" />
       <LineId Id="240" Count="14" />
+      <LineId Id="297" Count="0" />
       <LineId Id="239" Count="0" />
       <LineId Id="255" Count="0" />
       <LineId Id="78" Count="1" />
+      <LineId Id="298" Count="0" />
       <LineId Id="230" Count="0" />
       <LineId Id="256" Count="0" />
       <LineId Id="80" Count="10" />
