@@ -1,11 +1,11 @@
-#!c:/Repos/ads-ioc/R0.8.0///bin/rhel7-x86_64/adsIoc
+#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.6.1/bin/rhel7-x86_64/adsIoc
 ################### AUTO-GENERATED DO NOT EDIT ###################
 #
 #         Project: lcls-plc-lps-02.tsproj
 #        PLC name: lcls_plc_lps_02 (lcls_plc_lps_02 Instance)
-# Generated using: pytmc 2.18.2
-# Project version: unknown
-#    Project hash: unknown
+# Generated using: pytmc 2.17.0
+# Project version: 67b637f
+#    Project hash: 67b637f8921c53829a44f6568e941ad8fd733739
 #     PLC IP/host: 172.21.160.71
 #      PLC Net ID: 172.21.160.71.1.1
 #  ** Production mode IOC **
@@ -25,7 +25,7 @@
 
 epicsEnvSet("ADS_IOC_TOP", "$(TOP)" )
 
-epicsEnvSet("ENGINEER", "" )
+epicsEnvSet("ENGINEER", "aberges" )
 epicsEnvSet("LOCATION", "PLC:LAS:OPCPA:02" )
 epicsEnvSet("IOCSH_PS1", "$(IOC)> " )
 epicsEnvSet("ACF_FILE", "$(ADS_IOC_TOP)/iocBoot/templates/unrestricted.acf")
@@ -48,7 +48,7 @@ epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
 epicsEnvSet("ADS_TIME_SOURCE",  "0")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.160.71 ^172.*$")
+system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.160.71 ^172.*")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -83,10 +83,10 @@ dbLoadRecords("save_restoreStatus.db", "P=PLC:LAS:OPCPA:02:")
 dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 
 ## TwinCAT task, application, and project information databases ##
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:LAS:OPCPA:02,IDX=1,TASK_PORT=350")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:LAS:OPCPA:02,IDX=1")
 dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:LAS:OPCPA:02")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:LAS:OPCPA:02,PROJECT=lcls-plc-lps-02.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.18.2,PLC_HOST=172.21.160.71")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:LAS:OPCPA:02,PROJECT=lcls-plc-lps-02.tsproj,HASH=67b637f,VERSION=67b637f,PYTMC=2.17.0,PLC_HOST=172.21.160.71")
 
 #   Tc2_BABasic: * -> 3.1.1.0 (Beckhoff Automation GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:LAS:OPCPA:02,DEPENDENCY=Tc2_BABasic,VERSION=3.1.1.0,VENDOR=Beckhoff Automation GmbH")
