@@ -229,16 +229,6 @@ fbAmphosEnable_MPC(
 Now that each of the input signals have been checked and errors stored,
 run the interlock logic.
 *******************************************************************)
-//Enable Amphos if the interlock passes
-(*GVL_IO.bAmphosEnable := F_AmphosEnable(
-                        fAmphosVoltage      := fbAmphos.fVoltage,
-                        fOPCPAVoltage       := fbOPCPA.fVoltage,
-                        AmphosStatus        := GVL_IO.bAmphosOn,
-                        Mode                := Mode_LPS,
-                        stAmphosSetpoints   := GVL_Laser.stAmphosSP,
-                        stOPCPASetpoints    := GVL_Laser.stOpcpaSP,
-                        stErrors            := stErrors);*)
-
 // Amphos Enable Latch
 
 fbShutterEnableInterlocks(
@@ -364,7 +354,8 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="3" Count="142" />
+      <LineId Id="3" Count="119" />
+      <LineId Id="133" Count="12" />
       <LineId Id="412" Count="0" />
       <LineId Id="146" Count="4" />
       <LineId Id="152" Count="1" />
