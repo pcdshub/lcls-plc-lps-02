@@ -15,7 +15,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Disable dump chiller if there's a hardware failure
-IF (stErrors.bHardwareFailure 
+IF (stErrors.bHardwareFailure
     // Disable dump chiller for these leak conditions
     //OR stErrors.bLeakOpticalTableAmphosOn OR stErrors.bLeakOpticalTableNoLaser OR stErrors.bLeakOpcpaCarbideOn OR stErrors.bLeakUnderTable)
    OR stErrors.bLeakUnderTable)
@@ -32,18 +32,5 @@ ELSE
 END_IF
 ]]></ST>
     </Implementation>
-    <LineIds Name="F_DumpChillerEnable">
-      <LineId Id="26" Count="0" />
-      <LineId Id="3" Count="0" />
-      <LineId Id="27" Count="0" />
-      <LineId Id="4" Count="4" />
-      <LineId Id="28" Count="1" />
-      <LineId Id="31" Count="0" />
-      <LineId Id="34" Count="0" />
-      <LineId Id="32" Count="1" />
-      <LineId Id="30" Count="0" />
-      <LineId Id="14" Count="0" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

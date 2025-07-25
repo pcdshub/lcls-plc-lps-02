@@ -162,50 +162,5 @@ CASE MODE OF
 END_CASE
 ]]></ST>
     </Implementation>
-    <LineIds Name="FB_LaserInterlock">
-      <LineId Id="3" Count="5" />
-      <LineId Id="238" Count="0" />
-      <LineId Id="9" Count="19" />
-      <LineId Id="188" Count="0" />
-      <LineId Id="45" Count="5" />
-      <LineId Id="228" Count="1" />
-      <LineId Id="52" Count="1" />
-      <LineId Id="181" Count="0" />
-      <LineId Id="128" Count="0" />
-      <LineId Id="183" Count="0" />
-      <LineId Id="129" Count="0" />
-      <LineId Id="182" Count="0" />
-      <LineId Id="131" Count="5" />
-      <LineId Id="186" Count="0" />
-      <LineId Id="138" Count="3" />
-      <LineId Id="127" Count="0" />
-      <LineId Id="54" Count="2" />
-      <LineId Id="294" Count="0" />
-      <LineId Id="57" Count="6" />
-      <LineId Id="295" Count="0" />
-      <LineId Id="64" Count="1" />
-      <LineId Id="296" Count="0" />
-      <LineId Id="66" Count="3" />
-      <LineId Id="233" Count="0" />
-      <LineId Id="70" Count="0" />
-      <LineId Id="234" Count="0" />
-      <LineId Id="232" Count="0" />
-      <LineId Id="71" Count="4" />
-      <LineId Id="142" Count="0" />
-      <LineId Id="76" Count="1" />
-      <LineId Id="240" Count="5" />
-      <LineId Id="248" Count="6" />
-      <LineId Id="297" Count="0" />
-      <LineId Id="239" Count="0" />
-      <LineId Id="255" Count="0" />
-      <LineId Id="78" Count="1" />
-      <LineId Id="298" Count="0" />
-      <LineId Id="230" Count="0" />
-      <LineId Id="256" Count="0" />
-      <LineId Id="80" Count="10" />
-      <LineId Id="178" Count="0" />
-      <LineId Id="91" Count="0" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

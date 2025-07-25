@@ -353,15 +353,5 @@ IF bMasterLatchReset AND bLatchStart THEN
 END_IF
 ]]></ST>
     </Implementation>
-    <LineIds Name="MAIN">
-      <LineId Id="3" Count="119" />
-      <LineId Id="133" Count="12" />
-      <LineId Id="412" Count="0" />
-      <LineId Id="146" Count="4" />
-      <LineId Id="152" Count="1" />
-      <LineId Id="185" Count="9" />
-      <LineId Id="212" Count="90" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>

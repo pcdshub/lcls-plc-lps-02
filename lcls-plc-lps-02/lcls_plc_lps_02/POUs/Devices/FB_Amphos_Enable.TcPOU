@@ -65,20 +65,5 @@ END_VAR
         <ST><![CDATA[bError := FALSE;]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="FB_Amphos_Enable">
-      <LineId Id="3" Count="0" />
-      <LineId Id="43" Count="1" />
-      <LineId Id="46" Count="1" />
-      <LineId Id="49" Count="2" />
-      <LineId Id="48" Count="0" />
-      <LineId Id="54" Count="0" />
-      <LineId Id="52" Count="1" />
-      <LineId Id="45" Count="0" />
-      <LineId Id="10" Count="3" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Amphos_Enable.Reset">
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
