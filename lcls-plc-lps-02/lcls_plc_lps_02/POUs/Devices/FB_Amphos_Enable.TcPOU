@@ -4,12 +4,12 @@
     <Declaration><![CDATA[// Monitors the baseplate chiller from the flow sensor
 FUNCTION_BLOCK FB_Amphos_Enable
 VAR_INPUT
-    //bAmphosOn : BOOL; // Whether the amphos is turned on
-    //bAmphosEnable : BOOL; // Signal from the flow sensor. Normally high.
+    //bAmphosOn         : BOOL; // Whether the amphos is turned on
+    //bAmphosEnable      : BOOL; // Signal from the flow sensor. Normally high.
     bMasterLatchReset : BOOL; //Master latched error reset
-    Mode : E_Mode; // Mode
-    fAmphosVoltage : LREAL; // The Amphos voltage
+    fAmphosVoltage    : LREAL; // The Amphos voltage
 END_VAR
+
 VAR_OUTPUT
     {attribute 'pytmc' := '
         pv: ERROR
@@ -19,31 +19,41 @@ VAR_OUTPUT
         field: ZNAM OK
         field: ONAM ERROR
     '}
-    bError : BOOL; // Whether an error was detected. Should latch until reset
+    bError            : BOOL; // Whether an error was detected. Should latch until reset
 END_VAR
+
 VAR_IN_OUT CONSTANT
-    stErrors : ST_ErrorStates; // Currently detected errors
+    stErrors          : ST_ErrorStates; // Currently detected errors
    // stOpcpaSetpoints : ST_LaserSetpoints; // OPCPA setpoints
     stAmphosSetpoints : ST_LaserSetpoints; // The Amphos setpoints
 END_VAR
+
+VAR_IN_OUT
+    Mode              : E_Mode; // Mode
+END_VAR
+
 VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* Latch error if the baseplate chiller flow detects an error *)
-IF (MODE = E_Mode.MPC_Protection OR MODE = E_Mode.MPC_Override OR MODE = E_Mode.OPCPA_Protection OR MODE = E_Mode.OPCPA_Override OR MODE = E_Mode.MASTER_Override) AND fAmphosVoltage < stAmphosSetpoints.nMinVoltage
-THEN
-    bError := TRUE;
-ELSE
-    bError := FALSE;
-END_IF
+CASE MODE OF
+    E_Mode.MASTER_Override, E_Mode.Protection, E_Mode.AMPHOS_Maintenance:
+    IF fAmphosVoltage < stAmphosSetpoints.nMinVoltage
+        THEN
+            bError := TRUE;
+        ELSE
+            bError := FALSE;
+    END_IF
+    // Undefined state, do not get here
+    ELSE
+        Mode := E_Mode.Protection;
+END_CASE
 
 IF bMasterLatchReset THEN
     bError := FALSE;
 END_IF
-
-
-    ]]></ST>
+]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{53a6dd50-32a0-4dc1-8c53-dccc328279b4}">
       <Declaration><![CDATA[// Reset latched errors

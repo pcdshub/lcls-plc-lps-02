@@ -14,19 +14,20 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF (stErrors.bHardwareFailure // Disable baseplate chiller if there is a hardware failure
-   OR stErrors.bLeakUnderTable) // Disable baseplate chiller if there is a leak under the table
-THEN
-    F_BaseplateChillerEnable := FALSE;
-ELSIF
-    (MODE = E_Mode.MASTER_Override)
+      <ST><![CDATA[// Disable baseplate chiller if there is a hardware failure or leak under the table
+IF (stErrors.bHardwareFailure OR stErrors.bLeakUnderTable)
     THEN
-    F_BaseplateChillerEnable := TRUE;
-ELSE
-    F_BaseplateChillerEnable := TRUE;
-END_IF
-
-]]></ST>
+    F_BasePlateChillerEnable := FALSE;
+    ELSE
+    CASE MODE OF
+        // Master override does indeed override
+        E_Mode.MASTER_Override:
+           F_BasePlateChillerEnable := TRUE;
+        // And yet redundantly our default state is TRUE?
+        ELSE
+           F_BasePlateChillerEnable := TRUE;
+    END_CASE
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{A88377B7-E8D6-1545-87F4-46CBA59B68E6}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{0AA09311-5158-CA8E-1E8D-177C6F135807}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name GUID="{6F5942ED-BFA1-497D-8225-23C6DAAD0A09}" TcBaseType="true">ST_LibVersion</Name>
@@ -266,20 +266,12 @@
         <Enum>1</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>OPCPA_Protection</Text>
+        <Text>Protection</Text>
         <Enum>2</Enum>
       </EnumInfo>
       <EnumInfo>
-        <Text>OPCPA_Override</Text>
+        <Text>AMPHOS_Maintenance</Text>
         <Enum>3</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>MPC_Protection</Text>
-        <Enum>4</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>MPC_Override</Text>
-        <Enum>5</Enum>
       </EnumInfo>
       <Properties>
         <Property>
@@ -3652,26 +3644,13 @@
     <DataType>
       <Name>FB_Amphos_Enable</Name>
       <Comment> Monitors the baseplate chiller from the flow sensor</Comment>
-      <BitSize>384</BitSize>
+      <BitSize>448</BitSize>
       <SubItem>
         <Name>bMasterLatchReset</Name>
         <Type>BOOL</Type>
         <Comment>Master latched error reset</Comment>
         <BitSize>8</BitSize>
         <BitOffs>64</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>Mode</Name>
-        <Type>E_Mode</Type>
-        <Comment> Mode</Comment>
-        <BitSize>16</BitSize>
-        <BitOffs>80</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -3735,6 +3714,19 @@
         <Comment> The Amphos setpoints</Comment>
         <BitSize>64</BitSize>
         <BitOffs>320</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>Mode</Name>
+        <Type ReferenceTo="true">E_Mode</Type>
+        <Comment> Mode</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>384</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -5938,8 +5930,8 @@ linked to EPICS records. Remove unecessary diagnostics.
       </Properties>
     </DataType>
     <DataType>
-      <Name>FB_AmphosShutterEnable</Name>
-      <BitSize>448</BitSize>
+      <Name>FB_LaserInterlock</Name>
+      <BitSize>768</BitSize>
       <SubItem>
         <Name>fOpcpaVoltage</Name>
         <Type>LREAL</Type>
@@ -5967,10 +5959,10 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Properties>
       </SubItem>
       <SubItem>
-        <Name>AmphosStatus</Name>
-        <Type>BOOL</Type>
-        <Comment>Amphos Laser Shutter Status</Comment>
-        <BitSize>8</BitSize>
+        <Name>fMPCVoltage</Name>
+        <Type>LREAL</Type>
+        <Comment> The MPC voltage</Comment>
+        <BitSize>64</BitSize>
         <BitOffs>192</BitOffs>
         <Properties>
           <Property>
@@ -5980,11 +5972,11 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Properties>
       </SubItem>
       <SubItem>
-        <Name>Mode</Name>
-        <Type>E_Mode</Type>
-        <Comment> Mode of operation</Comment>
-        <BitSize>16</BitSize>
-        <BitOffs>208</BitOffs>
+        <Name>AmphosStatus</Name>
+        <Type>BOOL</Type>
+        <Comment>Amphos Laser Shutter Status</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>256</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -5993,11 +5985,63 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Properties>
       </SubItem>
       <SubItem>
-        <Name>ShutterStatus</Name>
+        <Name>bLoopTempOverride01</Name>
         <Type>BOOL</Type>
-        <Comment>Shutter Status</Comment>
+        <Comment> Whether the chiller loop error is overriden</Comment>
         <BitSize>8</BitSize>
-        <BitOffs>224</BitOffs>
+        <BitOffs>264</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bLoopTempOverride02</Name>
+        <Type>BOOL</Type>
+        <Comment> Whether the chiller loop error is overriden</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>272</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bLoopTempOverride03</Name>
+        <Type>BOOL</Type>
+        <Comment> Whether the chiller loop error is overriden</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>280</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bLoopTempOverride04</Name>
+        <Type>BOOL</Type>
+        <Comment> Whether the chiller loop error is overriden</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>288</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bLoopTempOverride05</Name>
+        <Type>BOOL</Type>
+        <Comment> Whether the chiller loop error is overriden</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>296</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -6010,7 +6054,7 @@ linked to EPICS records. Remove unecessary diagnostics.
         <Type ReferenceTo="true">ST_ErrorStates</Type>
         <Comment> Currently detected errors</Comment>
         <BitSize>64</BitSize>
-        <BitOffs>256</BitOffs>
+        <BitOffs>320</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -6023,7 +6067,7 @@ linked to EPICS records. Remove unecessary diagnostics.
         <Type ReferenceTo="true">ST_LaserSetpoints</Type>
         <Comment> OPCPA setpoints</Comment>
         <BitSize>64</BitSize>
-        <BitOffs>320</BitOffs>
+        <BitOffs>384</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
@@ -6036,11 +6080,98 @@ linked to EPICS records. Remove unecessary diagnostics.
         <Type ReferenceTo="true">ST_LaserSetpoints</Type>
         <Comment> The Amphos setpoints</Comment>
         <BitSize>64</BitSize>
-        <BitOffs>384</BitOffs>
+        <BitOffs>448</BitOffs>
         <Properties>
           <Property>
             <Name>ItemType</Name>
             <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>stMPCSetpoints</Name>
+        <Type ReferenceTo="true">ST_LaserSetpoints</Type>
+        <Comment> The MPC setpoints</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>512</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>Mode</Name>
+        <Type ReferenceTo="true">E_Mode</Type>
+        <Comment> Mode</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>576</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bAmphosShutter</Name>
+        <Type ReferenceTo="true">BOOL</Type>
+        <Comment> Allowed Amphos Shutter state, point to NC Relay GVL</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>640</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bChillerErrors</Name>
+        <Type>BOOL</Type>
+        <Comment> Local logical sum of chiller error states</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>704</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>bTempSwitchErrors</Name>
+        <Type>BOOL</Type>
+        <Comment> Local logical sum of temperature switch errors</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>712</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>bAmphosUnderVolt</Name>
+        <Type>BOOL</Type>
+        <Comment> Local var for checking Amphos under MinVoltage</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>720</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>bOpcpaUnderVolt</Name>
+        <Type>BOOL</Type>
+        <Comment> Local var for checking OPCPA under MinVoltage</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>728</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>bMpcUnderVolt</Name>
+        <Type>BOOL</Type>
+        <Comment> Local var for checking MPC under MinVoltage</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>736</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>bCarbideShutter</Name>
+        <Type>BOOL</Type>
+        <Comment> Allowed Carbide Shutter state, point to NC Relay GVL</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>744</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Output</Value>
           </Property>
         </Properties>
       </SubItem>
@@ -6632,7 +6763,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3141384</BitOffs>
+            <BitOffs>3141448</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.nOpcpaVoltageRaw</Name>
@@ -6652,7 +6783,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3141392</BitOffs>
+            <BitOffs>3141456</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.nAmphosVoltageRaw</Name>
@@ -6672,7 +6803,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3141408</BitOffs>
+            <BitOffs>3141472</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.nMultiPassVoltageRaw</Name>
@@ -6692,7 +6823,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3141424</BitOffs>
+            <BitOffs>3141488</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW01</Name>
@@ -6712,7 +6843,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142144</BitOffs>
+            <BitOffs>3142528</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW02</Name>
@@ -6732,7 +6863,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142152</BitOffs>
+            <BitOffs>3142536</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW03</Name>
@@ -6752,7 +6883,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142160</BitOffs>
+            <BitOffs>3142544</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW04</Name>
@@ -6772,7 +6903,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142168</BitOffs>
+            <BitOffs>3142552</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bLoopTempSW05</Name>
@@ -6792,7 +6923,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142176</BitOffs>
+            <BitOffs>3142560</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bBaseplateChillerFlow</Name>
@@ -6812,7 +6943,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142184</BitOffs>
+            <BitOffs>3142568</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bDumpChillerFlow</Name>
@@ -6832,7 +6963,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142192</BitOffs>
+            <BitOffs>3142576</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosOn</Name>
@@ -6861,7 +6992,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142200</BitOffs>
+            <BitOffs>3142584</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosLaserReady</Name>
@@ -6890,7 +7021,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142208</BitOffs>
+            <BitOffs>3142592</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosLaserACK</Name>
@@ -6919,7 +7050,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142216</BitOffs>
+            <BitOffs>3142600</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosLaserBusy</Name>
@@ -6948,7 +7079,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142224</BitOffs>
+            <BitOffs>3142608</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosShutterStatus</Name>
@@ -6979,7 +7110,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142256</BitOffs>
+            <BitOffs>3142640</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bCarbideOn</Name>
@@ -7008,7 +7139,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142304</BitOffs>
+            <BitOffs>3142688</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bMirrorStatus</Name>
@@ -7037,7 +7168,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142328</BitOffs>
+            <BitOffs>3142712</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_PLC.AMSNetId</Name>
@@ -7052,7 +7183,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142720</BitOffs>
+            <BitOffs>3143104</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
@@ -7101,7 +7232,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142248</BitOffs>
+            <BitOffs>3142632</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosShutterEnableManualOperation</Name>
@@ -7119,7 +7250,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142264</BitOffs>
+            <BitOffs>3142648</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosRelayOPEN</Name>
@@ -7150,7 +7281,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142272</BitOffs>
+            <BitOffs>3142656</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosRelayCLOSE</Name>
@@ -7170,7 +7301,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142280</BitOffs>
+            <BitOffs>3142664</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bCarbideShutterEnable</Name>
@@ -7201,7 +7332,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142288</BitOffs>
+            <BitOffs>3142672</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bCarbideShutterEnableManualOperation</Name>
@@ -7219,7 +7350,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142296</BitOffs>
+            <BitOffs>3142680</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bDumpChillerRelay</Name>
@@ -7250,7 +7381,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142312</BitOffs>
+            <BitOffs>3142696</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bBaseplateChillerRelay</Name>
@@ -7281,7 +7412,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142320</BitOffs>
+            <BitOffs>3142704</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
@@ -11306,6 +11437,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>
         pv: @(PREFIX):LPS:MODE
         io: io
+        field: NOBT 3
     </Value>
               </Property>
             </Properties>
@@ -11456,9 +11588,9 @@ linked to EPICS records. Remove unecessary diagnostics.
             <BitOffs>3114688</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>MAIN.bAmphosEnable_MPC</Name>
+            <Name>MAIN.fbAmphosEnable_MPC</Name>
             <Comment> Latch for Amphos enable in MPC mode</Comment>
-            <BitSize>384</BitSize>
+            <BitSize>448</BitSize>
             <BaseType>FB_Amphos_Enable</BaseType>
             <Properties>
               <Property>
@@ -11482,7 +11614,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(PREFIX):LPS:DUMP_CHILLER</Value>
               </Property>
             </Properties>
-            <BitOffs>3115776</BitOffs>
+            <BitOffs>3115840</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbBaseplateChiller</Name>
@@ -11495,7 +11627,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(PREFIX):LPS:BASEPLATE_CHILLER</Value>
               </Property>
             </Properties>
-            <BitOffs>3115904</BitOffs>
+            <BitOffs>3115968</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fbDiag</Name>
@@ -11508,14 +11640,14 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Value>pv: @(PREFIX):LPS:PLC</Value>
               </Property>
             </Properties>
-            <BitOffs>3116032</BitOffs>
+            <BitOffs>3116096</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.fb_ShutterControl</Name>
             <Comment> Shutter control function block</Comment>
             <BitSize>1216</BitSize>
             <BaseType>FB_ShutterControl</BaseType>
-            <BitOffs>3140160</BitOffs>
+            <BitOffs>3140224</BitOffs>
           </Symbol>
           <Symbol>
             <Name>MAIN.bLatchStart</Name>
@@ -11525,13 +11657,13 @@ linked to EPICS records. Remove unecessary diagnostics.
             <Default>
               <Bool>false</Bool>
             </Default>
-            <BitOffs>3141376</BitOffs>
+            <BitOffs>3141440</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>MAIN.bAmphosShutterEnableInterlock</Name>
-            <BitSize>448</BitSize>
-            <BaseType>FB_AmphosShutterEnable</BaseType>
-            <BitOffs>3141440</BitOffs>
+            <Name>MAIN.fbShutterEnableInterlocks</Name>
+            <BitSize>768</BitSize>
+            <BaseType>FB_LaserInterlock</BaseType>
+            <BitOffs>3141504</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fRawUpperLimit</Name>
@@ -11546,7 +11678,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3141888</BitOffs>
+            <BitOffs>3142272</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fRawLowerLimit</Name>
@@ -11561,7 +11693,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3141952</BitOffs>
+            <BitOffs>3142336</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fScaleUpperLimit</Name>
@@ -11576,7 +11708,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142016</BitOffs>
+            <BitOffs>3142400</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_EL3174.fScaleLowerLimit</Name>
@@ -11591,7 +11723,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142080</BitOffs>
+            <BitOffs>3142464</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosShutterCMD</Name>
@@ -11612,7 +11744,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142232</BitOffs>
+            <BitOffs>3142616</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_IO.bAmphosShutterEnable</Name>
@@ -11633,7 +11765,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142240</BitOffs>
+            <BitOffs>3142624</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Laser.stAmphosSP</Name>
@@ -11652,7 +11784,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142336</BitOffs>
+            <BitOffs>3142720</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Laser.stOpcpaSP</Name>
@@ -11671,7 +11803,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142464</BitOffs>
+            <BitOffs>3142848</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Laser.stMPCSP</Name>
@@ -11690,7 +11822,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142592</BitOffs>
+            <BitOffs>3142976</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TraceTek.nModbusSlaveAddress</Name>
@@ -11705,7 +11837,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142768</BitOffs>
+            <BitOffs>3143152</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP01</Name>
@@ -11723,7 +11855,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142784</BitOffs>
+            <BitOffs>3143168</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP02</Name>
@@ -11741,7 +11873,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142848</BitOffs>
+            <BitOffs>3143232</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP03</Name>
@@ -11759,7 +11891,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142912</BitOffs>
+            <BitOffs>3143296</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP04</Name>
@@ -11777,7 +11909,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3142976</BitOffs>
+            <BitOffs>3143360</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP05</Name>
@@ -11795,7 +11927,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143040</BitOffs>
+            <BitOffs>3143424</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP06</Name>
@@ -11813,7 +11945,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143104</BitOffs>
+            <BitOffs>3143488</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP07</Name>
@@ -11831,7 +11963,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143168</BitOffs>
+            <BitOffs>3143552</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TemperatureMonitor.stTempMonSP08</Name>
@@ -11849,7 +11981,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143232</BitOffs>
+            <BitOffs>3143616</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_TraceTek.stLeakMonitorBoundaries</Name>
@@ -11868,7 +12000,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143296</BitOffs>
+            <BitOffs>3143680</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bLittleEndian</Name>
@@ -11883,7 +12015,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143488</BitOffs>
+            <BitOffs>3143872</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bSimulationMode</Name>
@@ -11898,7 +12030,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143496</BitOffs>
+            <BitOffs>3143880</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.RuntimeVersion</Name>
@@ -11928,7 +12060,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143504</BitOffs>
+            <BitOffs>3143888</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.CompilerVersion</Name>
@@ -11958,7 +12090,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143568</BitOffs>
+            <BitOffs>3143952</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.nRegisterSize</Name>
@@ -11973,7 +12105,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143632</BitOffs>
+            <BitOffs>3144016</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.nPackMode</Name>
@@ -11988,7 +12120,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143648</BitOffs>
+            <BitOffs>3144032</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bFPUSupport</Name>
@@ -12003,7 +12135,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143664</BitOffs>
+            <BitOffs>3144048</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.bMulticoreSupport</Name>
@@ -12017,7 +12149,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143672</BitOffs>
+            <BitOffs>3144056</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.RuntimeVersionNumeric</Name>
@@ -12032,7 +12164,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143680</BitOffs>
+            <BitOffs>3144064</BitOffs>
           </Symbol>
           <Symbol>
             <Name>Constants.CompilerVersionNumeric</Name>
@@ -12047,7 +12179,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143712</BitOffs>
+            <BitOffs>3144096</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_LicenseInfoVarList._LicenseInfo</Name>
@@ -12168,7 +12300,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3143744</BitOffs>
+            <BitOffs>3144128</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._AppInfo</Name>
@@ -12182,7 +12314,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3145792</BitOffs>
+            <BitOffs>3146176</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskInfo</Name>
@@ -12200,7 +12332,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3147840</BitOffs>
+            <BitOffs>3148224</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask</Name>
@@ -12214,7 +12346,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3148864</BitOffs>
+            <BitOffs>3149248</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList._TaskOid_PlcTask</Name>
@@ -12228,7 +12360,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3148896</BitOffs>
+            <BitOffs>3149280</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TwinCAT_SystemInfoVarList.__PlcTask</Name>
@@ -12249,7 +12381,7 @@ linked to EPICS records. Remove unecessary diagnostics.
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>3148928</BitOffs>
+            <BitOffs>3149312</BitOffs>
           </Symbol>
         </DataArea>
       </DataAreas>
@@ -12262,7 +12394,7 @@ linked to EPICS records. Remove unecessary diagnostics.
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-07-30T16:13:55</Value>
+          <Value>2025-07-22T16:21:02</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

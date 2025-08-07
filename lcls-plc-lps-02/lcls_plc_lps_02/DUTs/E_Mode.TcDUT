@@ -5,10 +5,8 @@
 TYPE E_Mode :
 (
     MASTER_Override :=1,
-    OPCPA_Protection := 2,
-    OPCPA_Override := 3,
-    MPC_Protection := 4,
-    MPC_Override := 5
+    Protection := 2,
+    AMPHOS_Maintenance := 3
 );
 END_TYPE
 ]]></Declaration>

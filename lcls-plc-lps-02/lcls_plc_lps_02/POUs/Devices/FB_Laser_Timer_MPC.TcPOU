@@ -72,7 +72,8 @@ END_IF
 IF bMasterLatchReset THEN
     bBelowNominal := FALSE;
     bError := FALSE;
-END_IF]]></ST>
+END_IF
+]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{c9feda5b-96e7-4857-823b-d0308fd5a205}">
       <Declaration><![CDATA[// Reset latched errors
